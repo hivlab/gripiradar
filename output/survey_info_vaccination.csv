@@ -1,0 +1,104 @@
+question,question_nr,key,label
+Are you currently pregnant?,intake.Q12,0,Yes
+Are you currently pregnant?,intake.Q12,1,No
+Are you currently pregnant?,intake.Q12,2,Don't know/would rather not answer
+Are you taking or do you plan to take this winter homeopathic products in order to prevent COVID-19?,intake.Q26,1,Yes
+Are you taking or do you plan to take this winter homeopathic products in order to prevent COVID-19?,intake.Q26,0,No
+Are you taking or do you plan to take this winter homeopathic products in order to prevent COVID-19?,intake.Q26,2,I don't know
+Are you taking or do you plan to take this winter homeopathic products in order to prevent COVID-19?,intake.Q26,3,I don't want to answer
+Do you follow a special diet?,intake.Q15,0,No special diet
+Do you follow a special diet?,intake.Q15,1,Vegetarian
+Do you follow a special diet?,intake.Q15,2,Veganism
+Do you follow a special diet?,intake.Q15,3,Low-calorie
+Do you follow a special diet?,intake.Q15,4,Other
+Do you have one of the following allergies that can cause respiratory symptoms?,intake.Q14,1,Hay fever
+Do you have one of the following allergies that can cause respiratory symptoms?,intake.Q14,2,Allergy against house dust mite
+Do you have one of the following allergies that can cause respiratory symptoms?,intake.Q14,3,Allergy against domestic animals or pets
+Do you have one of the following allergies that can cause respiratory symptoms?,intake.Q14,4,"Other allergies that cause respiratory symptoms (e.g. sneezing, runny eyes)"
+Do you have one of the following allergies that can cause respiratory symptoms?,intake.Q14,5,I do not have an allergy that causes respiratory symptoms
+Do you smoke tobacco?,intake.Q13,0,No
+Do you smoke tobacco?,intake.Q13,1,"Yes, occasionally"
+Do you smoke tobacco?,intake.Q13,2,"Yes, daily, fewer than 10 times a day"
+Do you smoke tobacco?,intake.Q13,3,"Yes, daily, 10 or more times a day"
+Do you smoke tobacco?,intake.Q13,4,Dont know/would rather not answer
+Do you take regular medication for any of the following medical conditions?,intake.Q11,0,No
+Do you take regular medication for any of the following medical conditions?,intake.Q11,1,Asthma
+Do you take regular medication for any of the following medical conditions?,intake.Q11,2,Diabetes
+Do you take regular medication for any of the following medical conditions?,intake.Q11,3,"Chronic lung disorder besides asthma e.g. COPD, emphysema, or other disorders that affect your breathing"
+Do you take regular medication for any of the following medical conditions?,intake.Q11,4,Heart disorder
+Do you take regular medication for any of the following medical conditions?,intake.Q11,5,Kidney disorder
+Do you take regular medication for any of the following medical conditions?,intake.Q11,6,"An immunocompromising condition (e.g. splenectomy, organ transplant, acquired immune deficiency, cancer treatment)"
+Do you take regular medication for any of the following medical conditions?,intake.Q11,7,I would rather not answer
+"Except people you meet on public transportation, do you have contact with any of the following during the course of a typical day (so without COVID-19 measures)?",intake.Q5,0,More than 10 children or teenagers (without counting your own children)
+"Except people you meet on public transportation, do you have contact with any of the following during the course of a typical day (so without COVID-19 measures)?",intake.Q5,1,More than 10 people aged over 65
+"Except people you meet on public transportation, do you have contact with any of the following during the course of a typical day (so without COVID-19 measures)?",intake.Q5,2,Patients
+"Except people you meet on public transportation, do you have contact with any of the following during the course of a typical day (so without COVID-19 measures)?",intake.Q5,3,Groups of people (more than 10 individuals at any one time)
+"Except people you meet on public transportation, do you have contact with any of the following during the course of a typical day (so without COVID-19 measures)?",intake.Q5,4,None of the above
+How many of the children in your household go to school or day-care?,intake.Q6b,0,None
+How many of the children in your household go to school or day-care?,intake.Q6b,99,More than 5
+How often do you have common colds or flu-like diseases?,intake.Q8,0,Never
+How often do you have common colds or flu-like diseases?,intake.Q8,1,Once or twice a year
+How often do you have common colds or flu-like diseases?,intake.Q8,2,Between 3 and 5 times a year
+How often do you have common colds or flu-like diseases?,intake.Q8,3,Between 6 and 10 times a year
+How often do you have common colds or flu-like diseases?,intake.Q8,4,More than 10 times a year
+How often do you have common colds or flu-like diseases?,intake.Q8,5,I don't know
+"INCLUDING YOU, how many people in each of the following age groups live in your household?",intake.Q6,mat.row0.col1,NA
+"INCLUDING YOU, how many people in each of the following age groups live in your household?",intake.Q6,mat.row1.col1,NA
+"INCLUDING YOU, how many people in each of the following age groups live in your household?",intake.Q6,mat.row2.col1,NA
+"INCLUDING YOU, how many people in each of the following age groups live in your household?",intake.Q6,mat.row3.col1,NA
+"INCLUDING YOU, how many people in each of the following age groups live in your household?",intake.Q6,mat.row4.col1,NA
+"One or several of these people are they at risk of complications in case of flu or COVID-19 (e.g, pregnant, over 65, underlying health condition, obese, etc.)?",intake.Q6c,1,Yes
+"One or several of these people are they at risk of complications in case of flu or COVID-19 (e.g, pregnant, over 65, underlying health condition, obese, etc.)?",intake.Q6c,0,No
+"One or several of these people are they at risk of complications in case of flu or COVID-19 (e.g, pregnant, over 65, underlying health condition, obese, etc.)?",intake.Q6c,2,Don't know/would rather not answer
+What is the highest level of formal education/qualification that you have?,intake.Q4d,0,I have no formal qualification
+What is the highest level of formal education/qualification that you have?,intake.Q4d,1,"GCSEs, levels, CSEs or equivalent"
+What is the highest level of formal education/qualification that you have?,intake.Q4d,2,"A-levels or equivalent (e.g. Higher, NVQ Level3, BTEC)"
+What is the highest level of formal education/qualification that you have?,intake.Q4d,3,"Bachelor Degree (BA, BSc) or equivalent"
+What is the highest level of formal education/qualification that you have?,intake.Q4d,4,"Higher Degree or equivalent (e.g. Masters Degree, PGCE, PhD, Medical Doctorate, Advanced Professional Award)"
+What is the highest level of formal education/qualification that you have?,intake.Q4d,5,I am still in education
+What is the postal code of your school/college/workplace (where you spend the majority of your working/studying time)?,intake.Q4b,0,Postal code
+What is the postal code of your school/college/workplace (where you spend the majority of your working/studying time)?,intake.Q4b,1,I don’t know/can’t remember
+What is the postal code of your school/college/workplace (where you spend the majority of your working/studying time)?,intake.Q4b,2,Not applicable (e.g. don’t have a fixed workplace)
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,0,"Paid employment, full time"
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,1,"Paid employment, part time"
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,2,"Self-employed (businessman, farmer, tradesman, etc.)"
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,3,Attending daycare/school/college/university
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,4,Home-maker (e.g. housewife)
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,5,Unemployed
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,6,Long-term sick-leave or parental leave
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,7,Retired
+"What is your current professional status? (Assume a normal situation, without any COVID-19 measures).",intake.Q4,8,Other
+What is your date of birth (year and month)?,intake.Q2,1,NA
+What is your gender?,intake.Q1,0,Male
+What is your gender?,intake.Q1,1,Female
+What is your gender?,intake.Q1,2,Other
+What is your home postal code?,intake.Q3,0,Postal code:
+What is your home postal code?,intake.Q3,1,I prefer not to answer this question
+What means of transportation do you typically use for your daily activities?,intake.Q7,0,Walking
+What means of transportation do you typically use for your daily activities?,intake.Q7,1,Bike
+What means of transportation do you typically use for your daily activities?,intake.Q7,2,Motorbike/scooter
+What means of transportation do you typically use for your daily activities?,intake.Q7,3,Car
+What means of transportation do you typically use for your daily activities?,intake.Q7,4,"Public transportation (bus, train, tube, etc)"
+What means of transportation do you typically use for your daily activities?,intake.Q7,5,Other
+Where did you first hear about the platform?,intake.Q17,0,Radio or television
+Where did you first hear about the platform?,intake.Q17,1,In the newspaper or in a magazine
+Where did you first hear about the platform?,intake.Q17,2,"The internet (a website, link, a search engine)"
+Where did you first hear about the platform?,intake.Q17,3,By poster
+Where did you first hear about the platform?,intake.Q17,4,Via family or friends
+Where did you first hear about the platform?,intake.Q17,5,Via school or work
+Where did you first hear about the platform?,intake.Q17,99,Other
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,2,"Services and sales workers (Personal Services Workers, Sales Workers, Personal Care Workers, Protective Services Workers)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,3,"Craft and related trades workers (Handicraft and printing workers, Food processing, wood working, garment and other craft and related trades workers,  Metal, machinery and related trades workers, Electrical and electronic trades workers, Building and related trades workers, excluding electricians)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,6,"Armed forces occupations (Commissioned armed forces officers, Armed forces occupations other ranks, Non-commissioned armed forces officers)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,7,"Managers (Chief Executives, Senior Officials and Legislators, Administrative and Commercial Managers, Production and Specialized Services Managers, Hospitality, Retail and Other Services Managers)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,8,"Professionals (Science and Engineering Professionals, Health Professionals,  Teaching Professionals, Business and Administration Professionals, Information and Communications Technology Professionals, Legal, Social and Cultural Professionals)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,9,"Technicians and associate professionals (Science and Engineering Associate Professionals, Health Associate Professionals, Business and Administration Associate Professionals, Legal, Social, Cultural and Related Associate Professionals, Information and Communications Technicians)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,10,"Clerical support workers (General and Keyboard Clerks, Customer Services Clerks,  Numerical and Material Recording Clerks, Other Clerical Support Workers)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,11,"Skilled agricultural, forestry and fishery workers"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,12,"Plant and machine operators and assemblers (Stationary Plant and Machine Operators, Assemblers, Drivers and Mobile Plant Operators)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,13,"Elementary occupations (Cleaners and Helpers, Agricultural, Forestry and Fishery Labourers, Labourers in Mining, Construction, Manufacturing and Transport, Food Preparation Assistants, Street and Related Sales and Services Workers, Refuse Workers and Other Elementary Workers)"
+Which of the following descriptions most closely matches with your main occupation?,intake.Q4h,5,Other
+Which trimester of the pregnancy are you in?,intake.Q12b,0,First trimester (week 1-12)
+Which trimester of the pregnancy are you in?,intake.Q12b,1,Second trimester (week 13-28)
+Which trimester of the pregnancy are you in?,intake.Q12b,2,Third trimester (week 29-delivery)
+Which trimester of the pregnancy are you in?,intake.Q12b,3,Don't know/would rather not answer
