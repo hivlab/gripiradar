@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import os
 
-paths = ["data/24.01.2025/intake/survey_info.json", "data/24.01.2025/vaccination/survey_info.json", "data/24.01.2025/weekly/survey_info.json"]
+paths = ["intake/survey_info.json", "vaccination/survey_info.json", "weekly/survey_info.json"]
 
 def import_json(path):
     with open(path, "r") as f:
@@ -24,7 +24,7 @@ def import_json(path):
 
     opts = opts[~opts.key.isin(["scg", "mcg", "ddg"])]
     out = ids.set_index("title").join(opts.set_index("title"))
-    out.to_csv(Path(os.path.dirname(path), Path(path).stem + ".csv"), sep = ",")
+    out.to_csv(Path("data", Path(path).stem + ".csv"), sep = ",")
 
 
 for path in paths:
