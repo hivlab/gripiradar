@@ -13,7 +13,7 @@ library(here)
 library(jsonlite)
 
 #+
-weekly_responses_files <- list.files(here("data"), recursive = TRUE, full.names = TRUE, pattern = "weekly_responses")
+weekly_responses_files <- list.files(here(), recursive = TRUE, full.names = TRUE, pattern = "weekly_responses")
 weekly_responses <- weekly_responses_files %>% 
   map(read_csv) %>% 
   set_names(basename(weekly_responses_files)) %>% 
@@ -29,6 +29,12 @@ weekly_si <- read_csv(here("output/survey_info_weekly.csv"))
 
 
 #' ## Active users
+#' 
+weekly_responses %>% 
+  distinct(participantID) %>% 
+  count()
+
+
 weekly_responses %>% 
   group_by(start_date) %>% 
   distinct() %>% 
@@ -64,7 +70,7 @@ weekly_responses %>%
   labs(title = "Gripiradar")
 
 #' ## Demograpics
-intake_responses_files <- list.files(here("data"), recursive = TRUE, full.names = TRUE, pattern = "intake_responses")
+intake_responses_files <- list.files(here(), recursive = TRUE, full.names = TRUE, pattern = "intake_responses")
 intake_responses <- intake_responses_files %>% 
   map(read_csv) %>% 
   set_names(basename(intake_responses_files)) %>% 
@@ -87,8 +93,9 @@ demographics <- intake_responses %>%
   
 #' ### Gender
 demographics %>% 
-  ggplot() +
-  geom_bar(aes(fct_infreq(factor(female, labels = c("Male", "Female", "Other"))), after_stat(count / sum(count)))) +
+  ggplot(aes(fct_infreq(factor(female, labels = c("Male", "Female", "Other"))), after_stat(count / sum(count)))) +
+  geom_bar() +
+  geom_text(aes(label = after_stat(count)), stat = "count", vjust = 1.5, color = "white") +
   scale_y_continuous("Frequency (%)", labels = scales::percent) +
   theme(axis.title.x = element_blank()) +
   labs(title = "Gripiradar")
@@ -97,27 +104,32 @@ demographics %>%
 #' ### Zip codes
 adr <- read_csv(here("output/zip_codes.csv")) %>% 
   select(zip_code, county) %>% 
-  distinct() %>% 
-  drop_na()
+  distinct()
+
 demographics %>% 
   select(participantID, zip_code) %>% 
   distinct() %>% 
-  drop_na() %>% 
+  count(`Sihtnumber olemas` = !is.na(zip_code))
+n_distinct(demographics$participantID)
+
+demographics %>% 
+  select(participantID, zip_code) %>% 
   left_join(adr) %>% 
-  ggplot() +
-  geom_bar(aes(after_stat(count / sum(count)), fct_infreq(str_remove(county, " maakond")))) +
+  distinct() %>% 
+  ggplot(aes(after_stat(count / sum(count)), fct_infreq(str_remove(county, " maakond")))) +
+  geom_bar() +
+  geom_text(aes(label = after_stat(count)), stat = "count", hjust = 1.2, color = "white") +
   scale_x_continuous("Frequency (%)", labels = scales::percent) +
   scale_y_discrete("County") +
   labs(title = "Gripiradar")
-
 
 #' ### Age groups
 demographics %>% 
   select(participantID, age) %>% 
   distinct() %>% 
-  drop_na() %>% 
   mutate(
     age_group = case_when(
+      is.na(age) ~ NA_character_,
       age <= 15 ~ "0-15",
       age > 60 ~ "60+",
       age > 15 & age <= 30 ~ "16-30",
@@ -125,8 +137,24 @@ demographics %>%
       TRUE ~ "46-60"
     )
   ) %>% 
-  ggplot() +
-  geom_bar(aes(after_stat(count / sum(count)), age_group)) +
+  count(age_group)
+
+demographics %>% 
+  select(participantID, age) %>% 
+  distinct() %>% 
+  mutate(
+    age_group = case_when(
+      is.na(age) ~ NA_character_,
+      age <= 15 ~ "0-15",
+      age > 60 ~ "60+",
+      age > 15 & age <= 30 ~ "16-30",
+      age > 30 & age <= 45 ~ "31-45",
+      TRUE ~ "46-60"
+    )
+  ) %>% 
+  ggplot(aes(after_stat(count / sum(count)), age_group)) +
+  geom_bar() +
+  geom_text(aes(label = after_stat(count)), stat = "count", hjust = 1.2, color = "white") +
   scale_x_continuous("Frequency (%)", labels = scales::percent) +
   scale_y_discrete("Age group") +
   labs(title = "Gripiradar")
