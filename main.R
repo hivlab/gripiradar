@@ -1,7 +1,10 @@
 #' ---
-#' title: Gripiradar
-#' date: 29-Jan-2024
+#' title: "Gripiradar"
+#' date: "`r Sys.Date()`"
 #' author: ""
+#' format:
+#'    html:
+#'      theme: "theme/gripiradar-theme.scss"
 #' ---
 
 #+ include=FALSE
