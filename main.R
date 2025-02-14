@@ -16,6 +16,9 @@ library(here)
 library(jsonlite)
 
 #+
+colors <- c("#2C5696", "lightgray", "#39870C", "#EEA230", "#D92321", "#CCE0F1")
+
+#+
 weekly_responses_files <- list.files(here(), recursive = TRUE, full.names = TRUE, pattern = "weekly_responses")
 weekly_responses <- weekly_responses_files %>% 
   map(read_csv) %>% 
@@ -38,20 +41,23 @@ weekly_si <- read_csv(here("data/survey_info_weekly.csv"))
 
 #+
 weekly_responses %>% 
-  group_by(start_date) %>% 
+  group_by(end_date) %>% 
   distinct() %>% 
   count() %>% 
+  filter(week(end_date) != week(today())) %>% 
   ggplot() +
-  geom_line(aes(start_date, n)) +
+  geom_line(aes(end_date, n)) +
   scale_y_continuous("Active Users", limits = c(0, NA)) +
-  scale_x_date("Date", date_breaks = "month", date_labels = "%b %Y") +
+  scale_x_date("Date", date_labels = "%b %d %Y") +
   labs(title = "Gripiradar \u2014 Active Users")
 
 #' ## Symptoms
 #' 
 
 #+ fig.height=10, fig.width=9
+last_wks <- interval(today() - weeks(4), today())
 weekly_responses %>% 
+  filter(end_date %within% last_wks) %>% 
   mutate(int = interval(start_date, end_date)) %>% 
   select(int, participantID, matches("weekly.Q1")) %>% 
   pivot_longer(starts_with("weekly"), names_to = "key") %>% 
@@ -64,12 +70,16 @@ weekly_responses %>%
   summarise(
     across(value, mean)
   ) %>% 
-  ggplot(aes(value, fct_reorder(label, value))) +
-  geom_col() +
-  facet_wrap(~str_replace_all(str_remove_all(as.character(int), "UTC"), "--", "\u2014 ")) +
+  mutate(
+    Period = str_replace_all(str_remove_all(as.character(int), "UTC"), "--", "\u2014 ")
+    ) %>% 
+  ggplot(aes(value, fct_reorder(label, value), fill = Period)) +
+  geom_col(position = "dodge") +
   scale_y_discrete("Symptoms") +
   scale_x_continuous("Frequency (%)", labels = scales::percent) +
-  labs(title = "Gripiradar \u2014 Symptoms")
+  scale_fill_manual(values = colors) +
+  labs(title = "Gripiradar \u2014 Symptoms") +
+  guides(fill = guide_legend(reverse = TRUE))
 
 #' ## Demograpics
 intake_responses_files <- list.files(here(), recursive = TRUE, full.names = TRUE, pattern = "intake_responses")
@@ -90,17 +100,24 @@ demographics <- intake_responses %>%
   select(int, end_date, participantID, female = intake.Q1, birth_date = intake.Q2, zip_code = intake.Q3.0) %>% 
   mutate(
     birth_date = as.Date(as_datetime(birth_date)),
-    age = (end_date - birth_date) / dyears(1)
+    age = (end_date - birth_date) / dyears(1),
+    Gender = factor(female, labels = c("Male", "Female", "Other")),
+    age_group = cut(age, breaks = seq(0, 100, by = 10)),
+    age_group = as.character(age_group),
+    age_group = str_replace_all(age_group, ",", "-")
     )
   
-#' ### Gender
+#' ### Gender and age group
 demographics %>% 
-  ggplot(aes(fct_infreq(factor(female, labels = c("Male", "Female", "Other"))), after_stat(count / sum(count)))) +
-  geom_bar() +
+  filter(Gender %in% c("Female", "Male")) %>% 
+  count(Gender, age_group) %>% 
+  ggplot(aes(if_else(Gender == "Female", -n, n), age_group, fill = Gender)) +
+  geom_col() +
   geom_text(aes(label = after_stat(count)), stat = "count", vjust = 1.5, color = "white") +
-  scale_y_continuous("Frequency (%)", labels = scales::percent) +
-  theme(axis.title.x = element_blank()) +
-  labs(title = "Gripiradar \u2014 Gender")
+  scale_x_continuous("Frequency (%)", labels = scales::percent) +
+  scale_y_discrete() +
+  scale_fill_manual("Gender", values = colors) +
+  labs(title = "Gripiradar \u2014 Age Group and Gender")
 
 
 #' ### Zip codes
