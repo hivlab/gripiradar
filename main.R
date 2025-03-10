@@ -1,10 +1,10 @@
 #' ---
 #' title: "Gripiradar"
 #' date: "`r Sys.Date()`"
-#' author: ""
+#' author: "by Gripiradar collective"
 #' format: 
-#'    html: 
-#'      embed-resources: true
+#'    dashboard:
+#'      logo: images/logo.png
 #' ---
 
 #+ include=FALSE
@@ -18,9 +18,11 @@ library(jsonlite)
 library(sf)
 library(ggspatial)
 library(cowplot)
+source(here("scripts/my_label_date_short.R"))
 
 #+
 colors <- c("#2C5696", "#39870C", "#EEA230", "#D92321", "#CCE0F1", "lightgray")
+old <- theme_set(theme_minimal())
 
 #+
 weekly_responses_files <- list.files(here(), recursive = TRUE, full.names = TRUE, pattern = "weekly_responses")
@@ -40,53 +42,83 @@ weekly_responses <- weekly_responses_files %>%
 weekly_si <- read_csv(here("data/survey_info_weekly.csv"))
 
 
-#' ## Active users
 #' 
-
-#' Total number of unique user IDs: `r n_distinct(weekly_responses$participantID)`
-
-#+
-weekly_responses %>% 
-  group_by(intvl) %>% 
-  distinct() %>% 
-  count() %>% 
-  ggplot() +
-  geom_line(aes(as.Date(int_end(intvl)), n), color = colors[1]) +
-  scale_y_continuous("Active Users", limits = c(0, NA)) +
-  scale_x_date("Date", date_labels = "%b %d %Y") +
-  labs(title = "Gripiradar \u2014 Active Users")
+#' ## Column {width=60%}
+#' 
 
 #' ## Symptoms
 #' 
 
 #+ fig.height=10, fig.width=9
-last_wks <- interval(today() - weeks(4), today())
+fmt_label <- function(intvl) {
+  if (year(int_start(intvl)) == year(int_end(intvl))) {
+    return(paste(format(int_start(intvl), "%d-%b"), "\u2014", format(int_end(intvl), "%d-%b")))
+  } else {
+    return(paste(format(int_start(intvl), "%d-%b-%Y"), "\u2014", format(int_end(intvl), "%d-%b-%Y")))
+  }
+}
+last_4_weeks <- interval(today() - weeks(5), today())
 weekly_responses %>% 
-  filter(end_date %within% last_wks) %>% 
-  mutate(int = interval(start_date, end_date)) %>% 
-  select(int, participantID, matches("weekly.Q1")) %>% 
+  filter(int_start(intvl) %within% last_4_weeks) %>% 
+  select(intvl, participantID, matches("weekly.Q1")) %>% 
   pivot_longer(starts_with("weekly"), names_to = "key") %>% 
   mutate(
     question_nr = "weekly.Q1",
     across(key, \(x) str_remove_all(x, "weekly.Q1."))
     ) %>% 
   inner_join(weekly_si) %>% 
-  group_by(int, label) %>% 
+  group_by(intvl, label) %>% 
   summarise(
     across(value, mean)
   ) %>% 
+  rowwise() %>% 
   mutate(
-    Interval = str_replace_all(str_remove_all(as.character(int), "UTC"), "--", "\u2014 ")
+    Interval = fmt_label(intvl),
+    Interval = fct_reorder(Interval, intvl)
     ) %>% 
+  ungroup() %>% 
   ggplot(aes(value, fct_reorder(label, value), fill = Interval)) +
   geom_col(position = "dodge") +
-  scale_y_discrete("Symptoms") +
   scale_x_continuous("Frequency (%)", labels = scales::percent) +
   scale_fill_manual(values = colors) +
-  labs(title = "Gripiradar \u2014 Symptoms") +
-  guides(fill = guide_legend(reverse = TRUE))
+  labs(title = "Symptoms") +
+  guides(fill = guide_legend(reverse = TRUE)) +
+  theme(
+    axis.title.y = element_blank()
+  )
 
-#' ## Demograpics
+#' 
+#' ## Column {width=40%}
+#' 
+#' 
+
+#' 
+#' ::: {.card}
+#' Total number of unique user IDs: `r n_distinct(weekly_responses$participantID)`
+
+#+
+last_6_months <- interval((today() - months(6)), today())
+active_users <- weekly_responses %>% 
+  filter(int_start(intvl) %within% last_6_months) %>% 
+  group_by(intvl) %>% 
+  distinct() %>% 
+  count() %>% 
+  ungroup()
+active_users %>% 
+  ggplot(aes(as.Date(int_end(intvl)), n)) +
+  geom_line(color = colors[6], linewidth = 1) +
+  geom_point(color = colors[6], size = 2) +
+  scale_y_continuous(limits = c(0, NA)) +
+  scale_x_date(date_breaks = "2 weeks", labels = my_label_date_short(format = c("%Y", "%b", "%d", "%H:%M"), sep = "-")) +
+  labs(title = "Active Users (weekly)") +
+  theme(
+    axis.title = element_blank()
+  )
+
+
+#' 
+#' ::: {.card}
+#+
 intake_responses_files <- list.files(here(), recursive = TRUE, full.names = TRUE, pattern = "intake_responses")
 intake_responses <- intake_responses_files %>% 
   map(read_csv) %>% 
@@ -113,7 +145,10 @@ demographics <- intake_responses %>%
     age_group = str_extract(age_group, "\\d+-\\d+")
     )
   
-#' ### Gender and age group
+#'
+#' ::: {.card}
+#' 
+#+
 demographics %>% 
   filter(Gender %in% c("Female", "Male")) %>% 
   count(Gender, age_group) %>% 
@@ -124,12 +159,16 @@ demographics %>%
   scale_y_discrete("Age group") +
   scale_fill_manual(values = colors[3:4], limits = rev) +
   labs(
-    title = "Gripiradar \u2014 Population",
+    title = "Population",
     caption = paste("'Other':", sum(demographics$Gender=="Other"))
     ) +
   theme(legend.title = element_blank())
 
-#' ### Zip codes
+
+#' 
+#' ::: {.card}
+#' 
+#+
 adr <- read_csv(here("data/zip_codes.csv")) %>% 
   select(zip_code, county) %>% 
   distinct()
@@ -142,14 +181,13 @@ sihtnumbrid <- read_delim(
   rename_all(str_to_lower)
 
 
-#+ include=FALSE
-demographics %>%
-  select(participantID, zip_code) %>%
-  distinct() %>%
-  count(`Sihtnumber olemas` = !is.na(zip_code))
-n_distinct(demographics$participantID)
+# #+ include=FALSE
+# demographics %>%
+#   select(participantID, zip_code) %>%
+#   distinct() %>%
+#   count(`Sihtnumber olemas` = !is.na(zip_code))
+# n_distinct(demographics$participantID)
 
-#+
 demographics %>% 
   select(participantID, zip_code) %>% 
   left_join(adr) %>% 
@@ -158,14 +196,18 @@ demographics %>%
   geom_bar(fill = colors[1]) +
   geom_text(aes(label = after_stat(count)), stat = "count", hjust = 1.2, color = "white") +
   scale_x_continuous("Frequency (%)", labels = scales::percent) +
-  scale_y_discrete("County") +
-  labs(title = "Gripiradar \u2014 Counties")
+  labs(title = "Participant Distribution by County") +
+  theme(
+    axis.title.y = element_blank()
+  )
 
+#'
+#' ::: {.card}
+#' 
 #+
 mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE)
 df_sf <- st_as_sf(sihtnumbrid, coords = c('viitepunkt_x', 'viitepunkt_y'))
 
-#+
 centroids_sf <- df_sf %>%
   group_by(sihtnumber) %>% 
   summarize(geometry = st_union(geometry)) %>% 
@@ -178,12 +220,11 @@ participans_by_sn <- demographics %>%
       ) %>% 
   st_as_sf(crs = 25884)
 
-#+
 ggplot(data = mk) +
   geom_sf(fill= "antiquewhite") +
   geom_sf(data = participans_by_sn, aes(color = Age, shape = Gender), alpha = 1/2, size = 3) +
   scale_shape_manual(values = c(Male = "\u2642", Female = "\u2640", Other = "\u26A5")) +
-  labs(title = "Gripiradar") +
+  labs(title = "Participants geographic Distribution") +
   annotation_scale() +
   coord_sf() +
   theme(
