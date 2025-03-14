@@ -126,7 +126,7 @@ wri <- weekly_responses %>%
   inner_join(weekly_si) %>% 
   mutate(
     Interval = map_chr(intvl, fmt_label),
-    Interval = fct_reorder(Interval, intvl)
+    Interval = fct_reorder(Interval, int_start(intvl))
   )
 symptoms <- wri %>% 
   group_by(Interval) %>% 
@@ -212,13 +212,13 @@ active_users %>%
 ```{r}
 symptoms_p <- symptoms %>% 
   filter(!str_detect(label, "No symptoms")) %>% 
-  ggplot(aes(fct_reorder(label, value/npid, .desc = TRUE), value/npid, fill = Interval)) +
+  ggplot(aes(fct_reorder(label, value / npid, .desc = TRUE), value / npid, fill = Interval)) +
   geom_col(position = position_dodge(preserve = "single")) +
   scale_y_continuous(labels = scales::percent) +
   scale_x_discrete(labels = \(x) str_wrap(x, 20)) +
   scale_fill_manual("Last four weeks", values = colors) +
   labs(title = "Symptoms") +
-  guides(fill = guide_legend(reverse = TRUE)) +
+  # guides(fill = guide_legend(reverse = TRUE)) +
   theme(
     axis.title = element_blank(),
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
@@ -291,7 +291,7 @@ demographics %>%
   scale_fill_manual(values = colors[3:4], limits = rev) +
   labs(
     title = "Population",
-    caption = paste0("'Other': ", others, " (", scales::percent(others / active_users_n), ")")
+    caption = paste0("Gender 'Other': ", others, " (", scales::percent(others / active_users_n), ")")
     ) +
   theme(
     legend.title = element_blank(),
