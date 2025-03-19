@@ -1,10 +1,11 @@
 ---
-title: "Gripiradar"
-author: "by Gripiradar crowd"
 format: 
   dashboard:
     logo: images/logo.png
     self-contained: true
+params:
+  lang: "ee"
+title: "`r switch(params$lang, ee = 'Gripiradar', en = 'Fluradar', ru = 'Радар гриппа')`"
 ---
 
 ```{r, include=FALSE}
@@ -133,36 +134,21 @@ symptoms <- wri %>%
   mutate(npid = n_distinct(participantID)) %>% 
   group_by(Interval, label, npid) %>% 
   summarise(value = sum(value))
-
-symptoms_sum <- symptoms %>% 
-  ungroup() %>%
-  filter(as.numeric(fct_rev(Interval)) < 3, label == "No symptoms") %>% 
-  mutate(
-    symptoms = npid - value,
-    no_symptoms = value
-  )
-
-sym_change <- signif(diff(symptoms_sum$symptoms / symptoms_sum$npid) * 100, digits = 1)
-pt <- prop.test(symptoms_sum$symptoms, symptoms_sum$npid)
-get_arrow <- function(sym_change, pt) {
-  if (pt$p.value < 0.05) {
-    if (sym_change < 0) {
-      return("arrow-down")
-    } else {
-      return("arrow-up")
-    }
-  } else {
-    return("arrow-right")
-  }
-}
 ```
+
+```{r}
+languages <- read_csv(here("data/languages.csv"))
+languages <- languages %>% 
+  mutate(label = en) %>% 
+  pivot_longer(cols = c(ee, en,ru), names_to = "lang", values_to = "text")
+```
+
 
 ## Row
 
 ```{r, include=FALSE}
 active_users_n <- n_distinct(
     weekly_responses %>% 
-      # filter(last_saturday %within% intvl) %>% 
       pull(participantID)
     )
 ```
@@ -170,20 +156,12 @@ active_users_n <- n_distinct(
 
 ```{r}
 #| content: valuebox
-#| title: "Active users"
 #| icon: person-fill
 #| color: "secondary"
-list(value = active_users_n)
-```
-
-```{r, include=FALSE}
-#| content: valuebox
-#| title: "Symptoms change since week before last week"
-#| color: "primary"
 list(
-  icon = get_arrow(sym_change, pt),
-  value = paste(sym_change, "p.p.")
-)
+  title = switch(params$lang, ee = "Aktiivseid kasutajaid", en = "Active users", ru = "Aктивные пользователи"),
+  value = active_users_n
+  )
 ```
 
 
@@ -201,7 +179,7 @@ active_users %>%
   geom_point(color = colors[1]) +
   scale_y_continuous(limits = c(0, NA)) +
   scale_x_date(date_breaks = "2 weeks", labels = my_label_date_short(format = c("%Y", "%b", "%d", "%H:%M"), sep = "-")) +
-  labs(title = "Active users (weekly)") +
+  labs(title = switch(params$lang, ee = "Aktiivseid kasutajaid (nädalas)", en = "Active users (weekly)", ru = "Aктивные пользователи (в неделю)")) +
   theme(
     axis.title = element_blank()
   )
@@ -210,15 +188,17 @@ active_users %>%
 
 
 ```{r}
-symptoms_p <- symptoms %>% 
+symptoms_transl <- symptoms %>% 
+  left_join(languages, relationship = "many-to-many") %>% 
+  filter(lang == params$lang)
+symptoms_p <- symptoms_transl %>% 
   filter(!str_detect(label, "No symptoms")) %>% 
-  ggplot(aes(fct_reorder(label, value / npid, .desc = TRUE), value / npid, fill = Interval)) +
+  ggplot(aes(fct_reorder(text, value / npid, .desc = TRUE), value / npid, fill = Interval)) +
   geom_col(position = position_dodge(preserve = "single")) +
   scale_y_continuous(labels = scales::percent) +
   scale_x_discrete(labels = \(x) str_wrap(x, 20)) +
-  scale_fill_manual("Last four weeks", values = colors) +
-  labs(title = "Symptoms") +
-  # guides(fill = guide_legend(reverse = TRUE)) +
+  scale_fill_manual(switch(params$lang, ee = "Viimased neli nädalat", en = "Last four weeks", ru = "Последние четыре недели"), values = colors) +
+  labs(title = switch(params$lang, ee = "Sümptomid", en = "Symptoms", ru = "Симптомы")) +
   theme(
     axis.title = element_blank(),
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
@@ -229,12 +209,12 @@ symptoms_p <- symptoms %>%
 
 
 ```{r}
-nosymptoms_p <- symptoms %>% 
+nosymptoms_p <- symptoms_transl %>% 
   filter(str_detect(label, "No symptoms")) %>% 
   ggplot(aes(Interval, value/npid)) +
   geom_point(color = colors[1]) +
   geom_line(aes(group = 1), color = colors[1]) +
-  labs(title = str_wrap("Proportion of users with no symptoms", width = 15)) +
+  labs(title = str_wrap(switch(params$lang, ee = "Sümptomiteta kasutajate osakaal", en = "Proportion of users with no symptoms", ru = "Доля пользователей без симптомов"), width = 15)) +
   scale_y_continuous(labels = scales::percent, limits = c(0, NA)) +
   theme(
     axis.title = element_blank(),
@@ -249,31 +229,6 @@ symptoms_p
 ```
 
 
-```{r, include=FALSE}
-lwr <- wri %>% 
-  filter(as.numeric(fct_rev(Interval)) == 2) 
-
-pca_res <- lwr %>% 
-  select(participantID, label, value) %>% 
-  pivot_wider(names_from = label, values_from = value) %>% 
-  select(where(is.logical)) %>% 
-  mutate(across(everything(), as.numeric)) %>% 
-  select(where(~n_distinct(.) > 1), -"No symptoms") %>% 
-  prcomp(scale. = TRUE)
-
-autoplot(
-  pca_res, 
-  color = "#2C5696",
-  loadings = TRUE, 
-  loadings.label = TRUE, 
-  loadings.colour = "#EEA230",
-  loadings.label.colour = "#D92321",
-  loadings.label.repel = TRUE
-  ) +
-  labs(title = "Distribution of users by symptoms (last week)")
-```
-
-
 ## Row
 
 
@@ -285,13 +240,12 @@ demographics %>%
   mutate(p = n / sum(n)) %>% 
   ggplot(aes(if_else(Gender == "Female", -p, p), age_group, fill = Gender)) +
   geom_col() +
-  # geom_text(aes(label = abs(n)), color = "black") +
   scale_x_continuous(labels = \(x) scales::percent(abs(x))) +
-  scale_y_discrete("Age group") +
-  scale_fill_manual(values = colors[3:4], limits = rev) +
+  scale_y_discrete(switch(params$lang, ee = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
+  scale_fill_manual(values = colors[3:4], limits = rev, labels = switch(params$lang, ee = c("Naised", "Mehed"), en = c("Female", "Male"), ru = c("Женщины", "Мужчины"))) +
   labs(
-    title = "Population",
-    caption = paste0("Gender 'Other': ", others, " (", scales::percent(others / active_users_n), ")")
+    title = switch(params$lang, ee = "Valim", en = "Population", ru = "Выборка"),
+    caption = paste0(switch(params$lang, ee = "Sugu 'Muu': ", en = "Gender 'Other': ", ru = "Пол 'Другой': "), others, " (", scales::percent(others / active_users_n), ")")
     ) +
   theme(
     legend.title = element_blank(),
@@ -312,12 +266,10 @@ participans_by_sn <- demographics %>%
     centroids_sf
       ) %>% 
   st_as_sf(crs = 25884)
-
 ggplot(data = mk) +
   geom_sf(fill = "#CCE0F1") +
   geom_sf(data = participans_by_sn, color = "#39870C", alpha = 1/3) +
-  # scale_shape_manual(values = c(Male = "\u2642", Female = "\u2640", Other = "\u26A5")) +
-  labs(title = "Geographic distribution of users") +
+  labs(title = switch(params$lang, ee = "Kasutajate geograafiline jaotus", en = "Geographic distribution of users", ru = "Географическое распределение пользователей")) +
   coord_sf() +
   theme(
     panel.grid.major = element_blank(), 
