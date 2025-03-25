@@ -1,7 +1,7 @@
 
 # Gripiradar
 
-Creates dashboard based on data from the [Gripiradar](https://gripiradar.ut.ee) page.
+Creates dashboard based on weekly epidemiological data from the [Gripiradar](https://gripiradar.ut.ee) page.
 
 ## Running
 
