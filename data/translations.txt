@@ -1,0 +1,1559 @@
+en: "Weekly questionnaire",
+ru: "Еженедельная анкета",
+ee: "Iganädalane küsimustik"
+
+en: "Please also report if you had no complaints.",
+ru: "Пожалуйста, также сообщите, не было ли у вас жалоб.",
+ee: "Palun teatage ka siis, kui teil ei olnud kaebusi."
+
+en: "Duration 1-5 minutes",
+ru: "Продолжительность от 1 до 5 минут",
+ee: "Kestus 1-5 minutit"
+
+en: "Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",
+ru: "Были ли у вас какие-либо из следующих симптомов после заполнения последней анкеты (или на прошлой неделе, если вы впервые заполняете эту анкету)?",
+ee: "Kas teil on pärast viimast küsimustiku täitmist esinenud mõni järgmistest sümptomitest (või viimase nädala jooksul, kui täidate küsimustikku esimest korda)?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "The most important part of this study is about following up on the symptoms you have reported.",
+ru: "Самая важная часть этого исследования — наблюдение за симптомами, о которых вы сообщили.",
+ee: "Selle uuringu kõige olulisem osa on teie teatatud sümptomite jälgimine."
+  
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "If you suffer from chronic illness, only indicate symptoms that have changed. For example, if you experience chronic shortness of breath, only mark this symptom if it has recently gotten worse. Multiple answers possible.",
+ru: "Если вы страдаете хроническим заболеванием, указывайте только те симптомы, которые изменились. Например, если вы испытываете хроническую одышку, отмечайте этот симптом только в том случае, если он недавно ухудшился. Возможно несколько ответов.",
+ee: "Kui põete kroonilist haigust, märkige vaid sümptomid, mis on muutunud. Näiteks kui teil tekib krooniline õhupuudus, märkige see sümptom alles siis, kui see on hiljuti süvenenud. Võimalik mitu vastust."
+  
+en: "Multiple answers possible. If you suffer from chronic illness, only indicate symptoms that have changed. For example, if you experience chronic shortness of breath, only mark this symptom if it has recently gotten worse.",
+ru: "Возможно несколько ответов. Если вы страдаете хроническим заболеванием, указывайте только те симптомы, которые изменились. Например, если вы испытываете хроническую одышку, отмечайте этот симптом только в том случае, если он недавно ухудшился.",
+ee: "Võimalik mitu vastust. Kui põete kroonilist haigust, märkige ainult sümptomid, mis on muutunud. Näiteks kui teil tekib krooniline õhupuudus, märkige see sümptom alles siis, kui see on hiljuti süvenenud."
+
+en: "No symptoms",
+ru: "Нет симптомов",
+ee: "Sümptomeid pole"
+  
+en: "Fever",
+ru: "Высокая температура",
+ee: "Palavik"
+
+en: "Chills",
+ru: "Озноб",
+ee: "Külmavärinad"
+
+en: "Runny or blocked nose",
+ru: "Насморк или заложенный нос",
+ee: "Nohu või ninakinnisus"
+
+en: "Sneezing",
+ru: "Чихание",
+ee: "Aevastamine"
+
+en: "Sore throat",
+ru: "Боль в горле",
+ee: "Kurguvalu"
+
+en: "Cough",
+ru: "Кашель",
+ee: "Köha"
+
+en: "Shortness of breath",
+ru: "Одышка",
+ee: "Õhupuudus"
+
+en: "Headache",
+ru: "Головная боль",
+ee: "Peavalu"
+
+en: "Muscle/joint pain",
+ru: "Мышечная/суставная боль",
+ee: "Lihas-/liigesevalu"
+
+en: "Chest pain",
+ru: "Боль в груди",
+ee: "Valu rinnus"
+
+en: "Feeling tired or exhausted (malaise)",
+ru: "Чувство усталости или истощения (недомогание)",
+ee: "Väsimuse või kurnatuse tunne (halb enesetunne)"
+
+en: "Loss of appetite",
+ru: "Потеря аппетита",
+ee: "Söögiisu kaotus"
+
+en: "Coloured sputum/phlegm",
+ru: "Окрашенная слюна/мокрота",
+ee: "Läbipaistmatu, värvusega röga / lima"
+
+en: "Watery, bloodshot eyes",
+ru: "Слезящиеся, налитые кровью глаза",
+ee: "Vesised, punased silmad"
+  
+en: "Nausea",
+ru: "Тошнота",
+ee: "Iiveldustunne"
+
+en: "Vomiting",
+ru: "Рвота",
+ee: "Oksendamine"
+
+en: "Diarrhoea",
+ru: "Диарея",
+ee: "Kõhulahtisus"
+
+en: "Stomach ache",
+ru: "Боли в животе",
+ee: "Kõhuvalu"
+
+en: "Loss of smell",
+ru: "Потеря обоняния",
+ee: "Lõhnataju kadumine"
+
+en: "Loss of taste",
+ru: "Потеря вкуса",
+ee: "Maitsetaju kadumine"
+  
+en: "Nose bleed",
+ru: "Носовое кровотечение",
+ee: "Nina verejooks"
+
+en: "Rash",
+ru: "Сыпь",
+ee: "Lööve"
+
+en: "Other",
+ru: "Другое",
+ee: "Muu"
+
+en: "When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are reporting now from the same timeframe as the symptoms you reported the last time?",
+ru: "Когда вы заполняли предыдущую анкету, вы указали, что всё еще болеете. Симптомы, о которых вы сообщаете сейчас, относятся к тому же периоду времени, что и симптомы, о которых вы сообщали в прошлый раз?",
+ee: "Eelmist ankeeti täites andsite teada, et olete endiselt haige. Kas sümptomid, millest praegu teatate, pärinevad samast ajavahemikust kui sümptomid, millest teatasite eelmisel korral?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+  
+en: "To speed up the completion of the rest of the questionnaire.",
+ru: "Чтобы ускорить заполнение остальной части анкеты.",
+ee: "Et kiirendada ülejäänud küsimustiku täitmist."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "If you think that the complaints you are indicating today are caused by the same infection or the same problem (the same period during which you experienced the complaints), answer 'yes'.",
+ru: "Если вы считаете, что жалобы, которые вы указываете сегодня, вызваны той же инфекцией или той же проблемой (продолжается тот же период, в течение которого вы испытывали жалобы), ответьте 'да'.",
+ee: "Kui arvate, et kaebused, millest täna teatate, on põhjustatud samast infektsioonist või samast probleemist (samal perioodil, mil kaebusi kogesite), vastake 'jah'."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "I don’t know/can’t remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "This does not apply to me",
+ru: "Ко мне это не относится",
+ee: "See ei kehti minu kohta."
+
+en: "In the 14 days before your symptoms started, have you been in close contact with someone for whom an antigenic or PCR test has confirmed that they have COVID-19?",
+ru: "В течение 14 дней до появления у вас симптомов были ли вы в тесном контакте с кем-то, у кого антигенный или ПЦР-тест подтвердил наличие COVID-19?",
+ee: "Kas olete 14 päeva jooksul enne sümptomite ilmnemist olnud tihedas kontaktis kellegagi, kelle antigeen- või PCR-test on kinnitanud, et tal on COVID-19?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "In order to study how the coronavirus spreads within the general population.",
+ru: "Чтобы изучить, как коронавирус распространяется среди населения в целом.",
+ee: "Selleks, et uurida, kuidas koroonaviirus levib elanikkonnas."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+  
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "I don’t know/can’t remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "Was this person or one of these persons a member of your household?",
+ru: "Был ли этот человек или одно из этих лиц членом вашего домохозяйства?",
+ee: "Kas see inimene või üks neist inimestest oli teie leibkonna liige?"
+  
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "The coronavirus and influenza spread quickly indoors.",
+ru: "Коронавирус и грипп быстро распространяются в помещении.",
+ee: "Koroonaviirus ja gripp levivad kiiresti siseruumides."
+  
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "A member of the household is defined as a person (not necessary a family member) who lives at the same address as you, and who shares the kitchen, living room, family room or dining room.",
+ru: "Член домохозяйства определяется как человек (не обязательно член семьи), который проживает по тому же адресу, что и вы, и который делит с вами кухню, гостиную, семейную комнату или столовую.",
+ee: "Leibkonnaliige on määratletud kui isik (ei ole tingimata pereliige), kes elab teiega samal aadressil ja kes jagab teiega kööki, elutuba, peretuba või söögituba."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "I don’t know",
+ru: "Я не знаю",
+ee: "Ma ei tea"
+
+en: "On what day did you begin feeling the first symptoms? If you do not recall the exact date, please give an approximate date.",
+ru: "В какой день вы почувствовали первые симптомы? Если вы не помните точную дату, укажите приблизительную.",
+ee: "Mis päeval hakkasite tundma esimesi sümptomeid? Kui te ei mäleta täpset kuupäeva, märkige ligikaudne kuupäev."
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "This question will help us to determine how many people are experiencing symptoms per day/week.",
+ru: "Этот вопрос поможет нам определить, сколько людей испытывают симптомы в день/неделю.",
+ee: "See küsimus aitab meil kindlaks teha, kui paljudel inimestel päevas/nädalas sümptomid ilmnevad."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "Answer as precisely as possible.",
+ru: "Ответьте как можно точнее.",
+ee: "Püüdke vastata võimalikult täpselt."
+
+en: "Choose date",
+ru: "Выберите дату",
+ee: "Valige kuupäev"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "When did your symptoms end?",
+ru: "Когда у вас закончились симптомы?",
+ee: "Millal teie sümptomid kadusid?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "We can use the first and last dates of the complaints to calculate how long your complaints lasted. ",
+ru: "Мы можем использовать первую и последнюю даты подачи жалоб, чтобы подсчитать, как долго продолжались ваши жалобы.",
+ee: "Saame kasutada kaebuste esimest ja viimast kuupäeva, et arvutada, kui kaua teie kaebused kestsid."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+  
+en: "Answer as precisely as possible.",
+ru: "Ответьте как можно точнее.",
+ee: "Püüdke vastata võimalikult täpselt."
+
+en: "Choose date",
+ru: "Выберите дату",
+ee: "Valige kuupäev"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "I am still ill",
+ru: "Я все еще болен",
+ee: "Ma olen endiselt haige."
+
+en: "Did your symptoms develop suddenly over a few hours?",
+ru: "Ваши симптомы развились внезапно в течение нескольких часов?",
+ee: "Kas teie sümptomid tekkisid äkiliselt mõne tunni jooksul?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "The sudden onset of symptoms (within a few hours) is linked to the coronavirus and influenza.",
+ru: "«Внезапное появление симптомов (в течение нескольких часов) связано с коронавирусом и гриппом.",
+ee: "Sümptomite äkiline ilmnemine (mõne tunni jooksul) on seotud koroonaviiruse ja gripiga."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "Answer “yes” if your symptoms appeared within a few hours, and not gradually over a period of several days.",
+ru: "Ответьте «да», если ваши симптомы появились в течение нескольких часов, а не постепенно в течение нескольких дней.",
+ee: "Vastake “jah”, kui teie sümptomid ilmnesid mõne tunni jooksul, mitte järk-järgult mitme päeva jooksul."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "I don’t know/can’t remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "On what day did your fever start? If you do not recall the exact date, please give an approximate date.",
+ru: "В какой день у вас началась температура? Если вы не помните точную дату, укажите приблизительную.",
+ee: "Mis päeval teil palavik algas? Kui te ei mäleta täpset kuupäeva, märkige ligikaudne kuupäev."
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "Fever is an important diagnostic symptom, so we would like to know when the fever appeared.",
+ru: "Высокая температура тела является важным диагностическим симптомом, поэтому мы хотели бы знать, когда она появилась.",
+ee: "Palavik on oluline diagnostiline sümptom, seega tahaksime teada, millal palavik tekkis."
+  
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+  
+en: "Answer as precisely as possible.",
+ru: "Ответьте как можно точнее.",
+ee: "Püüdke vastata võimalikult täpselt."
+
+en: "Choose date",
+ru: "Выберите дату",
+ee: "Valige kuupäev"
+
+en: "I don’t know/can’t remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "Did your fever develop suddenly over a few hours?",
+ru: "У вас возникла высокая температура внезапно в течение нескольких часов?",
+ee: "Kas teie palavik tekkis äkiliselt mõne tunni jooksul?"
+  
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "The sudden onset of symptoms (within a few hours) is linked to the coronavirus and influenza.",
+ru: "Внезапное появление симптомов (в течение нескольких часов) связано с коронавирусом и гриппом.",
+ee: "Sümptomite äkiline ilmnemine (mõne tunni jooksul) on seotud koroonaviiruse ja gripiga."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "Answer “yes” if your symptoms appeared within a few hours, and not gradually over a period of several days.",
+ru: "Ответьте «да», если ваши симптомы появились в течение нескольких часов, а не постепенно в течение нескольких дней.",
+ee: "Vastake “jah”, kui teie sümptomid ilmnesid mõne tunni jooksul, mitte järk-järgult mitme päeva jooksul."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "I don’t know/can’t remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+  
+en: "Did you take your temperature?",
+ru: "Вы измеряли температуру?",
+ee: "Kas te kraadisite ennast?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "If you have taken your temperature, we would like to know the highest body temperature you have measured.",
+ru: "Если вы измеряли температуру, мы хотели бы знать самую высокую температуру тела, которую вы измерили.",
+ee: "Kui olete end kraadinud, soovime teada kõrgeimat kehatemperatuuri, mille olete mõõtnud."
+  
+en: "How should I answer it?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele vastama?"
+
+en: "Answer yes, if you took your temperature using a thermometer.",
+ru: "Ответьте утвердительно, если вы измеряли температуру с помощью термометра.",
+ee: "Vastake „jah“, kui mõõtsite kehatemperatuuri kraadiklaasiga."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "I don’t know/can’t remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "What was your highest temperature measured?",
+ru: "Какая у вас была измерена самая высокая температура?",
+ee: "Mis oli teie kõrgeim mõõdetud temperatuur?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "Certain infectious diseases cause a raised temperature.",
+ru: "Некоторые инфекционные заболевания вызывают повышение температуры.",
+ee: "Teatud nakkushaigused põhjustavad kehatemperatuuri tõusu."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "Please indicate the highest temperature you measured during the period in which you experienced your symptoms.",
+ru: "Пожалуйста, укажите самую высокую температуру, которую вы измеряли в тот период, когда у вас наблюдались симптомы.",
+ee: "Palun märkige kõrgeim kehatemperatuur, mille mõõtsite sümptomite ilmnemise perioodil."
+
+en: "Below 37.0°C",
+ru: "Ниже 37,0 °С",
+ee: "Alla 37,0 °C"
+
+en: "37.0°C - 37.4°C",
+ru: "От 37,0 °С до 37,4 °С",
+ee: "37,0 °C - 37,4 °C"
+
+en: "37.5°C - 37.9°C",
+ru: "От 37,5 °C до 37,9 °C",
+ee: "37,5°C – 37,9°C"
+
+en: "38.0°C - 38.9°C",
+ru: "От 38,0°C до 38,9 °C",
+ee: "38,0 °C - 38,9 °C"
+  
+en: "39.0°C - 39.9°C",
+ru: "От 39,0 °C до 39,9 °C",
+ee: "39,0 °C – 39,9 °C"
+
+en: "40.0°C or more",
+ru: "40,0 °C или выше",
+ee: "40,0 °C või rohkem"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "Thank you for all these information. They will help us to estimate the frequency of symptoms among general population. You can stop here. If you have a little more time, we propose you to answer further questions about your symptoms and care. Do you accept to answer to these additional questions?",
+ru: "Спасибо за всю эту информацию. Она поможет нам оценить частоту симптомов среди населения в целом. На этом вы можете остановиться. Если у вас есть немного больше времени, мы предлагаем вам ответить на дополнительные вопросы о ваших симптомах и лечении. Вы согласны ответить на эти дополнительные вопросы?",
+ee: "Täname teid kogu selle teabe eest. Need aitavad meil hinnata sümptomite esinemissagedust elanikkonna hulgas. Võite siin lõpetada. Kui teil on veidi rohkem aega, soovitame teil vastata täiendavatele küsimustele oma sümptomite ja ravi kohta. Kas olete nõus neile lisaküsimustele vastama?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?""
+
+en: "We want to know if you are willing to answer the follow-up questions. Your answers to the follow-up questions may assist our research.",
+ru: "Мы хотим знать, готовы ли вы ответить на дополнительные вопросы. Ваши ответы на дополнительные вопросы могут помочь нашему исследованию.",
+ee: "Tahame teada, kas olete nõus vastama järelküsimustele. Teie vastused järelküsimustele võivad meid meie uurimistöös aidata."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+  
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",
+ru: "Из-за ваших симптомов, ПОСЕЩАЛИ ли вы (в ходе личной встречи или телеконсультации) какие-либо медицинские услуги?",
+ee: "Kas te KÜLASTASITE (näost näkku kohtumine või veebikonsultatsioon) oma sümptomite tõttu mõnda tervishoiuteenuse pakkujat?"
+  
+en: "Why are we asking this?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+
+en: "To find out whether people contact the health services because of their symptoms.",
+ru: "Чтобы выяснить, обращаются ли люди в службы здравоохранения из-за симптомов.",
+ee: "Selleks, et teada saada, kas inimesed pöörduvad oma sümptomite tõttu tervishoiuteenuse osutaja poole."
+
+en: "How should I answer it?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele vastama?"
+
+en: "Tick all of those that apply. If you are due to see attend, then tick the final option.",
+ru: "Отметьте все подходящие. Если у вас назначено посещение, отметьте последний вариант.",
+ee: "Märkige kõik need, mis sobivad. Kui alles kavatsete külastada, märkige viimane valik."
+
+en: Multiple answers possible.",
+ru: "Возможно несколько ответов",
+ee: "Võimalik mitu vastust."
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "GP or GP's practice nurse",
+ru: "Семейный врач или семейная медсестра",
+ee: "Perearst või pereõde"
+  
+en: "Hospital admission",
+ru: "Госпитализация",
+ee: "Haigla vastuvõtt"
+
+en: "Hospital accident & emergency department / out of hours service",
+ru: "Больничное отделение экстренной медицины (ОЭМ/EMO) / обслуживание в нерабочее время",
+ee: "Haigla EMO / väljaspool tööaega"
+
+en: "Other medical services",
+ru: "Другие медицинские услуги",
+ee: "Muud tervishoiuteenuse pakkujad"
+
+en: "No, but I have an appointment scheduled",
+ru: "Нет, но у меня назначен визит",
+ee: "Ei, aga mul on vastuvõtt kokku lepitud"
+
+en: "How soon after your symptoms appeared did you first VISIT this medical service?",
+ru: "Как скоро после появления симптомов Вы впервые ПОСЕТИЛИ данное медицинское учреждение?",
+ee: "Kui kiiresti pärast sümptomite ilmnemist te esimest korda seda tervishoiuteenuse osutajat KÜLASTASITE?"
+
+en: "Why are we asking this?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+
+en: "To find out how quickly people with symptoms are seen by the health services.",
+ru: "Чтобы узнать, как быстро службы здравоохранения принимают людей с симптомами.",
+ee: "Et teada saada, kui kiiresti haigusnähtudega inimesed tervishoiuteenuse osutaja juurde jõuavad."
+
+en: "How should I answer it?",
+ru: "Как мне на это ответить?",
+ee: "Kuidas ma peaksin sellele vastama?"
+
+en: "Only record the time until your FIRST contact with the health services.",
+ru: "Напишите только время до ПЕРВОГО обращения в службы здравоохранения.",
+ee: "Märkige üles ainult aeg, mis kulus ESIMESE kontaktini tervishoiuteenuse osutajaga."
+
+en: "Select the correct number of days",
+ru: "Выберите правильное количество дней",
+ee: "Valige õige päevade arv"
+
+en: "Medical Service",
+ru: "Медицинское обслуживание",
+ee: "Tervishoiuteenus"
+
+en: "GP or GP'r practice nurse",
+ru: "Семейный врач или семейная медсестра",
+ee: "Perearst või pereõde"
+  
+en: "Same day",
+ru: "В тот же день",
+ee: "Samal päeval"
+
+en: "1 day",
+ru: "1 день",
+ee: "1 päev"
+
+en: "2 days",
+ru: "2 дня",
+ee: "2 päeva"
+
+en: "3 days",
+ru: "3 дня",
+ee: "3 päeva"
+
+en: "4 days",
+ru: "4 дня",
+ee: "4 päeva"
+
+en: "5 - 7 days",
+ru: "5–7 дней",
+ee: "5-7 päeva"
+
+en: "More than 7 days",
+ru: "Более 7 дней",
+ee: "Rohkem kui 7 päeva"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+  
+en: "Hospital accident & department/out of hours service",
+ru: "Больничное отделение экстренной медицины (ОЭМ/EMO) / обслуживание в нерабочее время",
+ee: "Haigla EMO / väljaspool tööaega"
+  
+en: "Same day",
+ru: "В тот же день",
+ee: "Samal päeval"
+
+en: "1 day",
+ru: "1 день",
+ee: "1 päev"
+
+en: "2 days",
+ru: "2 дня",
+ee: "2 päeva"
+
+en: "3 days",
+ru: "3 дня",
+ee: "3 päeva"
+
+en: "4 days",
+ru: "4 дня",
+ee: "4 päeva"
+
+en: "5 - 7 days",
+ru: "5–7 дней",
+ee: "5-7 päeva"
+  
+en: "More than 7 days",
+ru: "Более 7 дней",
+ee: "Rohkem kui 7 päeva"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+  
+en: "Hospital admission",
+ru: "Госпитализация",
+ee: "Haigla vastuvõtt"
+
+en: "Same day",
+ru: "В тот же день",
+ee: "Samal päeval"
+
+en: "1 day",
+ru: "1 день",
+ee: "1 päev"
+
+en: "2 days",
+ru: "2 дня",
+ee: "2 päeva"
+
+en: "3 days",
+ru: "3 дня",
+ee: "3 päeva"
+
+en: "4 days",
+ru: "4 дня",
+ee: "4 päeva"
+
+en: "5 - 7 days",
+ru: "5–7 дней",
+ee: "5-7 päeva"
+  
+en: "More than 7 days",
+ru: "Более 7 дней",
+ee: "Rohkem kui 7 päeva"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "Other medical services",
+ru: "Другие медицинские услуги",
+ee: "Muud tervishoiuteenust pakkujad"
+  
+en: "Same day",
+ru: "В тот же день",
+ee: "Samal päeval"
+
+en: "1 day",
+ru: "1 день",
+ee: "1 päev"
+  
+en: "2 days",
+ru: "2 дня",
+ee: "2 päeva"
+
+en: "3 days",
+ru: "3 дня",
+ee: "3 päeva"
+
+en: "4 days",
+ru: "4 дня",
+ee: "4 päeva"
+
+en: "5 - 7 days",
+ru: "5–7 дней",
+ee: "5-7 päeva"
+  
+en: "More than 7 days",
+ru: "Более 7 дней",
+ee: "Rohkem kui 7 päeva"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+
+en: "What is the main reason for which you did not consult any health professional for the symptoms you declared today?",
+ru: "Какова основная причина, по которой вы не обратились ни к одному медицинскому работнику по поводу заявленных вами сегодня симптомов?",
+ee: "Mis on peamine põhjus, miks te täna teatatud sümptomite pärast ühegi tervishoiutöötajaga ei konsulteerinud?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+  
+en: "To understand why some people do not consult a doctor.",
+ru: "Чтобы понять, почему некоторые люди не обращаются к врачу.",
+ee: "Selleks, et mõista, miks mõned inimesed ei pöördu arsti poole."
+
+en: "My symptoms appeared very recently",
+ru: "Мои симптомы появились совсем недавно",
+ee: "Minu sümptomid ilmnesid hiljuti"
+
+en: "My symptoms are mild",
+ru: "Мои симптомы легкие",
+ee: "Minu sümptomid on kerged"
+
+en: "I have these symptoms often",
+ru: "У меня часто бывают такие симптомы",
+ee: "Mul on need sümptomid sageli"
+
+en: "I think I know what I have and I self-medicate",
+ru: "Думаю, я знаю, чем болею, и занимаюсь самолечением",
+ee: "Ma arvan, et tean, mis mul viga on, ja ravin ennast ise"
+
+en: "I think there is no effective treatment for the disease I have",
+ru: "Я думаю, что не существует эффективного лечения моего заболевания",
+ee: "Ma arvan, et minu haigusele ei ole efektiivset ravi"
+
+en: "It is too hard to get an appointment quickly",
+ru: "Слишком сложно быстро записаться на прием",
+ee: "Väga raske on saada kiiresti vastuvõtuaega"
+
+en: "I do not have time",
+ru: "У меня нет времени",
+ee: "Mul ei ole aega"
+
+en: "For financial reasons",
+ru: "По финансовым причинам",
+ee: "Rahalistel põhjustel"
+
+en: "For fear of consequences if the doctor thinks I have COVID-19",
+ru: "Из опасения последствий, если врач решит, что у меня COVID-19",
+ee: "Kardan tagajärgi, kui arst arvab, et mul on COVID-19"
+
+en: "Because I am vaccinated against COVID-19",
+ru: "Потому что я привит(а) от COVID-19",
+ee: "Kuna ma olen COVID-19 vastu vaktsineeritud"
+
+en: "For another reason",
+ru: "По другой причине",
+ee: "Muul põhjusel"
+
+en: "Describe here (optional)",
+ru: "Опишите здесь (необязательно)",
+ee: "Kirjeldage siin (valikuline)"
+
+en: "I don't know / I don't want to answer",
+ru: "Не знаю/Не хочу отвечать",
+ee: "Ma ei tea / ma ei taha vastata"
+
+en: "Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",
+ru: "В связи с вашими симптомами проходили ли вы тест/анализы на предмет наличия у вас COVID-19?",
+ee: "Kas te tegite oma sümptomite tõttu testi/analüüsid, et teada saada, kas teil on COVID-19?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+  
+en: "We want to know which complaints lead people to get tested for the coronavirus.",
+ru: "Мы хотим знать, какие жалобы заставляют людей проходить тестирование на коронавирус.",
+ee: "Tahame teada, millised kaebused sunnivad inimesi koroonaviiruse testi tegema."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "Not yet, I plan to shortly undergo a test",
+ru: "Пока нет, планирую в ближайшее время пройти обследование",
+ee: "Veel mitte, kavatsen testi teha varsti"
+
+en: "No, I have a referral but will not undergo a test",
+ru: "Нет, у меня есть направление, но я не буду проходить обследование",
+ee: "Ei, mul on saatekiri, kuid ma ei lähe testima"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "Which analyse(s) was it?",
+ru: "Какой анализ (какие анализы) это был(и)?",
+ee: "Milline analüüs(id) see/need oli?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "We are interested in knowing how many people with symptoms have udergone a test",
+ru: "Нам интересно знать, сколько людей с симптомами прошли тест",
+ee: "Oleme huvitatud sellest, kui paljud sümptomitega inimesed on testi teinud."
+
+en: "Multiple answers possible",
+ru: "Возможно несколько ответов",
+ee: "Võimalik mitu vastust"
+
+en: "A PCR test (virus search, on a swab in nose or mouth, or a sputum or saliva sample)",
+ru: "ПЦР-тест (поиск вируса на мазке из носа или рта, на образце мокроты или слюны)",
+ee: "PCR-test (viiruseotsing, tampooniga ninast või suust võetud või röga- või süljeproov)"
+
+en: "A serological analysis (screening for antibodies against this virus, from a drop of blood at fingertip or a blood sample)",
+ru: "Серологический анализ (скрининг на антитела к этому вирусу из капли крови с кончика пальца или из образца крови)",
+ee: "Seroloogiline analüüs (selle viiruse vastaste antikehade skriinimine sõrmeotsaverest või vereproovist)"
+
+en: "A rapid antigen detection test on a sample realized in the back of the nose (nasopharyngeal sampling, done by a health professional or a trained person, with a swab inserted to 15 cm into the nose, result obtained in less than one hour)",
+ru: "Быстрый тест на выявление антигена в образце, взятом в задней части носа (взятие проб из носоглотки, выполняемое медицинским работником или обученным лицом, с введением тампона в нос на глубину 15 см, результат получается менее чем за один час)",
+ee: "Antigeeni kiire tuvastamise test prooviga, mis on võetud nina tagaosast (nasofarüngeaalsete proovide võtmine, teeb tervishoiutöötaja või koolitatud isik, tampooniga, mis on sisestatud 15 cm kaugusele ninasse, tulemus saadakse vähem kui ühe tunniga)"
+
+en: "A rapid antigen detection test or autotest done on a nasal sample (a swab inserted to 1 - 4 cm into the nostril, sampling that can be done by oneself, result obtained in a few minutes)",
+ru: "Быстрый тест на выявление антигена или автотест, проводимый на образце из носа (мазок, вставленный в ноздрю на глубину 1–4 см, образец можно сделать самостоятельно, результат получается через несколько минут)",
+ee: "Ninaprooviga tehtud antigeeni kiirtest või automaatne test(1-4 cm ninasõõrmesse sisestatud tampooniga, proovi saab ise võtta, tulemus saadakse mõne minutiga)"
+
+en: "Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",
+ru: "Знаете ли вы результат вашего ПЦР-теста? (если было проведено несколько тестов и хотя бы один оказался положительным, выберите ответ «Положительный»)",
+ee: "Kas teate oma PCR-testi tulemust? (kui tehti mitu ja vähemalt üks oli positiivne, valige vastus “Positiivne”)"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+  
+en: "We want to understand how the coronavirus is spreading within the population.",
+ru: "Мы хотим понять, как коронавирус распространяется среди населения.",
+ee: "Tahame mõista, kuidas koroonaviirus elanikkonnas levib."
+
+en: "Yes, positive for COVID-19",
+ru: "Да, положительный на COVID-19",
+ee: "Jah, positiivne COVID-19 suhtes"
+
+en: "Yes, negative for COVID-19",
+ru: "Да, отрицательный на COVID-19",
+ee: "Jah, negatiivne COVID-19 suhtes"
+
+en: "Yes, the results are inconclusive",
+ru: "Да, результаты неубедительны",
+ee: "Jah, tulemused on ebaselged"
+  
+en: "No, I have not yet received the test results",
+ru: "Нет, я еще не получил результаты теста",
+ee: "Ei, ma pole veel testi tulemusi teada saanud"
+
+en: "Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",
+ru: "Знаете ли вы результат этого экспресс-теста на выявление антигена в образце из носоглотки? (Если было проведено несколько тестов и хотя бы один был положительным, выберите ответ «Положительный»)",
+ee: "Kas teate selle nasofarüngeaalse prooviga antigeeni kiirtesti tulemust? (Kui tehti mitu testi ja vähemalt üks oli positiivne, valige vastuseks “Positiivne”)"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "We want to understand how the coronavirus is spreading within the population.",
+ru: "Мы хотим понять, как коронавирус распространяется среди населения.",
+ee: "Tahame mõista, kuidas koroonaviirus elanikkonnas levib."
+
+en: "Yes, positive for COVID-19",
+ru: "Да, положительный на COVID-19",
+ee: "Jah, positiivne COVID-19 suhtes"
+  
+en: "Yes, negative for COVID-19",
+ru: "Да, отрицательный на COVID-19",
+ee: "Jah, negatiivne COVID-19 suhtes"
+
+en: "Yes, the results are inconclusive",
+ru: "Да, результаты неубедительны",
+ee: "Jah, tulemused on ebaselged"
+
+en: "I don't know / I don't want to answer",
+ru: "Не знаю/Не хочу отвечать",
+ee: "Ma ei tea / ma ei taha vastata"
+
+en: "Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",
+ru: "Знаете ли вы результат этого антигенного теста или самотестирования на образце из носа? (Если было проведено несколько тестов и хотя бы один был положительным, выберите ответ «Положительный»)",
+ee: "Kas teate selle ninaprooviga tehtud antigeeni kiirtesti või enesetesti tulemust? (Kui tehti mitu testi ja vähemalt üks oli positiivne, valige vastuseks “Positiivne”)"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "We want to understand how the coronavirus is spreading within the population.",
+ru: "Мы хотим понять, как коронавирус распространяется среди населения.",
+ee: "Tahame mõista, kuidas koroonaviirus elanikkonnas levib."
+
+en: "Yes, positive for COVID-19",
+ru: "Да, положительный на COVID-19",
+ee: "Jah, positiivne COVID-19 suhtes"
+  
+en: "Yes, negative for COVID-19",
+ru: "Да, отрицательный на COVID-19",
+ee: "Jah, negatiivne COVID-19 suhtes"
+
+en: "Yes, the results are inconclusive",
+ru: "Да, результаты неубедительны",
+ee: "Jah, tulemused on ebaselged"
+
+en: "I don't know / I don't want to answer",
+ru: "Не знаю/Не хочу отвечать",
+ee: "Ma ei tea / ma ei taha vastata"
+
+en: "Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",
+ru: "В связи с вашими симптомами проходили ли вы анализы/тесты на предмет наличия у вас гриппа?",
+ee: "Kas te tegite oma sümptomite tõttu testi/analüüsid, et teada saada, kas teil on gripp?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "We want to know which complaints lead people to get tested for the flu.",
+ru: "Мы хотим знать, какие жалобы заставляют людей проходить тестирование на грипп.",
+ee: "Tahame teada, millised kaebused sunnivad inimesi gripitesti tegema."
+
+en: "Yes, a PCR test based on a swab in nose or mouth, or a sputum or saliva sample",
+ru: "Да, ПЦР-тест на основе мазка из носа или рта либо образца мокроты или слюны",
+ee: "Jah, PCR-test, mis põhineb tampooniga ninast või suust võetud proovil või röga- või süljeproovil"
+
+en: "Yes, a rapid detection test (result available in less than an hour)",
+ru: "Да, экспресс-тест (результат доступен менее чем через час)",
+ee: "Jah, kiirtest (tulemus saadaval vähem kui tunni pärast)"
+
+en: "Not yet, I have a referral and plan to shortly undergo a test",
+ru: "Пока нет, у меня есть направление, и я планирую в ближайшее время пройти обследование",
+ee: "Veel mitte, mul on saatekiri ja kavatsen teha testi varsti"
+
+en: "No, I have a referral but will not undergo a test",
+ru: "Нет, у меня есть направление, но я не буду проходить обследование",
+ee: "Ei, mul on saatekiri, kuid ma ei lähe testima"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "Have you received the results of your Flu test?",
+ru: "Вы получили результаты теста на грипп?",
+ee: "Kas olete saanud oma gripitesti tulemused?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "We want to understand how the flu is spreading within the population.",
+ru: "Мы хотим понять, как грипп распространяется среди населения.",
+ee: "Tahame mõista, kuidas gripp elanikkonnas levib."
+
+en: "Yes, the test is positive for influenza",
+ru: "Да, тест на грипп положительный",
+ee: "Jah, test on gripi suhtes positiivne"
+
+en: "Yes, the test is negative for influenza",
+ru: "Да, тест на грипп отрицательный",
+ee: "Jah, test on gripi suhtes negatiivne"
+
+en: "Yes, the results are inconclusive",
+ru: "Да, результаты неубедительны",
+ee: "Jah, tulemused on ebaselged"
+
+en: "No, I have not yet received the test results",
+ru: "Нет, я еще не получил(а) результаты теста",
+ee: "Ei, ma pole veel testi tulemusi teada saanud"
+
+en: "Did you take medication for these symptoms?",
+ru: "Вы принимали лекарства от этих симптомов?",
+ee: "Kas võtsite nende sümptomite vastu ravimeid?"
+
+en: "Why are we asking this?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+
+en: "To find out who gets treated, and how effective treatment is.",
+ru: "Чтобы узнать, кого лечат, и насколько эффективно лечение.",
+ee: "Et teada saada, keda ravitakse ja kui efektiivne ravi on."
+
+en: "How should I answer it?",
+ru: "Как мне на это ответить?",
+ee: "Kuidas ma peaksin sellele vastama?"
+
+en: "Only record those medications that you used because of this illness. If you are on other medications because of a pre-existing illness then do not record these.",
+ru: "Напишите только те лекарства, которые вы использовали из-за этого заболевания. Если вы принимаете другие лекарства из-за уже имеющегося заболевания, не пишите их.",
+ee: "Märkige ainult need ravimid, mida kasutasite selle haiguse tõttu. Kui te võtate juba olemasoleva haiguse tõttu muid ravimeid, siis ärge neid märkige."
+  
+en: "Select all options that apply",
+ru: "Выберите все подходящие варианты",
+ee: "Märkige kõik sobivad valikud"
+
+en: "No medication",
+ru: "Никаких лекарств",
+ee: "Ei võta ravimeid"
+
+en: "Pain killers (e.g. paracetamol, ibuprofen, aspirin etc)",
+ru: "Обезболивающие (например, парацетамол, ибупрофен, аспирин и т. д.)",
+ee: "Valuvaigistid (nt paratsetamool, ibuprofeen, aspiriin  jne)"
+
+en: "Cough medication (e.g. expectorants)",
+ru: "Лекарства от кашля (например, отхаркивающие средства)",
+ee: "Köharavimid (nt rögalahtistajad)"
+  
+en: "Antivirals against influenza (eg: Tamiflu)",
+ru: "Противовирусные средства против гриппа (например: «Тамифлю»",
+ee: "Gripivastased preparaadid (nt: Tamiflu)"
+
+en: "Antibiotics",
+ru: "Антибиотики",
+ee: "Antibiootikumid"
+
+en: "Homeopathy",
+ru: "Гомеопатия",
+ee: "Homöopaatia"
+
+en: "Alternative medicine (essential oil, phytotherapy, etc.)",
+ru: "Нетрадиционная медицина (эфирные масла, фитотерапия и т. д.)",
+ee: "Alternatiivmeditsiin (eeterlik õli, fütoteraapia jne)"
+
+en: "Other",
+ru: "Другое",
+ee: "Muu"
+
+en: "I don't know/can't remember",
+ru: "Не знаю/Не помню",
+ee: "Ma ei tea/ei mäleta"
+  
+en: "Because of your symptoms, were you hospitalized?",
+ru: "Из-за ваших симптомов вы были госпитализированы?",
+ee: "Kas te sattusite oma sümptomite tõttu haiglasse?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+  
+en: "We want to understand the rates of hospitalization due to symptoms",
+ru: "Мы хотим понять уровень госпитализации из-за симптомов",
+ee: "Tahame mõista, kui tihti määrati sümptomite tõttu haiglaravi"
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "Did you change your daily routine because of your illness?",
+ru: "Изменили ли вы свой распорядок дня из-за болезни?",
+ee: "Kas muutsite oma haiguse tõttu oma igapäevast rutiini?"
+  
+en: "Why are we asking this question?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+
+en: "To determine how the symptoms are impacting your daily life.",
+ru: "Чтобы определить, как симптомы влияют на вашу повседневную жизнь.",
+ee: "Selleks, et teha kindlaks, kuidas sümptomid teie igapäevaelu mõjutavad."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "We want to know if you have missed work or school due to your symptoms, or if you have modified your daily routine in any way (for example, if you were unable to engage in sport activities). If you are a student, and were unable to attend online classes due to your symptoms, you should also select option 2. We are interested in changes due to your symptoms/complaints and not due to any quarantine.",
+ru: "Мы хотим знать, пропускали ли вы работу или учебу из-за симптомов или изменяли ли вы каким-либо образом свой распорядок дня (например, если вы не могли заниматься спортом). Если вы учащийся и не смогли посещать онлайн-занятия из-за симптомов, вам также следует выбрать вариант 2. Мы заинтересованы в изменениях из-за ваших симптомов/жалоб, а не вследствие карантина",
+ee: "Tahame teada, kas olete sümptomite tõttu töölt või koolist puudunud või olete oma igapäevast rutiini kuidagi muutnud (näiteks kui te ei saanud tegeleda spordiga). Kui olete üliõpilane ja te ei saanud oma sümptomite tõttu veebikursustel osaleda, peaksite valima ka 2. valiku. Oleme huvitatud muudatustest, mis tulenevad teie sümptomitest/kaebustest ja mitte mistahes karantiinist."
+
+en: "No, I was able to go about my daily activities as usual",
+ru: "Нет, я мог(ла) заниматься своими повседневными делами как обычно",
+ee: "Ei, ma sain teha oma igapäevaseid tegevusi nagu tavaliselt"
+
+en: "Yes, but I did not take time off work/school",
+ru: "Да, но я не брал(а) больничный на работе/учебе",
+ee: "Jah, aga ma ei võtnud töölt/koolist vabaks"
+
+en: "Yes, I took time off school or work",
+ru: "Да, я брал(а) больничный на работе/учебе",
+ee: "Jah, ma võtsin koolist või töölt vabaks"
+
+en: "Are you currently still unable to work or attend school due to your symptoms/complaints?",
+ru: "Вы в настоящее время все еще не можете работать или посещать учебу из-за ваших симптомов/жалоб?",
+ee: "Kas te ei saa praegu ikka veel oma sümptomite/kaebuste tõttu töötada ega koolis käia?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+
+en: "To determine how the symptoms are impacting your daily life.",
+ru: "Чтобы определить, как симптомы влияют на вашу повседневную жизнь.",
+ee: "Selleks, et teha kindlaks, kuidas sümptomid teie igapäevaelu mõjutavad.?"
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "Answer 'yes' if you missed work or school today due to certain symptoms.",
+ru: "Ответьте «да», если вы пропустили сегодня работу или учебу из-за определенных симптомов.",
+ee: "Vastake 'jah', kui jätsite täna teatud sümptomite tõttu tööle või kooli minemata."
+
+en: "Yes",
+ru: "Да",
+ee: "Jah"
+
+en: "No",
+ru: "Нет",
+ee: "Ei"
+
+en: "Other (I did not have to work or go to school today in any case)",
+ru: "Другое (мне в любом случае сегодня не нужно было ни работать, ни ходить на учебу)",
+ee: "Muu (ma ei pidanud täna igal juhul töötama ega koolis käima)"
+
+en: "For how many days have you been unable to work normally/go to school (when you otherwise would have)?",
+ru: "Сколько дней вы не могли нормально работать/ходить на учебу (когда в противном случае вы бы это делали)?",
+ee: "Mitu päeva te pole saanud normaalselt töötada/koolis käia (kui te muidu ei oleks saanud)?"
+  
+en: "Why are we asking this question?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+
+en: "To calculate the number of days a person misses work or school due to certain symptoms.",
+ru: "Чтобы подсчитать количество дней, в течение которых человек пропускает работу или учебу из-за определенных симптомов.",
+ee: "Selleks, et arvutada päevade arvu, mille jooksul inimene teatud sümptomite tõttu töölt või koolist puudub."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "Only count the days that you would otherwise have gone to work or school. Provide as precise an estimate as possible.",
+ru: "Считайте только те дни, когда в противном случае вы пошли бы на работу или в школу. Дайте как можно более точную приблизительную оценку.",
+ee: "Arvestage ainult neid päevi, mil te muidu oleksite tööl või koolis käinud. Esitage võimalikult täpne hinnang."
+
+en: "1 day",
+ru: "1 день",
+ee: "1 päev"
+  
+en: "2 days",
+ru: "2 дня",
+ee: "2 päeva"
+
+en: "3 days",
+ru: "3 дня",
+ee: "3 päeva"
+
+en: "4 days",
+ru: "4 дня",
+ee: "4 päeva"
+
+en: "5 days",
+ru: "5 дней",
+ee: "5 päeva"
+
+en: "6 to 10 days",
+ru: "От 6 до 10 дней",
+ee: "6 kuni 10 päeva"
+  
+en: "11 to 15 days",
+ru: "От 11 до 15 дней",
+ee: "11 kuni 15 päeva"
+
+en: "More than 15 days",
+ru: "Более 15 дней",
+ee: "Rohkem kui 15 päeva"
+
+en: "Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",
+ru: "Начали ли вы соблюдать какие-либо из приведенных ниже мер или ужесточать их из-за ваших симптомов (по сравнению с периодом до появления симптомов)?",
+ee: "Kas hakkasite oma sümptomite tõttu järgima või rohkem järgima mõnda allolevatest meetmetest (võrreldes perioodiga enne sümptomite ilmnemist)?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы это спрашиваем?",
+ee: "Miks me seda küsime?"
+
+en: "To examine how different measures are being followed.",
+ru: "Чтобы изучить, как соблюдаются различные меры.",
+ee: "Selleks, et uurida, kuidas erinevaid meetmeid järgitakse."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "For example, 'Avoid shaking hands': Answer 'yes' if you shake hands less or not at all due to your symptoms; Answer 'No, I am not following this measure' if you continue to shake hands despite your symptoms; Answer 'No, I was already following this measure' if you had already stopped shaking hands before the onset of your symptoms and you did not change this behaviour.",
+ru: "Например, «Избегать рукопожатия»: ответьте «Да», если вы меньше пожимаете руки или не пожимаете их вообще из-за симптомов; ответьте «Нет, я не соблюдаю эту меру», если вы продолжаете пожимать руки, несмотря на симптомы; ответьте «Нет, я уже соблюдал(а) эту меру», если вы прекратили рукопожатия еще до появления симптомов и не изменили своего поведения.",
+ee: "Näiteks 'Vältige kätlemist': Vastake 'jah', kui kätlete oma sümptomite tõttu vähem või üldse mitte; Vastake 'Ei, ma ei järgi seda meedet', kui jätkate oma sümptomitest hoolimata kätlemist; Vastake 'Ei, ma juba järgisin seda meedet', kui te olite juba enne sümptomite ilmnemist kätlemise lõpetanud ja te ei muutnud seda käitumist."
+
+en: "To be completed optionally",
+ru: "Заполняется по желанию",
+ee: "Täidetakse valikuliselt"
+
+en: "Regularly wash or disinfect hands",
+ru: "Регулярно мыть или дезинфицировать руки",
+ee: "Peske käsi või kasutage antiseptikat kätel regulaarselt"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Cough or sneeze into your elbow",
+ru: "Кашлять или чихать в сгиб локтя",
+ee: "Kata suu köhimise või aevastamis ajal küünarnukiga"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+  
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Use a disposable tissue",
+ru: "Использовать одноразовую салфетку",
+ee: "Kasutage ühekordset salvrätikut"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Wear a face mask indoors",
+ru: "Надевать маску в помещении",
+ee: "Kandke siseruumides näomaski"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Wear a face mask outdoors",
+ru: "Носить маску на открытом воздухе",
+ee: "Kandke õues näomaski"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+  
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+  
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Avoid shaking hands",
+ru: "Избегать рукопожатий",
+ee: "Vältige kätlemist"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Stop greeting by hugging and/or kissing on both cheeks",
+ru: "Перестать здороваться, обнимая и/или целуя в обе щеки",
+ee: "Ärge tervitage mõlemale põsele kallistades ja/või suudeldes"
+  
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+  
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Limit your use of public transport",
+ru: "Ограничить пользование общественным транспортом",
+ee: "Piirake ühistranspordi kasutamist"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Avoid busy places and gatherings (supermarket, cinema, stadium)",
+ru: "Избегать оживленных мест и скоплений людей (супермаркет, кинотеатр, стадион)",
+ee: "Vältige rahvarohkeid kohti ja kogunemisi (supermarket, kino, staadion)"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+  
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Stay at home",
+ru: "Оставаться дома",
+ee: "Püsige kodus"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Telework or increase your number of telework days",
+ru: "Работать удаленно или увеличить количество дней удаленной работы",
+ee: "Tehke kaugtööd või suurendage kaugtööpäevade arvu"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Avoid travel outside your own country or region",
+ru: "Избегать поездок за пределы своей страны или региона",
+ee: "Vältige reisimist väljaspoole oma riiki või piirkonda"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+  
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Have your food/shopping delivered by a store or a friend/family member",
+ru: "Поручить доставку еды/покупок магазину или другу/члену семьи",
+ee: "Laske oma toit/ostud kohale toimetada poe või sõbra/pereliikme poolt"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Avoid seeing friends and family",
+ru: "Избегать встреч с друзьями и семьей",
+ee: "Vältige sõprade ja perega kohtumist"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Avoid being in contact with people over 65 years old or with a chronic disease",
+ru: "Избегать контактов с людьми старше 65 лет или имеющими хронические заболевания",
+ee: "Vältige kokkupuudet üle 65-aastaste või kroonilisi haiguseid põdevate inimestega"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+  
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "Avoid being in contact with children",
+ru: "Избегать контакта с детьми",
+ee: "Vältige kokkupuudet lastega"
+
+en: " Yes, I am following this measure now for the first time, or in a stricter way",
+ru: "Да, я сейчас впервые соблюдаю эту меру или ужесточаю ее",
+ee: "Jah, ma järgin seda meedet praegu esimest korda või rangemalt"
+
+en: "No, I was already following this measure",
+ru: "Нет, я уже соблюдал(а) эту меру",
+ee: "Ei, ma juba järgisin seda meedet"
+
+en: "No, I am not following this measure",
+ru: "Нет, я не соблюдаю эту меру",
+ee: "Ei, ma ei järgi seda meedet"
+
+en: "Not applicable",
+ru: "Неприменимо",
+ee: "Eelnevad variandid ei sobi"
+
+en: "What do you think is causing your symptoms?",
+ru: "Как вы думаете, что вызывает ваши симптомы?",
+ee: "Mis teie arvates põhjustab teie sümptomeid?"
+
+en: "Why are we asking this question?",
+ru: "Почему мы задаем этот вопрос?",
+ee: "Miks me seda küsime?"
+
+en: "To see if our assessment of your illness, based on your symptoms, matches what you believe to be the cause. You may have a better idea of the cause of your illness than our computer algorithms.",
+ru: "Чтобы проверить, соответствует ли наша оценка вашего заболевания, основанная на ваших симптомах, тому, что, по вашему мнению, является причиной. Возможно, вы лучше представляете себе причину своей болезни, чем наши компьютерные алгоритмы.",
+ee: "Et näha, kas meie hinnang teie haigusele teie sümptomite põhjal vastab sellele, mida teie arvate olevat põhjuseks. Teil võib olla parem ettekujutus oma haiguse põhjusest kui meie arvutialgoritmid."
+
+en: "How should I answer this question?",
+ru: "Как мне ответить на этот вопрос?",
+ee: "Kuidas ma peaksin sellele küsimusele vastama?"
+
+en: "If you are reasonably sure of the cause of your symptoms, select the appropriate box. Otherwise, select 'No, I Don’t know'.",
+ru: "Возможно, вы лучше представляете причину своей болезни, чем наши компьютерные алгоритмы. В противном случае выберите «Нет, я не знаю».",
+ee: "Kui olete oma sümptomite põhjuses piisavalt kindel, valige vastav ruut. Vastasel juhul valige 'Ei, ma ei tea'."
+
+en: "Flu or flu-like illness",
+ru: "Грипп или гриппоподобное заболевание",
+ee: "Gripp või gripilaadne haigus"
+
+en: "New coronavirus (COVID-19)",
+ru: "Новый коронавирус (COVID-19)",
+ee: "Uus koroonaviirus (COVID-19)"
+
+en: "Common cold",
+ru: "Простуда",
+ee: "Tavaline külmetus"
+
+en: "Allergy/hay fever",
+ru: "Аллергия/сенная лихорадка",
+ee: "Allergia/heinanohu"
+  
+en: "Ashtma",
+ru: "Астма",
+ee: "Astma"
+
+en: "Gastroenteritis complaints or gastric flu",
+ru: "Жалобы на гастроэнтерит или желудочный грипп",
+ee: "Gastroenteriidi kaebused või kõhugripp"
+
+en: "Other",
+ru: "Другое",
+ee: "Muu"
+
+en: "I don't know",
+ru: "Я не знаю",
+ee: "Ma ei tea"
+
+en: "Thank you! This was all for now, please submit (push « send ») your responses. We will ask you again next week.",
+ru: "Спасибо! На этом пока все, пожалуйста, отправьте свои ответы (нажмите «отправить»). Мы спросим вас снова на следующей неделе.",
+ee: "Täname teid! See on selleks korraks kõik, palun esitage oma vastused (vajutage „Saada“) . Küsime teilt järgmisel nädalal uuesti."
