@@ -1,0 +1,168 @@
+question,question_nr,key,label
+Are you currently still unable to work or attend school due to your symptoms/complaints?,weekly.EX.Q10b,0,Yes
+Are you currently still unable to work or attend school due to your symptoms/complaints?,weekly.EX.Q10b,1,No
+Are you currently still unable to work or attend school due to your symptoms/complaints?,weekly.EX.Q10b,3,Other (I did not have to work or go to school today in any case)
+"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",weekly.EX.Q7,0,No
+"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",weekly.EX.Q7,1,GP or GP's practice nurse
+"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",weekly.EX.Q7,2,Hospital admission
+"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",weekly.EX.Q7,3,Hospital accident & emergency department / out of hours service
+"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",weekly.EX.Q7,4,Other medical services
+"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",weekly.EX.Q7,5,"No, but I have an appointment scheduled"
+"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",weekly.EX.Qcov16h,1,Yes
+"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",weekly.EX.Qcov16h,2,"Not yet, I plan to shortly undergo a test"
+"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",weekly.EX.Qcov16h,3,"No, I have a prescription but will not undergo a test"
+"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",weekly.EX.Qcov16h,0,No
+"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",weekly.EX.Qcov19,1,"Yes, a PCR test based on a swab in nose or mouth, or a sputum or saliva sample"
+"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",weekly.EX.Qcov19,5,"Yes, a rapid detection test (result available in less than an hour)"
+"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",weekly.EX.Qcov19,3,"Not yet, I have a prescription and plan to shortly undergo a test"
+"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",weekly.EX.Qcov19,4,"No, I have a prescription but will not undergo a test"
+"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",weekly.EX.Qcov19,0,No
+"Because of your symptoms, were you hospitalized?",weekly.EX.Q14,1,Yes
+"Because of your symptoms, were you hospitalized?",weekly.EX.Q14,0,No
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_1,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,1,"Yes, I am following this measure now for the first time, or in a stricter way"
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,2,"No, I was already following this measure"
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,0,"No, I am not following this measure"
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,3,Not applicable
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_2,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_3,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_4a,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_4b,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_5,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_11,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_6,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_7,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_8,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_9,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_10,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_13,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_14,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_15,NA
+"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",weekly.EX.Qcov7,likert_16,NA
+Did you change your daily routine because of your illness?,weekly.EX.Q10,0,"No, I was able to go about my daily activities as usual"
+Did you change your daily routine because of your illness?,weekly.EX.Q10,1,"Yes, but I did not take time off work/school"
+Did you change your daily routine because of your illness?,weekly.EX.Q10,2,"Yes, I took time off school or work"
+Did you take medication for these symptoms?,weekly.EX.Q9,0,No medication
+Did you take medication for these symptoms?,weekly.EX.Q9,1,"Pain killers (e.g. paracetamol, ibuprofen, aspirin, etc)"
+Did you take medication for these symptoms?,weekly.EX.Q9,2,Cough medication (e.g. expectorants)
+Did you take medication for these symptoms?,weekly.EX.Q9,3,Antivirals against influenza (eg: Tamiflu)
+Did you take medication for these symptoms?,weekly.EX.Q9,4,Antibiotics
+Did you take medication for these symptoms?,weekly.EX.Q9,7,Homeopathy
+Did you take medication for these symptoms?,weekly.EX.Q9,8,"Alternative medicine (essential oil, phytotherapy, etc.)"
+Did you take medication for these symptoms?,weekly.EX.Q9,5,Other
+Did you take medication for these symptoms?,weekly.EX.Q9,6,I don't know/can't remember
+Did you take your temperature?,weekly.HS.Q6c,0,Yes
+Did you take your temperature?,weekly.HS.Q6c,1,No
+Did you take your temperature?,weekly.HS.Q6c,2,I don’t know/can’t remember
+Did your fever develop suddenly over a few hours?,weekly.HS.Q6b,0,Yes
+Did your fever develop suddenly over a few hours?,weekly.HS.Q6b,1,No
+Did your fever develop suddenly over a few hours?,weekly.HS.Q6b,3,I don’t know/can’t remember
+Did your symptoms develop suddenly over a few hours?,weekly.HS.Q5,0,Yes
+Did your symptoms develop suddenly over a few hours?,weekly.HS.Q5,1,No
+Did your symptoms develop suddenly over a few hours?,weekly.HS.Q5,2,I don’t know/can’t remember
+"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16k,1,"Yes, positive for COVID-19"
+"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16k,2,"Yes, negative for COVID-19"
+"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16k,3,"Yes, the results are inconclusive"
+"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16k,99,I don't know/can't remember
+"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16f,1,"Yes, positive for COVID-19"
+"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16f,2,"Yes, negative for COVID-19"
+"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16f,3,"Yes, the results are inconclusive"
+"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16f,99,I don't know/can't remember
+"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16b,1,"Yes, positive for COVID-19"
+"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16b,2,"Yes, negative for COVID-19"
+"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16b,3,"Yes, the results are inconclusive"
+"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",weekly.EX.Qcov16b,4,"No, I have not yet received the test results"
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,0,1 day
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,1,2 days
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,2,3 days
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,3,4 days
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,4,5 days
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,5,6 to 10 days
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,6,11 to 15 days
+For how many days have you been unable to work normally/go to school (when you otherwise would have)?,weekly.EX.Q10c,7,More than 15 days
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,0,No symptoms
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,1,Fever
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,2,Chills
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,3,Runny or blocked nose
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,4,Sneezing
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,5,Sore throat
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,6,Cough
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,7,Shortness of breath
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,8,Headache
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,9,Muscle/joint pain
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,10,Chest pain
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,11,Feeling tired or exhausted (malaise)
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,12,Loss of appetite
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,13,Coloured sputum/phlegm
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,14,"Watery, bloodshot eyes"
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,15,Nausea
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,16,Vomiting
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,17,Diarrhoea
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,18,Stomach ache
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,23,Loss of smell
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,21,Loss of taste
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,22,Nose bleed
+"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",weekly.Q1,19,Other
+Have you received the results of your Flu test?,weekly.EX.Qcov19b,1,"Yes, the test is positive for influenza"
+Have you received the results of your Flu test?,weekly.EX.Qcov19b,2,"Yes, the test is negative for influenza"
+Have you received the results of your Flu test?,weekly.EX.Qcov19b,3,"Yes, the results are inconclusive"
+Have you received the results of your Flu test?,weekly.EX.Qcov19b,4,"No, I have not yet received the test results"
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,mat.r1.col1,NA
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,0,Same day
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,1,1 day
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,2,2 days
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,3,3 days
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,4,4 days
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,5,5 - 7 days
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,6,More than 7 days
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,7,I don't know/can't remember
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,mat.r2.col1,NA
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,mat.r3.col1,NA
+How soon after your symptoms appeared did you first VISIT this medical service?,weekly.EX.Q7b,mat.r4.col1,NA
+"In the 14 days before your symptoms started, have you been in close contact with someone for whom an antigenic or PCR test has confirmed that they have COVID-19?",weekly.HS.Qcov3,1,Yes
+"In the 14 days before your symptoms started, have you been in close contact with someone for whom an antigenic or PCR test has confirmed that they have COVID-19?",weekly.HS.Qcov3,0,No
+"In the 14 days before your symptoms started, have you been in close contact with someone for whom an antigenic or PCR test has confirmed that they have COVID-19?",weekly.HS.Qcov3,2,I don’t know/can’t remember
+"On what day did you begin feeling the first symptoms? If you do not recall the exact date, please give an approximate date.",weekly.HS.Q3,1,I don't know/can't remember
+"On what day did your fever start? If you do not recall the exact date, please give an approximate date.",weekly.HS.Q6,2,I don’t know/can’t remember
+"Thank you for all these information. They will help us to estimate the frequency of symptoms among general population. You can stop here. If you have a little more time, we propose you to answer further questions about your symptoms and care. Do you accept to answer to these additional questions?",weekly.HS.Q36,1,Yes
+"Thank you for all these information. They will help us to estimate the frequency of symptoms among general population. You can stop here. If you have a little more time, we propose you to answer further questions about your symptoms and care. Do you accept to answer to these additional questions?",weekly.HS.Q36,0,No
+Was this person or one of these persons a member of your household?,weekly.HS.Qcov3b,1,Yes
+Was this person or one of these persons a member of your household?,weekly.HS.Qcov3b,0,No
+Was this person or one of these persons a member of your household?,weekly.HS.Qcov3b,2,I don’t know
+What do you think is causing your symptoms?,weekly.EX.Q11,0,Flu or flu-like illness
+What do you think is causing your symptoms?,weekly.EX.Q11,9,New coronavirus (COVID-19)
+What do you think is causing your symptoms?,weekly.EX.Q11,1,Common cold
+What do you think is causing your symptoms?,weekly.EX.Q11,2,Allergy/hay fever
+What do you think is causing your symptoms?,weekly.EX.Q11,6,Ashtma
+What do you think is causing your symptoms?,weekly.EX.Q11,3,Gastroenteritis complaints or gastric flu
+What do you think is causing your symptoms?,weekly.EX.Q11,4,Other
+What do you think is causing your symptoms?,weekly.EX.Q11,5,I don't know
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,1,My symptoms appeared very recently
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,2,My symptoms are mild
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,3,I have these symptoms often
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,4,I think I know what I have and I self-medicate
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,5,I think there is no effective treatment for the disease I have
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,6,It is too hard to get an appointment quickly
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,7,I do not have time
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,8,For financial reasons
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,9,For fear of consequences if the doctor thinks I have COVID-19
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,11,Because I am vaccinated against COVID-19
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,10,For another reason
+What is the main reason for which you did not consult any health professional for the symptoms you declared today?,weekly.EX.Qcov18,99,I don't know / I don't want to answer
+What was your highest temperature measured?,weekly.HS.Q6d,0,Below 37.0°C
+What was your highest temperature measured?,weekly.HS.Q6d,1,37.0°C - 37.4°C
+What was your highest temperature measured?,weekly.HS.Q6d,2,37.5°C - 37.9°C
+What was your highest temperature measured?,weekly.HS.Q6d,3,38.0°C - 38.9°C
+What was your highest temperature measured?,weekly.HS.Q6d,4,39.0°C - 39.9°C
+What was your highest temperature measured?,weekly.HS.Q6d,5,40.0°C or more
+What was your highest temperature measured?,weekly.HS.Q6d,6,I don't know/can't remember
+When did your symptoms end?,weekly.HS.Q4,1,I don't know/can't remember
+When did your symptoms end?,weekly.HS.Q4,2,I am still ill
+"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",weekly.HS.Q2,0,Yes
+"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",weekly.HS.Q2,1,No
+"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",weekly.HS.Q2,2,I don’t know/can’t remember
+"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",weekly.HS.Q2,9,This does not apply to me
+Which analyse(s) was it?,weekly.EX.Qcov16i,1,"A PCR test (virus search, on a swab in nose or mouth, or a sputum or saliva sample)"
+Which analyse(s) was it?,weekly.EX.Qcov16i,2,"A serological analysis (screening for antibodies against this virus, from a drop of blood at fingertip or a blood sample)"
+Which analyse(s) was it?,weekly.EX.Qcov16i,3,"A rapid antigen detection test on a sample realized in the back of the nose (nasopharyngeal sampling, done by a health professional or a trained person, with a swab inserted to 15 cm into the nose, result obtained in less than one hour)"
+Which analyse(s) was it?,weekly.EX.Qcov16i,4,"A rapid antigen detection test or autotest done on a nasal sample (a swab inserted to 1 - 4 cm into the nostril, sampling that can be done by oneself, result obtained in a few minutes)"
