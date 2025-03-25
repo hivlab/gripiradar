@@ -71,7 +71,6 @@ intake_responses <- intake_responses_files %>%
     across(ends_with("date"), \(x) as.Date(x, tz = ""))
   ) %>% 
   select(type, start_date, end_date, participantID, starts_with("intake"))
-intake_si <- read_csv(here("data/survey_info_intake.csv"), show_col_types = FALSE)
 ```
 
 
