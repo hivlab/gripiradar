@@ -59,21 +59,6 @@ weekly_responses <- weekly_responses_files %>%
 weekly_si <- read_csv(here("data/survey_info_weekly.csv"), show_col_types = FALSE)
 ```
 
-
-```{r}
-sihtnumbrid <- read_delim(
-  here("data/sihtnumbrid.csv"), 
-  delim = ";", 
-  escape_double = FALSE, 
-  trim_ws = TRUE, 
-  show_col_types = FALSE
-) %>% 
-  rename_all(str_to_lower)
-mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE)
-df_sf <- st_as_sf(sihtnumbrid, coords = c('viitepunkt_x', 'viitepunkt_y'))
-```
-
-
 ```{r}
 intake_responses_files <- list.files(here(), recursive = TRUE, full.names = TRUE, pattern = "intake_responses")
 intake_responses <- intake_responses_files %>% 
@@ -136,13 +121,6 @@ symptoms <- wri %>%
   summarise(value = sum(value))
 ```
 
-```{r}
-languages <- read_csv(here("data/languages.csv"))
-languages <- languages %>% 
-  mutate(label = en) %>% 
-  pivot_longer(cols = c(ee, en,ru), names_to = "lang", values_to = "text")
-```
-
 
 ## Row
 
@@ -188,8 +166,15 @@ active_users %>%
 
 
 ```{r}
+languages <- read_csv(here("data/languages.csv"))
+languages <- languages %>% 
+  mutate(label = en) %>% 
+  pivot_longer(cols = c(ee, en,ru), names_to = "lang", values_to = "text")
 symptoms_transl <- symptoms %>% 
-  left_join(languages, relationship = "many-to-many") %>% 
+  left_join(
+    languages, 
+    relationship = "many-to-many"
+    ) %>% 
   filter(lang == params$lang)
 symptoms_p <- symptoms_transl %>% 
   filter(!str_detect(label, "No symptoms")) %>% 
@@ -228,9 +213,7 @@ nosymptoms_p <- symptoms_transl %>%
 symptoms_p
 ```
 
-
 ## Row
-
 
 ```{r}
 others <- sum(demographics$Gender=="Other")
@@ -255,6 +238,19 @@ demographics %>%
 
 
 ```{r}
+
+```
+
+```{r}
+sihtnumbrid <- read_delim(
+  here("data/sihtnumbrid.csv"), 
+  delim = ";", 
+  escape_double = FALSE, 
+  trim_ws = TRUE, 
+  show_col_types = FALSE
+) %>% 
+  rename_all(str_to_lower)
+df_sf <- st_as_sf(sihtnumbrid, coords = c('viitepunkt_x', 'viitepunkt_y'))
 centroids_sf <- df_sf %>%
   group_by(sihtnumber) %>% 
   summarize(geometry = st_union(geometry)) %>% 
@@ -266,6 +262,7 @@ participans_by_sn <- demographics %>%
     centroids_sf
       ) %>% 
   st_as_sf(crs = 25884)
+mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE)
 ggplot(data = mk) +
   geom_sf(fill = "#CCE0F1") +
   geom_sf(data = participans_by_sn, color = "#39870C", alpha = 1/3) +
