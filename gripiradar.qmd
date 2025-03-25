@@ -237,7 +237,7 @@ demographics %>%
 
 
 ```{r}
-centroids_sf <- st_read(here("data/sihtnumbrid_shp/centroids.shp"))
+centroids_sf <- st_read(here("data/sihtnumbrid_shp/centroids.shp"), quiet = TRUE)
 participans_by_sn <- demographics %>% 
   select(participantID, sihtnumber = zip_code, Gender, Age = age) %>% 
   drop_na() %>% 
