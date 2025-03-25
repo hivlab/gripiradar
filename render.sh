@@ -3,6 +3,7 @@
 docker run --rm \
   -e GRIPIRADAR_ACCESS_KEY=$GRIPIRADAR_ACCESS_KEY \
   -e GRIPIRADAR_SECRET_KEY=$GRIPIRADAR_SECRET_KEY \
-  -v $(pwd):/gripiradar \
+  -v $(pwd):/work \
   taavipall/gripiradar \
-  Rscript /gripiradar/scripts/render.R
+  Rscript /work/scripts/render.R
+rm -rf gripiradar-ut-ee
