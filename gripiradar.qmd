@@ -5,7 +5,7 @@ format:
     self-contained: true
 params:
   lang: "ee"
-title: "`r switch(params$lang, ee = 'Gripiradar', en = 'Influenza Radar', ru = 'Радар гриппа')`"
+title: "Gripiradar"
 ---
 
 ```{r, include=FALSE}
