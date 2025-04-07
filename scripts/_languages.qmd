@@ -1,0 +1,23 @@
+# ee
+
+```{r}
+params$lang <- "ee"
+```
+
+{{< include scripts/_outputs.qmd >}}
+
+# en
+
+```{r}
+params$lang <- "en"
+```
+
+{{< include scripts/_outputs.qmd >}}
+
+# ru
+
+```{r}
+params$lang <- "ru"
+```
+
+{{< include scripts/_outputs.qmd >}}

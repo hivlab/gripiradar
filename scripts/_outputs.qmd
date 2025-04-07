@@ -1,0 +1,111 @@
+
+## Row
+
+```{r}
+#| content: valuebox
+#| icon: person-fill
+#| color: "secondary"
+list(title = switch(
+  params$lang,
+  ee = "Aktiivseid kasutajaid",
+  en = "Active users",
+  ru = "Aктивные пользователи"
+), value = active_users_n)
+```
+
+
+## Row {height=60%}
+
+```{r}
+active_users_p +
+  labs(title = switch(
+    params$lang,
+    ee = "Aktiivseid kasutajaid (nädalas)",
+    en = "Active users (weekly)",
+    ru = "Aктивные пользователи (в неделю)"
+  ))
+```
+
+
+```{r}
+symptoms_transl <- symptoms_lang %>%
+  filter(lang == params$lang)
+symptoms_p <- symptoms_transl %>%
+  filter(!str_detect(label, "No symptoms")) %>%
+  symptoms_p_fun() +
+  scale_fill_manual(switch(
+    params$lang,
+    ee = "Viimased neli nädalat",
+    en = "Last four weeks",
+    ru = "Последние четыре недели"
+  ), values = colors)
+```
+
+
+```{r}
+nosymptoms_p <- symptoms_transl %>%
+  filter(str_detect(label, "No symptoms")) %>%
+  nosymptoms_p_fun() +
+  labs(title = str_wrap(switch(
+    params$lang,
+    ee = "Sümptomiteta kasutajate osakaal",
+    en = "Proportion of users with no symptoms",
+    ru = "Доля пользователей без симптомов"
+  ), width = 15))
+```
+
+
+```{r}
+(symptoms_p + nosymptoms_p) + plot_layout(widths = c(0.8, 0.2))
+```
+
+
+## Row
+
+```{r}
+demographics_p +
+  scale_y_discrete(switch(
+    params$lang,
+    ee = "Vanusegrupp",
+    en = "Age group",
+    ru = "Возрастная группа"
+  )) +
+  scale_fill_manual(values = colors[3:4],
+                    limits = rev,
+                    labels = switch(
+                      params$lang,
+                      ee = c("Naised", "Mehed"),
+                      en = c("Female", "Male"),
+                      ru = c("Женщины", "Мужчины")
+                    )) +
+  labs(title = switch(
+    params$lang,
+    ee = "Valim",
+    en = "Population",
+    ru = "Выборка"
+  ),
+  caption = paste0(
+    switch(
+      params$lang,
+      ee = "Sugu 'Muu': ",
+      en = "Gender 'Other': ",
+      ru = "Пол 'Другой': "
+    ),
+    others,
+    " (",
+    scales::percent(others / active_users_n),
+    ")"
+  ))
+```
+
+
+```{r}
+geo_p +
+  labs(title = switch(
+    params$lang,
+    ee = "Kasutajate geograafiline jaotus",
+    en = "Geographic distribution of users",
+    ru = "Географическое распределение пользователей"
+  ))
+```
+
