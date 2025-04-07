@@ -1,7 +1,7 @@
 # ee
 
 ```{r}
-params$lang <- "ee"
+lang <- "ee"
 ```
 
 {{< include scripts/_outputs.qmd >}}
@@ -9,7 +9,7 @@ params$lang <- "ee"
 # en
 
 ```{r}
-params$lang <- "en"
+lang <- "en"
 ```
 
 {{< include scripts/_outputs.qmd >}}
@@ -17,7 +17,7 @@ params$lang <- "en"
 # ru
 
 ```{r}
-params$lang <- "ru"
+lang <- "ru"
 ```
 
 {{< include scripts/_outputs.qmd >}}

@@ -1,16 +1,11 @@
-
 ## Row
 
 ```{r}
 #| content: valuebox
 #| icon: person-fill
 #| color: "secondary"
-list(title = switch(
-  params$lang,
-  ee = "Aktiivseid kasutajaid",
-  en = "Active users",
-  ru = "Aктивные пользователи"
-), value = active_users_n)
+list(title = switch(lang, ee = "Aktiivseid kasutajaid", en = "Active users", ru = "Aктивные пользователи"),
+                       value = active_users_n)
 ```
 
 
@@ -18,27 +13,18 @@ list(title = switch(
 
 ```{r}
 active_users_p +
-  labs(title = switch(
-    params$lang,
-    ee = "Aktiivseid kasutajaid (nädalas)",
-    en = "Active users (weekly)",
-    ru = "Aктивные пользователи (в неделю)"
-  ))
+  labs(title = switch(lang, ee = "Aktiivseid kasutajaid (nädalas)", en = "Active users (weekly)", ru = "Aктивные пользователи (в неделю)"))
 ```
 
 
 ```{r}
 symptoms_transl <- symptoms_lang %>%
-  filter(lang == params$lang)
+  filter(lang == !!lang)
 symptoms_p <- symptoms_transl %>%
   filter(!str_detect(label, "No symptoms")) %>%
   symptoms_p_fun() +
-  scale_fill_manual(switch(
-    params$lang,
-    ee = "Viimased neli nädalat",
-    en = "Last four weeks",
-    ru = "Последние четыре недели"
-  ), values = colors)
+    scale_fill_manual(switch(lang, ee = "Viimased neli nädalat", en = "Last four weeks", ru = "Последние четыре недели"), values = colors) +
+    labs(title = switch(lang, ee = "Sümptomid", en = "Symptoms", ru = "Симптомы"))
 ```
 
 
@@ -46,12 +32,9 @@ symptoms_p <- symptoms_transl %>%
 nosymptoms_p <- symptoms_transl %>%
   filter(str_detect(label, "No symptoms")) %>%
   nosymptoms_p_fun() +
-  labs(title = str_wrap(switch(
-    params$lang,
-    ee = "Sümptomiteta kasutajate osakaal",
-    en = "Proportion of users with no symptoms",
-    ru = "Доля пользователей без симптомов"
-  ), width = 15))
+    labs(title = str_wrap(switch(
+      lang, ee = "Sümptomiteta kasutajate osakaal", en = "Proportion of users with no symptoms", ru = "Доля пользователей без симптомов"
+    ), width = 15))
 ```
 
 
@@ -64,48 +47,28 @@ nosymptoms_p <- symptoms_transl %>%
 
 ```{r}
 demographics_p +
-  scale_y_discrete(switch(
-    params$lang,
-    ee = "Vanusegrupp",
-    en = "Age group",
-    ru = "Возрастная группа"
-  )) +
+  scale_y_discrete(switch(lang, ee = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
   scale_fill_manual(values = colors[3:4],
                     limits = rev,
                     labels = switch(
-                      params$lang,
+                      lang,
                       ee = c("Naised", "Mehed"),
                       en = c("Female", "Male"),
                       ru = c("Женщины", "Мужчины")
                     )) +
-  labs(title = switch(
-    params$lang,
-    ee = "Valim",
-    en = "Population",
-    ru = "Выборка"
-  ),
-  caption = paste0(
-    switch(
-      params$lang,
-      ee = "Sugu 'Muu': ",
-      en = "Gender 'Other': ",
-      ru = "Пол 'Другой': "
-    ),
-    others,
-    " (",
-    scales::percent(others / active_users_n),
-    ")"
-  ))
+  labs(title = switch(lang, ee = "Valim", en = "Population", ru = "Выборка"),
+       caption = paste0(
+         switch(lang, ee = "Sugu 'Muu': ", en = "Gender 'Other': ", ru = "Пол 'Другой': "),
+         others,
+         " (",
+         scales::percent(others / active_users_n),
+         ")"
+       ))
 ```
 
 
 ```{r}
 geo_p +
-  labs(title = switch(
-    params$lang,
-    ee = "Kasutajate geograafiline jaotus",
-    en = "Geographic distribution of users",
-    ru = "Географическое распределение пользователей"
-  ))
+  labs(title = switch(lang, ee = "Kasutajate geograafiline jaotus", en = "Geographic distribution of users", ru = "Географическое распределение пользователей"))
 ```
 
