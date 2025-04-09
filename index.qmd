@@ -2,7 +2,8 @@
 format: 
   dashboard:
     logo: images/logo.png
-    self-contained: true
+execute:
+  keep-md: true
 title: "Gripiradar"
 ---
 
