@@ -33,8 +33,8 @@ jobs:
         uses: 'ActiveChooN/minio-download-action@v1'
         with:
             endpoint: ${{ secrets.ENDPOINT }}
-            access_key: ${{ secrets.ACCESS_KEY }}
-            secret_key: ${{ secrets.SECRET_KEY }}
+            access_key: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
+            secret_key: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
             remote_path: 'gripiradar/gripiradar-ut-ee'
             local_path: '.'
             # Optional params:
@@ -47,6 +47,7 @@ jobs:
             image: taavipall/gripiradar:latest
             options: -v ${{ github.workspace }}:/work 
             run: |
+                ls /work
                 Rscript /work/scripts/render.R
                 rm -rf gripiradar-ut-ee
       - name: Setup Pages
