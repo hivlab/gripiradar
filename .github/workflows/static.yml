@@ -29,18 +29,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: 'Minio download'
-        uses: 'ActiveChooN/minio-download-action@v1'
+      - name: Minio download
+        uses: ActiveChooN/minio-download-action@v1
         with:
             endpoint: ${{ secrets.ENDPOINT }}
             access_key: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
             secret_key: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
-            remote_path: 'gripiradar/gripiradar-ut-ee'
-            local_path: '.'
+            remote_path: gripiradar/gripiradar-ut-ee
+            local_path: .
             # Optional params:
-            api_version: 'S3v4'
-            bucket: 'gripiradar'
-            args: '--recurcive'
+            api_version: S3v4
+            bucket: gripiradar
+            args: --recurcive
       - name: Run the render process with Docker
         uses: addnab/docker-run-action@v3
         with:
