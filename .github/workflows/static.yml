@@ -36,6 +36,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Test docker env
         run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
+      - run: ls /
       - name: Run rendering script
         run: Rscript scripts/render.R
       - name: Cleanup downloaded data
