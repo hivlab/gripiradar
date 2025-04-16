@@ -24,12 +24,12 @@ concurrency:
 jobs:
   render:
     runs-on: taavipall/gripiradar
-    env:
-      GRIPIRADAR_ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
-      GRIPIRADAR_SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
     steps:
       - name: Render
         run: ./render.sh
+        env:
+            GRIPIRADAR_ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
+            GRIPIRADAR_SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
   # Single deploy job since we're just deploying
   deploy:
     environment:
