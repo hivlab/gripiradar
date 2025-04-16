@@ -30,7 +30,7 @@ jobs:
           GRIPIRADAR_ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
           GRIPIRADAR_SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
       volumes:
-        - $(pwd):/work
+        - /:/work
     steps:
       - run: Rscript /work/scripts/render.R
       - run: rm -rf gripiradar-ut-ee
