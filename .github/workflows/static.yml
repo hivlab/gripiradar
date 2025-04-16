@@ -22,12 +22,20 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  render:
+    runs-on: taavipall/gripiradar
+    env:
+      GRIPIRADAR_ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
+      GRIPIRADAR_SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
+    steps:
+      - name: Render
+        run: ./render.sh
   # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: taavipall/gripiradar
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
