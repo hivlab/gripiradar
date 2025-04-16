@@ -26,21 +26,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    container:
-      image: taavipall/gripiradar:latest
-      env:
-          GRIPIRADAR_ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
-          GRIPIRADAR_SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Test docker env
-        run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
-      - run: ls /
-      - name: Run rendering script
-        run: Rscript scripts/render.R
-      - name: Cleanup downloaded data
-        run: rm -rf gripiradar-ut-ee
+      - name: Run the render process with Docker
+        uses: addnab/docker-run-action@v3
+        with:
+            image: taavipall/gripiradar:latest
+            options: -v ${{ github.workspace }}:/work -e GRIPIRADAR_SECRET_KEY=${{ secrets.GRIPIRADAR_SECRET_KEY }} -e GRIPIRADAR_ACCESS_KEY=${{ secrets.GRIPIRADAR_ACCESS_KEY }} 
+            run: |
+                Rscript /work/scripts/render.R
+                rm -rf gripiradar-ut-ee
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
