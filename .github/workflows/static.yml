@@ -14,7 +14,10 @@ concurrency:
 jobs: 
   build:
     runs-on: ubuntu-latest
-    environment: Andmed
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
     - name: Checkpout repo
       uses: actions/checkout@v2
@@ -28,11 +31,11 @@ jobs:
     - name: Configure Minio client
       shell: bash
       env:
-       HOST: ${{ secrets.GRIPIRADAR_HOST }}
-       ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
-       SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
+       HOSTNAME: ${{ secrets.MINIO_HOSTNAME }}
+       ACCESS_KEY: ${{ secrets.MINIO_ACCESS_KEY }}
+       SECRET_KEY: ${{ secrets.MINIO_SECRET_KEY }}
       run: |
-       mc alias set myminio $HOST $ACCESS_KEY $SECRET_KEY
+       mc alias set myminio $HOSTNAME $ACCESS_KEY $SECRET_KEY
     
     - name: Downloaad data from bucket
       run: |
@@ -52,15 +55,6 @@ jobs:
       with:
        path: 'public'
 
- deploy:
-  needs: build
-
-  environment:
-    name: github-pages
-    url: ${{ steps.deployment.outputs.page_url }}
-
-  runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
