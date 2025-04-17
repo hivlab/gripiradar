@@ -38,7 +38,12 @@ jobs:
       run: |
        docker run -v $(pwd):/workspace -w /workspace taavipall/gripiradar \
         quarto render index.qmd --output-dir distr
-       
+    
+    - name: Move md-file to distr 
+      shell: bash
+      run: |
+       mv index.dashboard.md distr
+     
     - name: Init new repo in build folder and commit generated files
       run: |
         cd distr
