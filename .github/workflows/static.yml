@@ -21,30 +21,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 jobs: 
-   deploy:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    steps:
-       - name: 'Minio download'
-         uses: 'ActiveChooN/minio-download-action@v1.0.1'
-         with:
-          endpoint: ${{ secrets.ENDPOINT }}
-          access_key: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
-          secret_key: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
-          remote_path: 'gripiradar-ut-ee'
-          local_path: '.'
-          args: '--recurcive'
-       - name: Run the render process with Docker
-         uses: addnab/docker-run-action@v3
-         with:
-            image: taavipall/gripiradar:latest
-            options: -v ${{ github.workspace }}:/work 
-            run: |
-                ls /work
-                Rscript /work/scripts/render.R
-                rm -rf gripiradar-ut-ee
        - name: Setup Pages
          uses: actions/configure-pages@v5
        - name: Upload artifact
