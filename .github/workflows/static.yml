@@ -27,22 +27,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-       - name: Install minio
-         run: curl https://dl.min.io/client/mc/release/linux-amd64/mc \
-              --create-dirs \
-              -o $HOME/minio-binaries/mc \
-              && chmod +x $HOME/minio-binaries/mc \
-              && export PATH=$PATH:$HOME/minio-binaries/ \
-              && mc --help
-       - name: Checkout
-         uses: actions/checkout@v4
-       - name: Download
-         env:
-            ENDPOINT: ${{ secrets.ENDPOINT }}
-            ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
-            SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
-         run: mc alias set minio $ENDPOINT $ACCESS_KEY $SECRET_KEY \
-              && mc ls \
+       - uses: mc-actions/configure@v1
+         with:
+            s3_server: '${{ secrets.ENDPOINT }}'
+            s3_access_key: '${{ secrets.GRIPIRADAR_ACCESS_KEY }}'
+            s3_secret_key: '${{ secrets.GRIPIRADAR_SECRET_KEY }}'
+       - shell: bash
+         run: |
+              mc ls \
               && mc cp -r minio/gripiradar-ut-ee .
        - name: Run the render process with Docker
          uses: addnab/docker-run-action@v3
