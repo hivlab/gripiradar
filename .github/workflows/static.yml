@@ -34,8 +34,8 @@ jobs:
             s3_secret_key: '${{ secrets.GRIPIRADAR_SECRET_KEY }}'
        - shell: bash
          run: |
-              mc ls \
-              && mc cp -r minio/gripiradar-ut-ee .
+              mc ls default \
+              && mc cp -r default/gripiradar-ut-ee .
        - name: Run the render process with Docker
          uses: addnab/docker-run-action@v3
          with:
