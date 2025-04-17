@@ -1,7 +1,15 @@
-
 on:
  push:
   branches: ["main"]
+
+permissions:
+ contents: read
+ pages: write
+ id-token: write
+
+concurrency:
+ group: "pages"
+ cancel-in-progress: false
 
 jobs: 
   download-render-deploy:
@@ -37,26 +45,13 @@ jobs:
     - name: Run quarto
       run: |
        docker run -v $(pwd):/workspace -w /workspace taavipall/gripiradar \
-        quarto render index.qmd --output-dir distr
-    
-    - name: Move md-file to distr 
-      shell: bash
-      run: |
-       mv index.dashboard.md distr
+        quarto render index.qmd --output-dir public
      
-    - name: Init new repo in build folder and commit generated files
-      run: |
-        cd distr
-        git init
-        git add -A
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m 'deploy'
-
-    - name: Force push to destination branch
-      uses: ad-m/github-push-action@v0.5.0
+    - name: Upload
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
-        force: true
-        directory: ./distr
+       path: 'public'
+
+    - name: Deploy
+      id: deployment
+      uses: actions/deploy-pages@v4
