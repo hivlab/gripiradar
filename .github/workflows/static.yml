@@ -27,34 +27,39 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Minio download
-        uses: ActiveChooN/minio-download-action@v1.0.1
-        with:
-            endpoint: ${{ secrets.ENDPOINT }}
-            access_key: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
-            secret_key: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
-            remote_path: gripiradar/gripiradar-ut-ee
-            local_path: .
-            bucket: gripiradar
-            args: --recurcive
-      - name: Run the render process with Docker
-        uses: addnab/docker-run-action@v3
-        with:
+       - name: Install minio
+         run: curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+              --create-dirs \
+              -o $HOME/minio-binaries/mc \
+              && chmod +x $HOME/minio-binaries/mc \
+              && export PATH=$PATH:$HOME/minio-binaries/ \
+              && mc --help
+       - name: Checkout
+         uses: actions/checkout@v4
+       - name: Download
+         env:
+            ENDPOINT: ${{ secrets.ENDPOINT }}
+            ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
+            SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
+         run: mc alias set minio $ENDPOINT $ACCESS_KEY $SECRET_KEY \
+              && mc ls \
+              && mc cp -r minio/gripiradar-ut-ee .
+       - name: Run the render process with Docker
+         uses: addnab/docker-run-action@v3
+         with:
             image: taavipall/gripiradar:latest
             options: -v ${{ github.workspace }}:/work 
             run: |
                 ls /work
                 Rscript /work/scripts/render.R
                 rm -rf gripiradar-ut-ee
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
+       - name: Setup Pages
+         uses: actions/configure-pages@v5
+       - name: Upload artifact
+         uses: actions/upload-pages-artifact@v3
+         with:
           # Upload entire repository
           path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+       - name: Deploy to GitHub Pages
+         id: deployment
+         uses: actions/deploy-pages@v4
