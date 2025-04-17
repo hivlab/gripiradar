@@ -1,31 +1,29 @@
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+ push:
+  branches: ["main"]
 
 jobs: 
   download-data:
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkpout repo
+      uses: actions/checkout@v2
     
-  steps:
-  - name: Checkpout repo
-   uses: actions/checkout@v2
-  
-  - name: Install Minio client
-   run: |
-    wget https://dl.min.io/client/mc/release/linux-amd64/mc
-    chmod +x mc
-    sudo mv mc /usr/local/bin
-  
-  - name: Configure Minio client
-   run: |
-    mc alias set myminio ${{ secrets.ENDPOINT }} ${{ secrets.GRIPIRADAR_ACCESS_KEY }} ${{ secrets.GRIPIRADAR_SECRET_KEY }}
-  
-  - name: Downloaad data from bucket
-   run: |
-    mc cp --recursive myminio/gripiradar-ut-ee ./
-  
-  - name: List
-   run: | 
-    ls -l
+    - name: Install Minio client
+      run: |
+       wget https://dl.min.io/client/mc/release/linux-amd64/mc
+       chmod +x mc
+       sudo mv mc /usr/local/bin
+    
+    - name: Configure Minio client
+      run: |
+       mc alias set myminio ${{ secrets.ENDPOINT }} ${{ secrets.GRIPIRADAR_ACCESS_KEY }} ${{ secrets.GRIPIRADAR_SECRET_KEY }}
+    
+    - name: Downloaad data from bucket
+      run: |
+       mc cp --recursive myminio/gripiradar-ut-ee ./
+    
+    - name: List
+      run: | 
+       ls -l
