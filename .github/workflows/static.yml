@@ -29,7 +29,19 @@ jobs:
     - name: Downloaad data from bucket
       run: |
        mc cp --recursive myminio/gripiradar-ut-ee ./
+
+  render:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run quarto
+      run: |
+       docker run taavipall/gripiradar Rscript -e "library(quarto); quarto_render("index.qmd")"
     
-    - name: List
-      run: | 
+    - name: List results
+      run: |
        ls -l
+
+  
