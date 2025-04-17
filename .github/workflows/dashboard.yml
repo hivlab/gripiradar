@@ -41,6 +41,11 @@ jobs:
     - name: Downloaad data from bucket
       run: |
        mc cp --recursive myminio/gripiradar-ut-ee ./
+    
+    - uses: actions/upload-artifact@v4
+      with:
+        name: 'gripiradar-ut-ee'
+        path: 'gripiradar-ut-ee'
   
   build:
     runs-on: ubuntu-latest
@@ -48,7 +53,12 @@ jobs:
     steps:
     - name: Checkpout repo
       uses: actions/checkout@v2
-      
+    
+    - uses: actions/download-artifact@v4
+      with:
+        name: 'gripiradar-ut-ee'
+        path: 'gripiradar-ut-ee'
+  
     - name: Pull image
       run: |
        docker pull taavipall/gripiradar:latest
