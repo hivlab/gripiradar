@@ -18,8 +18,13 @@ jobs:
        sudo mv mc /usr/local/bin
     
     - name: Configure Minio client
+      shell: bash
+      env:
+       ENTRYPOINT: ${{ secrets.ENTRYPOINT }}
+       ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
+       SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
       run: |
-       mc alias set myminio ${{ secrets.ENDPOINT }} ${{ secrets.GRIPIRADAR_ACCESS_KEY }} ${{ secrets.GRIPIRADAR_SECRET_KEY }}
+       mc alias set myminio '$ENTRYPOINT' '$ACCESS_KEY' '$SECRET_KEY'
     
     - name: Downloaad data from bucket
       run: |
