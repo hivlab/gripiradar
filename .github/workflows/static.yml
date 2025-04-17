@@ -20,11 +20,11 @@ jobs:
     - name: Configure Minio client
       shell: bash
       env:
-       ENTRYPOINT: ${{ secrets.ENTRYPOINT }}
+       HOST: ${{ secrets.GRIPIRADAR_HOST }}
        ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
        SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
       run: |
-       mc alias set myminio $ENTRYPOINT $ACCESS_KEY $SECRET_KEY
+       mc alias set myminio $HOST $ACCESS_KEY $SECRET_KEY
     
     - name: Downloaad data from bucket
       run: |
