@@ -6,6 +6,7 @@ on:
 jobs: 
   download-data:
     runs-on: ubuntu-latest
+    environment: Andmed
     steps:
     - name: Checkpout repo
       uses: actions/checkout@v2
