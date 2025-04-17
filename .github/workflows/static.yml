@@ -28,10 +28,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - uses: mc-actions/configure@v1
+         env: 
+            S3_SERVER: ${{ secrets.ENDPOINT }}
+            S3_ACCESS_KEY: ${{ secrets.GRIPIRADAR_ACCESS_KEY }}
+            S3_SECRET_KEY: ${{ secrets.GRIPIRADAR_SECRET_KEY }}
          with:
-            s3_server: '${{ secrets.ENDPOINT }}'
-            s3_access_key: '${{ secrets.GRIPIRADAR_ACCESS_KEY }}'
-            s3_secret_key: '${{ secrets.GRIPIRADAR_SECRET_KEY }}'
+            s3_server: $S3_SERVER
+            s3_access_key: $S3_ACCESS_KEY
+            s3_secret_key: $S3_SECRET_KEY
        - shell: bash
          run: |
               mc ls default \
