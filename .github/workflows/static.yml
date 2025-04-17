@@ -37,16 +37,11 @@ jobs:
     - name: Run quarto
       run: |
        docker run -v $(pwd):/workspace -w /workspace taavipall/gripiradar \
-        quarto render index.qmd --output-dir build
-
-    - name: List results
-      shell: bash
-      run: |
-       cp index.dashboard.md build/
+        quarto render index.qmd --output-dir distr
        
     - name: Init new repo in build folder and commit generated files
       run: |
-        cd build
+        cd distr
         git init
         git add -A
         git config --local user.email "action@github.com"
@@ -59,4 +54,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
         force: true
-        directory: ./build
+        directory: ./distr
