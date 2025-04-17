@@ -43,6 +43,7 @@ jobs:
 
     - name: Run quarto
       run: |
+       docker run -v $(pwd):/workspace -w /workspace taavipall/gripiradar ls -l
        docker run -v $(pwd):/workspace -w /workspace taavipall/gripiradar Rscript -e "quarto::quarto_render('index.qmd')"
     
     - name: List results
