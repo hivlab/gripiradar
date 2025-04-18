@@ -32,7 +32,7 @@ colors <- c("#2C5696",
             "#D92321",
             "#CCE0F1",
             "lightgray")
-old <- theme_set(theme_minimal())
+old <- theme_set(theme_minimal() + theme(text = element_text(size = 12)))
 last_saturday <- floor_date(today(), "week") - days(1)
 last_4_weeks <- interval(last_saturday - weeks(4), last_saturday)
 last_6_months <- interval((last_saturday - months(6)), last_saturday)
