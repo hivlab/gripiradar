@@ -153,7 +153,7 @@ symptoms <- wri %>%
 # Import translations
 languages <- read_csv(here("data/languages.csv")) %>%
   mutate(label = en) %>%
-  pivot_longer(cols = c(ee, en, ru),
+  pivot_longer(cols = c(et, en, ru),
                names_to = "lang",
                values_to = "text")
 

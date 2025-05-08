@@ -1,7 +1,7 @@
 # ee
 
 ```{r}
-lang <- "ee"
+lang <- "et"
 ```
 
 {{< include scripts/_outputs.qmd >}}

@@ -4,9 +4,13 @@ format:
     logo: images/logo.png
     theme:
       - style.scss
-    nav-buttons:
-      - icon: house-door-fill
-        href: https://gripiradar.ut.ee/
+    include-before-body: 
+      text: |
+        <style>
+          #quarto-dashboard-header {
+            display: none
+          }
+        </style>
 execute:
   keep-md: true
 title: "Gripiradar"
