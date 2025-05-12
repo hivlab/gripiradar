@@ -1,7 +1,6 @@
 ---
 format: 
   dashboard:
-    logo: images/logo.png
     theme:
       - style.scss
     include-before-body: 
@@ -11,9 +10,6 @@ format:
             display: none
           }
         </style>
-execute:
-  keep-md: true
-title: "Gripiradar"
 ---
 
 ```{r, include=FALSE}
