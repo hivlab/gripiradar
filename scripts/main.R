@@ -6,9 +6,11 @@ library(ggspatial)
 library(cowplot)
 library(ggfortify)
 library(patchwork)
+library(tsibble)
 
 # Setup helper functions
 source(here("scripts/my_label_date_short.R"))
+source(here("scripts/import_responses.R"))
 fmt_label <- function(intvl) {
   if (year(int_start(intvl)) == year(int_end(intvl))) {
     return(paste(
@@ -33,122 +35,19 @@ colors <- c("#2C5696",
             "#CCE0F1",
             "lightgray")
 old <- theme_set(theme_minimal() + theme(text = element_text(size = 12)))
-last_saturday <- floor_date(today(), "week") - days(1)
-last_4_weeks <- interval(last_saturday - weeks(4), last_saturday)
-last_6_months <- interval((last_saturday - months(6)), last_saturday)
+this_monday <- floor_date(today(), "week", week_start = 1)
+last_4_weeks <- lubridate::interval(this_monday - weeks(4), this_monday - 1)
+last_6_months <- lubridate::interval(this_monday - months(6), this_monday - 1)
 
 # Import weekly responses
-weekly_responses_files <- list.files(here(),
-                                     recursive = TRUE,
-                                     full.names = TRUE,
-                                     pattern = "weekly_responses") %>%
-  tibble(weekly_responses_files = .) %>%
-  mutate(
-    wrf = basename(weekly_responses_files),
-    i = str_split(wrf, "[_.]"),
-    start = map_chr(i, 3),
-    end = map_chr(i, 4),
-    intl = interval(as.Date(start), as.Date(end))
-  ) %>%
-  filter(intl %within% last_6_months) %>%
-  pull(weekly_responses_files)
-
-# Parse weekly responses
-weekly_responses <- weekly_responses_files %>%
-  map(\(x) read_csv(x, show_col_types = FALSE)) %>%
-  set_names(basename(weekly_responses_files)) %>%
-  bind_rows(.id = "id") %>%
-  separate(
-    id,
-    into = c("out1", "out2", "start_date", "end_date", "out3"),
-    sep = "[_\\.]"
-  ) %>%
-  mutate(
-    type = paste0(out1, "_", out2),
-    across(ends_with("date"), \(x) as.Date(x, tz = "")),
-    intvl = interval(start_date, end_date)
-  ) %>%
-  group_by(intvl, participantID) %>%
-  filter(submitted == max(submitted)) %>%
-  ungroup() %>%
-  select(type,
-         start_date,
-         end_date,
-         intvl,
-         participantID,
-         starts_with("weekly"))
-
-# Import weekly survey info
-weekly_si <- read_csv(here("data/survey_info_weekly.csv"), show_col_types = FALSE)
+weekly_responses <- parse_responses("weekly") %>% 
+  select(1:4) %>% 
+  rename(symptoms = 4) %>% 
+  unnest(symptoms)
 
 # Import intake responses
-intake_responses_files <- list.files(here(),
-                                     recursive = TRUE,
-                                     full.names = TRUE,
-                                     pattern = "intake_responses")
-
-# Parse intake responses
-intake_responses <- intake_responses_files %>%
-  map(read_csv, show_col_types = FALSE) %>%
-  set_names(basename(intake_responses_files)) %>%
-  bind_rows(.id = "id") %>%
-  separate(
-    id,
-    into = c("out1", "out2", "start_date", "end_date", "out3"),
-    sep = "[_\\.]"
-  ) %>%
-  mutate(type = paste0(out1, "_", out2), across(ends_with("date"), \(x) as.Date(x, tz = ""))) %>%
-  select(type,
-         start_date,
-         end_date,
-         participantID,
-         starts_with("intake"))
-
-# Summarize sample demographics
-demographics <- intake_responses %>%
-  mutate(int = interval(start_date, end_date)) %>%
-  select(
-    int,
-    end_date,
-    participantID,
-    female = intake.Q1,
-    birth_date = intake.Q2,
-    zip_code = intake.Q3.0
-  ) %>%
-  mutate(
-    birth_date = as.Date(as_datetime(birth_date)),
-    age = (end_date - birth_date) / dyears(1),
-    Gender = factor(female, labels = c("Male", "Female", "Other")),
-    age_group = cut(age, breaks = seq(0, 100, by = 10)),
-    age_group = as.character(age_group),
-    age_group = str_replace_all(age_group, ",", "-"),
-    age_group = str_extract(age_group, "\\d+-\\d+")
-  )
-others <- sum(demographics$Gender == "Other")
-
-# Import participant geography
-centroids_sf <- st_read(here("data/sihtnumbrid_shp/centroids.shp"), quiet = TRUE)
-participans_by_sn <- demographics %>%
-  select(participantID, sihtnumber = zip_code, Gender, Age = age) %>%
-  drop_na() %>%
-  inner_join(centroids_sf) %>%
-  st_as_sf(crs = 25884)
-mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE)
-
-# Parse symptoms
-wri <- weekly_responses %>%
-  filter(intvl %within% last_4_weeks) %>%
-  select(intvl, participantID, matches("weekly.Q1")) %>%
-  pivot_longer(starts_with("weekly"), names_to = "key") %>%
-  mutate(question_nr = "weekly.Q1", across(key, \(x) str_remove_all(x, "weekly.Q1."))) %>%
-  inner_join(weekly_si) %>%
-  mutate(Interval = map_chr(intvl, fmt_label),
-         Interval = fct_reorder(Interval, int_start(intvl)))
-symptoms <- wri %>%
-  group_by(Interval) %>%
-  mutate(npid = n_distinct(participantID)) %>%
-  group_by(Interval, label, npid) %>%
-  summarise(value = sum(value))
+intake_responses <- parse_responses("intake") %>% 
+  select(participantID, gender, age_group, ov_home)
 
 # Import translations
 languages <- read_csv(here("data/languages.csv")) %>%
@@ -158,32 +57,35 @@ languages <- read_csv(here("data/languages.csv")) %>%
                values_to = "text")
 
 # Merge symptoms with translations
-symptoms_lang <- symptoms %>%
-  left_join(languages, relationship = "many-to-many")
+symptoms_lang <- weekly_responses %>%
+  filter(submitted_date %within% last_4_weeks) %>% 
+  left_join(languages, by = join_by(symptoms == label), relationship = "many-to-many")
 
 # Dashboard data and plots
 # Unique users
 active_users_n <- n_distinct(weekly_responses$participantID)
 active_users <- weekly_responses %>%
+  filter(submitted_date %within% last_6_months) %>% 
   group_by(intvl) %>%
-  distinct() %>%
-  count() %>%
+  summarise(
+    n = n_distinct(participantID)
+  ) %>%
   ungroup()
 
 # Weekly users plot
 active_users_p <- active_users %>%
-  ggplot(aes(as.Date(int_end(intvl)), n)) +
+  ggplot(aes(intvl, n)) +
   geom_line(color = colors[1]) +
   geom_point(color = colors[1]) +
   scale_y_continuous(limits = c(0, NA)) +
-  scale_x_date(date_breaks = "2 weeks",
+  scale_x_yearmonth(date_breaks = "1 month",
                labels = my_label_date_short(format = c("%Y", "%b", "%d", "%H:%M"), sep = "-")) +
   theme(axis.title = element_blank())
 
 # Symptoms plot function
 symptoms_p_fun <- function(data, lang = lang) {
   data %>%
-    ggplot(aes(fct_reorder(text, value / npid, .desc = TRUE), value / npid, fill = Interval)) +
+    ggplot(aes(fct_reorder(text, n / npid, .desc = TRUE), n / npid, fill = as.factor(intvl))) +
     geom_col(position = position_dodge(preserve = "single")) +
     scale_y_continuous(labels = scales::percent) +
     scale_x_discrete(labels = \(x) str_wrap(x, 20)) +
@@ -193,15 +95,13 @@ symptoms_p_fun <- function(data, lang = lang) {
         angle = 90,
         vjust = 0.5,
         hjust = 1
-      ),
-      legend.position = "inside",
-      legend.position.inside = c(0.8, 0.7)
+      )
     )
 }
 
 nosymptoms_p_fun <- function(data, lang = lang) {
   data %>%
-    ggplot(aes(Interval, value / npid)) +
+    ggplot(aes(intvl, n / npid)) +
     geom_point(color = colors[1]) +
     geom_line(aes(group = 1), color = colors[1]) +
     scale_y_continuous(labels = scales::percent, limits = c(0, NA)) +
@@ -213,23 +113,76 @@ nosymptoms_p_fun <- function(data, lang = lang) {
           ))
 }
 
-demographics_p <- demographics %>%
-  filter(Gender %in% c("Female", "Male")) %>%
-  count(Gender, age_group) %>%
+# ILI plot
+ili <- weekly_responses %>%
+  filter(submitted_date %within% last_6_months, symptoms != "No symptoms") %>% 
+  group_by(intvl) %>% 
+  mutate(
+    total = n_distinct(participantID)
+  ) %>% 
+  filter(str_detect(symptoms, "Fever|Cough")) %>% 
+  group_by(intvl, participantID, total) %>% 
+  count() %>% 
+  ungroup() %>% 
+  filter(n > 1) %>% 
+  count(intvl, total) %>% 
+  mutate(
+    prop_test = map2(n, total, prop.test),
+    estimate = map_dbl(prop_test, "estimate"),
+    conf_int = map(prop_test, "conf.int")
+  ) %>% 
+  unnest_wider(conf_int, names_sep = "_")
+  
+ili_p <- ili %>% 
+  ggplot(aes(intvl, estimate)) +
+  geom_line(aes(group = 1), color = colors[1]) +
+  geom_point(color = colors[1]) +
+  geom_ribbon(aes(ymin = conf_int_1, ymax = conf_int_2), alpha = 0.2) +
+  labs(y = "ILI") +
+  scale_y_continuous(labels = scales::percent, limits = c(0, NA)) +
+  scale_x_yearmonth(date_breaks = "1 month",
+                    labels = my_label_date_short(format = c("%Y", "%b", "%d", "%H:%M"), sep = "-")) +
+  theme(axis.title.x = element_blank())
+
+ili_last <- ili %>% 
+  filter(intvl == max(intvl)) %>% 
+  pull(estimate) %>% 
+  scales::percent(accuracy = 0.1)
+
+# Demographics plot
+demographics_p <- intake_responses %>%
+  filter(participantID %in% unique(weekly_responses$participantID), gender %in% c("Female", "Male")) %>% 
+  count(gender, age_group) %>%
   mutate(p = n / sum(n)) %>%
-  ggplot(aes(if_else(Gender == "Female", -p, p), age_group, fill = Gender)) +
+  ggplot(aes(if_else(gender == "Female", -p, p), age_group, fill = gender)) +
   geom_col() +
   scale_x_continuous(labels = \(x) scales::percent(abs(x))) +
   theme(legend.title = element_blank(), axis.title.x = element_blank())
 
-geo_p <- ggplot(data = mk) +
-  geom_sf(fill = "#CCE0F1") +
-  geom_sf(data = participans_by_sn,
-          color = "#39870C",
-          alpha = 1 / 3) +
+others <- intake_responses %>% 
+  filter(gender == "Other") %>% 
+  pull(participantID) %>% 
+  n_distinct()
+
+mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE)
+ov <- st_read(here("data/omavalitsus_shp/omavalitsus.shp"), quiet = TRUE)
+ov_counts <- ov %>% 
+  left_join(
+    intake_responses %>%
+      filter(participantID %in% unique(weekly_responses$participantID)) %>% 
+      rename(ONIMI = ov_home) %>% 
+      drop_na() %>% 
+      count(ONIMI)
+  ) %>% 
+  mutate(n = if_else(is.na(n), 0, n)) 
+
+geo_p <- ggplot(ov_counts) +
+  geom_sf(aes(fill = n), color = "white") +
+  geom_sf(data = mk, alpha = 1/100, color = "gray50") +
   coord_sf() +
   theme(
     panel.grid.major = element_blank(),
     panel.background = element_blank(),
     axis.text = element_blank()
   )
+

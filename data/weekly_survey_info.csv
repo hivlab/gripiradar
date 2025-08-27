@@ -1,0 +1,151 @@
+question,title,questionType,key,label
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,0,No symptoms
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,1,Fever
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,2,Chills
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,3,Runny or blocked nose
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,4,Sneezing
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,5,Sore throat
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,6,Cough
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,7,Shortness of breath
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,8,Headache
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,9,Muscle/joint pain
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,10,Chest pain
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,11,Feeling tired or exhausted (malaise)
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,12,Loss of appetite
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,13,Coloured sputum/phlegm
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,14,"Watery, bloodshot eyes"
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,15,Nausea
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,16,Vomiting
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,17,Diarrhoea
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,18,Stomach ache
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,23,Loss of smell
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,21,Loss of taste
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,22,Nose bleed
+weekly.Q1,"Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?",multiple_choice,19,Other
+weekly.HS.Q2,"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",single_choice,0,Yes
+weekly.HS.Q2,"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",single_choice,1,No
+weekly.HS.Q2,"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",single_choice,2,I don’t know/can’t remember
+weekly.HS.Q2,"When you filled in the previous questionnaire, you indicated that you were still sick. Are the symptoms you are  reporting now from the same timeframe as the symptoms you reported the last time?",single_choice,9,This does not apply to me
+weekly.HS.Qcov3,"In the 14 days before your symptoms started, have you been in close contact with someone for whom an antigenic or PCR test has confirmed that they have COVID-19?",single_choice,1,Yes
+weekly.HS.Qcov3,"In the 14 days before your symptoms started, have you been in close contact with someone for whom an antigenic or PCR test has confirmed that they have COVID-19?",single_choice,0,No
+weekly.HS.Qcov3,"In the 14 days before your symptoms started, have you been in close contact with someone for whom an antigenic or PCR test has confirmed that they have COVID-19?",single_choice,2,I don’t know/can’t remember
+weekly.HS.Qcov3b,Was this person or one of these persons a member of your household?,single_choice,1,Yes
+weekly.HS.Qcov3b,Was this person or one of these persons a member of your household?,single_choice,0,No
+weekly.HS.Qcov3b,Was this person or one of these persons a member of your household?,single_choice,2,I don’t know
+weekly.HS.Q3,"On what day did you begin feeling the first symptoms? If you do not recall the exact date, please give an approximate date.",single_choice,0,
+weekly.HS.Q3,"On what day did you begin feeling the first symptoms? If you do not recall the exact date, please give an approximate date.",single_choice,1,I don't know/can't remember
+weekly.HS.Q4,When did your symptoms end?,single_choice,0,
+weekly.HS.Q4,When did your symptoms end?,single_choice,1,I don't know/can't remember
+weekly.HS.Q4,When did your symptoms end?,single_choice,2,I am still ill
+weekly.HS.Q5,Did your symptoms develop suddenly over a few hours?,single_choice,0,Yes
+weekly.HS.Q5,Did your symptoms develop suddenly over a few hours?,single_choice,1,No
+weekly.HS.Q5,Did your symptoms develop suddenly over a few hours?,single_choice,2,I don’t know/can’t remember
+weekly.HS.Q6,"On what day did your fever start? If you do not recall the exact date, please give an approximate date.",single_choice,1,
+weekly.HS.Q6,"On what day did your fever start? If you do not recall the exact date, please give an approximate date.",single_choice,2,I don’t know/can’t remember
+weekly.HS.Q6b,Did your fever develop suddenly over a few hours?,single_choice,0,Yes
+weekly.HS.Q6b,Did your fever develop suddenly over a few hours?,single_choice,1,No
+weekly.HS.Q6b,Did your fever develop suddenly over a few hours?,single_choice,3,I don’t know/can’t remember
+weekly.HS.Q6c,Did you take your temperature?,single_choice,0,Yes
+weekly.HS.Q6c,Did you take your temperature?,single_choice,1,No
+weekly.HS.Q6c,Did you take your temperature?,single_choice,2,I don’t know/can’t remember
+weekly.HS.Q6d,What was your highest temperature measured?,single_choice,0,Below 37.0°C
+weekly.HS.Q6d,What was your highest temperature measured?,single_choice,1,37.0°C - 37.4°C
+weekly.HS.Q6d,What was your highest temperature measured?,single_choice,2,37.5°C - 37.9°C
+weekly.HS.Q6d,What was your highest temperature measured?,single_choice,3,38.0°C - 38.9°C
+weekly.HS.Q6d,What was your highest temperature measured?,single_choice,4,39.0°C - 39.9°C
+weekly.HS.Q6d,What was your highest temperature measured?,single_choice,5,40.0°C or more
+weekly.HS.Q6d,What was your highest temperature measured?,single_choice,6,I don't know/can't remember
+weekly.HS.Q36,"Thank you for all these information. They will help us to estimate the frequency of symptoms among general population. You can stop here. If you have a little more time, we propose you to answer further questions about your symptoms and care. Do you accept to answer to these additional questions?",single_choice,1,Yes
+weekly.HS.Q36,"Thank you for all these information. They will help us to estimate the frequency of symptoms among general population. You can stop here. If you have a little more time, we propose you to answer further questions about your symptoms and care. Do you accept to answer to these additional questions?",single_choice,0,No
+weekly.EX.Q7,"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",multiple_choice,0,No
+weekly.EX.Q7,"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",multiple_choice,1,GP or GP's practice nurse
+weekly.EX.Q7,"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",multiple_choice,2,Hospital admission
+weekly.EX.Q7,"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",multiple_choice,3,Hospital accident & emergency department / out of hours service
+weekly.EX.Q7,"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",multiple_choice,4,Other medical services
+weekly.EX.Q7,"Because of your symptoms, did you VISIT (see face to face or teleconsultation) any medical services?",multiple_choice,5,"No, but I have an appointment scheduled"
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,0,Same day
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,1,1 day
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,2,2 days
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,3,3 days
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,4,4 days
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,5,5 - 7 days
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,6,More than 7 days
+weekly.EX.Q7b,How soon after your symptoms appeared did you first VISIT this medical service?,matrix,7,I don't know/can't remember
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,1,My symptoms appeared very recently
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,2,My symptoms are mild
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,3,I have these symptoms often
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,4,I think I know what I have and I self-medicate
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,5,I think there is no effective treatment for the disease I have
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,6,It is too hard to get an appointment quickly
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,7,I do not have time
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,8,For financial reasons
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,9,For fear of consequences if the doctor thinks I have COVID-19
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,11,Because I am vaccinated against COVID-19
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,10,For another reason
+weekly.EX.Qcov18,What is the main reason for which you did not consult any health professional for the symptoms you declared today?,single_choice,99,I don't know / I don't want to answer
+weekly.EX.Qcov16h,"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",single_choice,1,Yes
+weekly.EX.Qcov16h,"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",single_choice,2,"Not yet, I plan to shortly undergo a test"
+weekly.EX.Qcov16h,"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",single_choice,3,"No, I have a prescription but will not undergo a test"
+weekly.EX.Qcov16h,"Because of your symptoms, did you undergo a test/analyses to know if you have COVID-19?",single_choice,0,No
+weekly.EX.Qcov16i,Which analyse(s) was it?,multiple_choice,1,"A PCR test (virus search, on a swab in nose or mouth, or a sputum or saliva sample)"
+weekly.EX.Qcov16i,Which analyse(s) was it?,multiple_choice,2,"A serological analysis (screening for antibodies against this virus, from a drop of blood at fingertip or a blood sample)"
+weekly.EX.Qcov16i,Which analyse(s) was it?,multiple_choice,3,"A rapid antigen detection test on a sample realized in the back of the nose (nasopharyngeal sampling, done by a health professional or a trained person, with a swab inserted to 15 cm into the nose, result obtained in less than one hour)"
+weekly.EX.Qcov16i,Which analyse(s) was it?,multiple_choice,4,"A rapid antigen detection test or autotest done on a nasal sample (a swab inserted to 1 - 4 cm into the nostril, sampling that can be done by oneself, result obtained in a few minutes)"
+weekly.EX.Qcov16b,"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,1,"Yes, positive for COVID-19"
+weekly.EX.Qcov16b,"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,2,"Yes, negative for COVID-19"
+weekly.EX.Qcov16b,"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,3,"Yes, the results are inconclusive"
+weekly.EX.Qcov16b,"Do you know the result of your PCR test? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,4,"No, I have not yet received the test results"
+weekly.EX.Qcov16f,"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,1,"Yes, positive for COVID-19"
+weekly.EX.Qcov16f,"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,2,"Yes, negative for COVID-19"
+weekly.EX.Qcov16f,"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,3,"Yes, the results are inconclusive"
+weekly.EX.Qcov16f,"Do you know the result of this rapid antigen detection test on nasopharyngeal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,99,I don't know/can't remember
+weekly.EX.Qcov16k,"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,1,"Yes, positive for COVID-19"
+weekly.EX.Qcov16k,"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,2,"Yes, negative for COVID-19"
+weekly.EX.Qcov16k,"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,3,"Yes, the results are inconclusive"
+weekly.EX.Qcov16k,"Do you know the result of this antigenic test or self-test on nasal sample? (if several were performed and at least one was positive, chose the “Positive” answer)",single_choice,99,I don't know/can't remember
+weekly.EX.Qcov19,"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",single_choice,1,"Yes, a PCR test based on a swab in nose or mouth, or a sputum or saliva sample"
+weekly.EX.Qcov19,"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",single_choice,5,"Yes, a rapid detection test (result available in less than an hour)"
+weekly.EX.Qcov19,"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",single_choice,3,"Not yet, I have a prescription and plan to shortly undergo a test"
+weekly.EX.Qcov19,"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",single_choice,4,"No, I have a prescription but will not undergo a test"
+weekly.EX.Qcov19,"Because of your symptoms, did you undergo a test/analyses to know if you have the Flu?",single_choice,0,No
+weekly.EX.Qcov19b,Have you received the results of your Flu test?,single_choice,1,"Yes, the test is positive for influenza"
+weekly.EX.Qcov19b,Have you received the results of your Flu test?,single_choice,2,"Yes, the test is negative for influenza"
+weekly.EX.Qcov19b,Have you received the results of your Flu test?,single_choice,3,"Yes, the results are inconclusive"
+weekly.EX.Qcov19b,Have you received the results of your Flu test?,single_choice,4,"No, I have not yet received the test results"
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,0,No medication
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,1,"Pain killers (e.g. paracetamol, ibuprofen, aspirin, etc)"
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,2,Cough medication (e.g. expectorants)
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,3,Antivirals against influenza (eg: Tamiflu)
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,4,Antibiotics
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,7,Homeopathy
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,8,"Alternative medicine (essential oil, phytotherapy, etc.)"
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,5,Other
+weekly.EX.Q9,Did you take medication for these symptoms?,multiple_choice,6,I don't know/can't remember
+weekly.EX.Q14,"Because of your symptoms, were you hospitalized?",single_choice,1,Yes
+weekly.EX.Q14,"Because of your symptoms, were you hospitalized?",single_choice,0,No
+weekly.EX.Q10,Did you change your daily routine because of your illness?,single_choice,0,"No, I was able to go about my daily activities as usual"
+weekly.EX.Q10,Did you change your daily routine because of your illness?,single_choice,1,"Yes, but I did not take time off work/school"
+weekly.EX.Q10,Did you change your daily routine because of your illness?,single_choice,2,"Yes, I took time off school or work"
+weekly.EX.Q10b,Are you currently still unable to work or attend school due to your symptoms/complaints?,single_choice,0,Yes
+weekly.EX.Q10b,Are you currently still unable to work or attend school due to your symptoms/complaints?,single_choice,1,No
+weekly.EX.Q10b,Are you currently still unable to work or attend school due to your symptoms/complaints?,single_choice,3,Other (I did not have to work or go to school today in any case)
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,0,1 day
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,1,2 days
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,2,3 days
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,3,4 days
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,4,5 days
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,5,6 to 10 days
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,6,11 to 15 days
+weekly.EX.Q10c,For how many days have you been unable to work normally/go to school (when you otherwise would have)?,dropdown,7,More than 15 days
+weekly.EX.Qcov7,"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",likert,1,"Yes, I am following this measure now for the first time, or in a stricter way"
+weekly.EX.Qcov7,"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",likert,2,"No, I was already following this measure"
+weekly.EX.Qcov7,"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",likert,0,"No, I am not following this measure"
+weekly.EX.Qcov7,"Did you begin to follow or increase any of the measures below, due to your symptoms (compared to the period before your symptoms began)?",likert,3,Not applicable
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,0,Flu or flu-like illness
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,9,New coronavirus (COVID-19)
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,1,Common cold
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,2,Allergy/hay fever
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,6,Ashtma
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,3,Gastroenteritis complaints or gastric flu
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,4,Other
+weekly.EX.Q11,What do you think is causing your symptoms?,single_choice,5,I don't know

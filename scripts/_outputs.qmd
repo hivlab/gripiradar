@@ -8,6 +8,14 @@ list(title = switch(lang, et = "Aktiivseid kasutajaid", en = "Active users", ru 
 ```
 
 
+```{r}
+#| content: valuebox
+#| icon: file-medical-fill
+#| color: "secondary"
+list(title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание"), value = ili_last)
+```
+
+
 ## Row {height=55%}
 
 ```{r}
@@ -18,20 +26,24 @@ active_users_p
 
 ```{r}
 symptoms_transl <- symptoms_lang %>%
-  filter(lang == !!lang)
+  filter(lang == !!lang) %>% 
+  group_by(intvl) %>%
+  mutate(npid = n_distinct(participantID)) %>% 
+  group_by(intvl, symptoms, text, npid) %>% 
+  count()
 symptoms_p <- symptoms_transl %>%
-  filter(!str_detect(label, "No symptoms")) %>%
+  filter(!str_detect(symptoms, "No symptoms")) %>%
   symptoms_p_fun() +
-    scale_fill_manual(switch(lang, et = "Viimased neli nädalat", en = "Last four weeks", ru = "Последние четыре недели"), values = colors)
+    scale_fill_manual(switch(lang, et = "Viimased\nneli nädalat", en = "Last\nfour weeks", ru = "Последние\nчетыре недели"), values = colors)
 ```
 
 
 ```{r}
 nosymptoms_p <- symptoms_transl %>%
-  filter(str_detect(label, "No symptoms")) %>%
+  filter(str_detect(symptoms, "No symptoms")) %>%
   nosymptoms_p_fun() +
   labs(
-    title = str_wrap(switch(lang, et = "Sümptomiteta kasutajate osakaal", en = "Proportion of users with no symptoms", ru = "Доля пользователей без симптомов"), width = 15)
+    title = str_wrap(switch(lang, et = "Sümptomiteta kasutajate osakaal", en = "Proportion of users with no symptoms", ru = "Доля пользователей без симптомов"), width = 12)
   )
 ```
 
@@ -43,6 +55,13 @@ nosymptoms_p <- symptoms_transl %>%
 
 
 ## Row
+
+```{r}
+#| title: !expr 'title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание")'
+ili_p +
+  labs(caption = switch(lang, et = "Hall riba tähistab 95% usaldusintervalli.", en = "Grey ribbon represents 95% CI.", ru = "Серая лента представляет 95% доверительный интервал."))
+```
+
 
 ```{r}
 #| title: !expr 'title = switch(lang, et = "Valim", en = "Population", ru = "Выборка")'
@@ -69,6 +88,7 @@ gender_p
 
 ```{r}
 #| title: !expr 'switch(lang, et = "Kasutajate geograafiline jaotus", en = "Geographic distribution of users", ru = "Географическое распределение пользователей")'
-geo_p
+geo_p +
+  scico::scale_fill_scico(switch(lang, et = "Kasutajate #", en = "# of users", ru = "# пользователей"), palette = "vanimo")
 ```
 
