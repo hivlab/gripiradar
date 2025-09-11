@@ -120,12 +120,17 @@ ili <- weekly_responses %>%
   mutate(
     total = n_distinct(participantID)
   ) %>% 
-  filter(str_detect(symptoms, "Fever|Cough")) %>% 
-  group_by(intvl, participantID, total) %>% 
+  mutate(
+    systemic_sympt = str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia"),
+    resp_sympt = str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath")
+  ) %>% 
+  group_by(participantID, total, .add = TRUE) %>% 
+  summarise(
+    across(c(systemic_sympt, resp_sympt), any)
+  ) %>% 
+  filter(systemic_sympt, resp_sympt) %>% 
+  group_by(intvl, total) %>% 
   count() %>% 
-  ungroup() %>% 
-  filter(n > 1) %>% 
-  count(intvl, total) %>% 
   mutate(
     prop_test = map2(n, total, prop.test),
     estimate = map_dbl(prop_test, "estimate"),
