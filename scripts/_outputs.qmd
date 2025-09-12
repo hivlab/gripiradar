@@ -58,8 +58,9 @@ nosymptoms_p <- symptoms_transl %>%
 
 ```{r}
 #| title: !expr 'title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание")'
+caption <- switch(lang, et = "ILI, isikute osakaal, kes teatasid nii süsteemsest sümptomist (palavik, halb enesetunne, peavalu, lihasvalu) kui ka hingamisteede sümptomist (köha, kurguvalu, õhupuudus), võrreldes nende isikutega, kes teatasid mis tahes sümptomist. Hall riba tähistab 95% usaldusintervalli.", en = "ILI, proportion of individuals reporting both a systemic symptom (fever, malaise, headache, myalgia) and a respiratory symptom (cough, sore throat, shortness of breath) out of those reporting any symptom. Grey ribbon represents 95% CI.", ru = "ILI, Доля лиц, сообщающих как о системных симптомах (лихорадка, недомогание, головная боль, миалгия), так и о респираторных симптомах (кашель, боль в горле, одышка) от числа лиц, сообщающих о каких-либо симптомах. Серая лента представляет 95% доверительный интервал.")
 ili_p +
-  labs(caption = switch(lang, et = "ILI, isikute osakaal, kes teatasid nii süsteemsest sümptomist (palavik, halb enesetunne, peavalu, lihasvalu) kui ka hingamisteede sümptomist (köha, kurguvalu, õhupuudus), võrreldes nende isikutega, kes teatasid mis tahes sümptomist. Hall riba tähistab 95% usaldusintervalli.", en = "ILI, proportion of individuals reporting both a systemic symptom (fever, malaise, headache, myalgia) and a respiratory symptom (cough, sore throat, shortness of breath) out of those reporting any symptom. Grey ribbon represents 95% CI.", ru = "ILI, Доля лиц, сообщающих как о системных симптомах (лихорадка, недомогание, головная боль, миалгия), так и о респираторных симптомах (кашель, боль в горле, одышка) от числа лиц, сообщающих о каких-либо симптомах. Серая лента представляет 95% доверительный интервал."))
+  labs(caption = str_wrap(caption))
 ```
 
 
