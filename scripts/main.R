@@ -11,21 +11,6 @@ library(tsibble)
 # Setup helper functions
 source(here("scripts/my_label_date_short.R"))
 source(here("scripts/import_responses.R"))
-fmt_label <- function(intvl) {
-  if (year(int_start(intvl)) == year(int_end(intvl))) {
-    return(paste(
-      format(int_start(intvl), "%d-%b"),
-      "\u2014",
-      format(int_end(intvl), "%d-%b")
-    ))
-  } else {
-    return(paste(
-      format(int_start(intvl), "%d-%b-%Y"),
-      "\u2014",
-      format(int_end(intvl), "%d-%b-%Y")
-    ))
-  }
-}
 
 # Setup parameters
 colors <- c("#2C5696",
