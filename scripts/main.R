@@ -26,8 +26,8 @@ last_6_months <- lubridate::interval(this_monday - months(6), this_monday - 1)
 
 # Import weekly responses
 weekly_responses <- parse_responses("weekly") %>% 
-  select(1:4) %>% 
-  rename(symptoms = 4) %>% 
+  select(1:4, 16) %>% 
+  rename(symptoms = 4, suddenly = 5) %>% 
   unnest(symptoms)
 
 # Import intake responses
