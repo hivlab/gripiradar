@@ -107,13 +107,14 @@ ili <- weekly_responses %>%
   ) %>% 
   mutate(
     systemic_sympt = str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia"),
-    resp_sympt = str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath")
+    resp_sympt = str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath"),
+    sudden_onset = str_detect(suddenly, "Yes")
   ) %>% 
   group_by(participantID, total, .add = TRUE) %>% 
   summarise(
-    across(c(systemic_sympt, resp_sympt), any)
+    across(c(systemic_sympt, resp_sympt, sudden_onset), any)
   ) %>% 
-  filter(systemic_sympt, resp_sympt) %>% 
+  filter(systemic_sympt, resp_sympt, sudden_onset) %>% 
   group_by(intvl, total) %>% 
   count() %>% 
   mutate(
