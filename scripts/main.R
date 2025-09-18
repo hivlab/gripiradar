@@ -110,11 +110,12 @@ ili <- weekly_responses %>%
     resp_sympt = str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath"),
     sudden_onset = str_detect(suddenly, "Yes")
   ) %>% 
+  filter(sudden_onset) %>% 
   group_by(participantID, total, .add = TRUE) %>% 
   summarise(
-    across(c(systemic_sympt, resp_sympt, sudden_onset), any)
+    across(c(systemic_sympt, resp_sympt), any)
   ) %>% 
-  filter(systemic_sympt, resp_sympt, sudden_onset) %>% 
+  filter(systemic_sympt, resp_sympt) %>% 
   group_by(intvl, total) %>% 
   count() %>% 
   mutate(
@@ -122,7 +123,8 @@ ili <- weekly_responses %>%
     estimate = map_dbl(prop_test, "estimate"),
     conf_int = map(prop_test, "conf.int")
   ) %>% 
-  unnest_wider(conf_int, names_sep = "_")
+  unnest_wider(conf_int, names_sep = "_") %>% 
+  ungroup()
   
 ili_p <- ili %>% 
   ggplot(aes(intvl, estimate)) +
