@@ -69,7 +69,6 @@ ili_p +
 gender_p <- demographics_p +
   scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
   scale_fill_manual(values = colors[3:4],
-                    limits = rev,
                     labels = switch(
                       lang,
                       et = c("Naised", "Mehed"),
