@@ -21,8 +21,14 @@ colors <- c("#2C5696",
             "lightgray")
 old <- theme_set(theme_minimal() + theme(text = element_text(size = 12)))
 this_monday <- floor_date(today(), "week", week_start = 1)
-last_4_weeks <- lubridate::interval(this_monday - weeks(4), this_monday - 1)
-last_6_months <- lubridate::interval(this_monday - months(6), this_monday - 1)
+last_4_weeks <- lubridate::interval(
+  this_monday - weeks(4), 
+  this_monday - 1
+)
+last_6_months <- lubridate::interval(
+  ceiling_date(this_monday - months(6), "week", week_start = 1), 
+  this_monday - 1
+)
 
 # Import weekly responses
 weekly_responses <- parse_responses("weekly") %>% 
