@@ -31,9 +31,10 @@ last_6_months <- lubridate::interval(
 )
 
 # Import weekly responses
-weekly_responses <- parse_responses("weekly") %>% 
-  select(1:4, 16) %>% 
-  rename(symptoms = 4, suddenly = 5) %>% 
+weekly_responses <- parse_responses("weekly") %>%
+  select(intvl, submitted_date, participantID, 
+         symptoms = "Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?", 
+         suddenly = "Did your symptoms develop suddenly over a few hours?") %>% 
   unnest(symptoms)
 
 # Import intake responses

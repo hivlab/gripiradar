@@ -111,7 +111,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
         birth_ym = num_to_date(as.numeric(birth_ym)),
         age = round(lubridate::interval(birth_ym, submitted_date) / years(1), 0),
         age_group = cut(age, breaks = c(0, 4, 18, 44, 64, 100), include.lowest = TRUE),
-        age_group1 = factor(age_group, levels = c("[0,4]", "(4,18]", "(18,44]", "(44,64]", "(64,100]"), labels = c("0-4", "5-18", "19-44", "45-64", "65+"))
+        age_group = factor(age_group, levels = c("[0,4]", "(4,18]", "(18,44]", "(44,64]", "(64,100]"), labels = c("0-4", "5-18", "19-44", "45-64", "65+"))
       ) %>% 
       select(-name) %>% 
       group_by(participantID) %>% 
