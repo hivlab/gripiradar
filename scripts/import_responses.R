@@ -67,7 +67,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
     separate_wider_regex(name, c(question = "^.*Q[0-9A-z]+?", "\\.", key = "\\d+$")) %>%
     mutate(key = as.numeric(key)) %>%
     left_join(survey_info, by = c("question", "key")) %>% 
-    select(1:3, question = title, response = label) %>% 
+    select(intvl, submitted_date, participantID, question = title, response = label) %>% 
     group_by(intvl, submitted_date, participantID, question) %>% 
     pivot_wider(names_from = question, values_from = response, values_fn = list) %>% 
     ungroup()
@@ -105,13 +105,13 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
     age <- response_num %>% 
       filter(name %in% c("intake.Q2")) %>%
       left_join(survey_info, by = c("name" = "question")) %>% 
-      select(1:5) %>% 
+      select(intvl, submitted_date, participantID, name, value) %>% 
       rename(birth_ym = value) %>% 
       mutate(
         birth_ym = num_to_date(as.numeric(birth_ym)),
         age = round(lubridate::interval(birth_ym, submitted_date) / years(1), 0),
-        age_group = cut(age, breaks = c(0, 4, 18, 44, 64, 100)),
-        age_group = factor(age_group, levels = c("(0,4]", "(4,18]", "(18,44]", "(44,64]", "(64,100]"), labels = c("0-4", "5-18", "19-44", "45-64", "65+"))
+        age_group = cut(age, breaks = c(0, 4, 18, 44, 64, 100), include.lowest = TRUE),
+        age_group1 = factor(age_group, levels = c("[0,4]", "(4,18]", "(18,44]", "(44,64]", "(64,100]"), labels = c("0-4", "5-18", "19-44", "45-64", "65+"))
       ) %>% 
       select(-name) %>% 
       group_by(participantID) %>% 
@@ -147,7 +147,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
     postcodes <- response_num %>% 
       filter(name %in% c("intake.Q3.0", "intake.Q4b.0")) %>%
       left_join(survey_info, by = c("name" = "question", "value" = "key")) %>% 
-      select(1:5) %>% 
+      select(intvl, submitted_date, participantID, name, value) %>% 
       pivot_wider(names_from = name, values_from = value) %>% 
       rename(postcode_home = intake.Q3.0, postcode_work = intake.Q4b.0)
     
@@ -155,7 +155,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
     ov <- st_read(here("data/omavalitsus_shp/omavalitsus.shp"), quiet = TRUE)
     
     home <- postcodes %>% 
-      dplyr::select(1:4) %>%
+      dplyr::select(intvl, submitted_date, participantID, postcode_home) %>%
       drop_na() %>% 
       group_by(participantID) %>% 
       filter(submitted_date == min(submitted_date)) %>% 
@@ -169,7 +169,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
       dplyr::select(participantID, postcode_home, ov_home = ONIMI, mk_home = MNIMI)
     
     work <- postcodes %>% 
-      dplyr::select(1:3, 5) %>%
+      dplyr::select(intvl, submitted_date, participantID, postcode_work) %>%
       drop_na() %>% 
       group_by(participantID) %>% 
       filter(submitted_date == min(submitted_date)) %>% 
@@ -186,7 +186,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
     occupation <- response_num %>% 
       filter(name == "intake.Q4h") %>%
       left_join(survey_info, by = c("name" = "question", "value" = "key")) %>% 
-      dplyr::select(1:3, occupation = label) %>% 
+      dplyr::select(intvl, submitted_date, participantID, occupation = label) %>% 
       group_by(participantID, occupation) %>% 
       filter(submitted_date == min(submitted_date)) %>% 
       ungroup() %>% 
@@ -218,7 +218,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
   response_num_wide <- response_num %>%
     left_join(survey_info, by = c("name" = "question", "value" = "key")) %>%
     drop_na() %>% # lets drop some of the responses for now
-    select(1:3, title, label) %>%
+    select(intvl, submitted_date, participantID, title, label) %>%
     pivot_wider(names_from = title, values_from = label)
   
   response_date_wide <- response_date %>% 
@@ -229,7 +229,7 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
         distinct(), 
       by = join_by(name == question)
     ) %>% 
-    select(1:3, title, label) %>%
+    select(intvl, submitted_date, participantID, title, label) %>%
     pivot_wider(names_from = title, values_from = label)
   
   responses_merged <- response_logical %>% 
