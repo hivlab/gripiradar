@@ -100,11 +100,7 @@ nosymptoms_p_fun <- function(data, lang = lang) {
     geom_line(aes(group = 1), color = colors[1]) +
     scale_y_continuous(labels = scales::percent, limits = c(0, NA)) +
     theme(axis.title = element_blank(),
-          axis.text.x = element_text(
-            angle = 90,
-            vjust = 0.5,
-            hjust = 1
-          ))
+          axis.text.x = element_text(angle = 20, vjust = 1, hjust = 1))
 }
 
 # ILI plot

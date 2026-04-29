@@ -37,14 +37,15 @@ nosymptoms_p <- symptoms_transl %>%
   filter(str_detect(symptoms, "No symptoms")) %>%
   nosymptoms_p_fun() +
   labs(
-    title = str_wrap(switch(lang, et = "Sümptomiteta kasutajate osakaal", en = "Proportion of users with no symptoms", ru = "Доля пользователей без симптомов"), width = 12)
-  )
+    title = switch(lang, et = "Sümptomiteta kasutajate\nosakaal", en = "Proportion of users\nwith no symptoms", ru = "Доля пользователей\nбез симптомов")
+  ) +
+  theme(plot.title = element_text(size = 10))
 ```
 
 
 ```{r}
 #| title: !expr 'switch(lang, et = "Sümptomid", en = "Symptoms", ru = "Симптомы")'
-(symptoms_p + nosymptoms_p) + plot_layout(widths = c(0.8, 0.2))
+symptoms_p + inset_element(nosymptoms_p, 0.6, 0.3, 1, 1)
 ```
 
 
