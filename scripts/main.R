@@ -19,7 +19,13 @@ colors <- c("#2C5696",
             "#D92321",
             "#CCE0F1",
             "lightgray")
-old <- theme_set(theme_minimal() + theme(text = element_text(size = 12)))
+old <- theme_set(
+  theme_minimal() +
+    theme(
+      text = element_text(size = 12),
+      plot.caption = element_text(color = "gray40")
+    )
+)
 this_monday <- floor_date(today(), "week", week_start = 1)
 last_4_weeks <- lubridate::interval(
   this_monday - weeks(4), 

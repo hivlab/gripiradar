@@ -1,4 +1,4 @@
-## Row {height=18%}
+## Row {height="1.5fr"}
 
 ```{r}
 #| content: valuebox
@@ -20,7 +20,7 @@ list(title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illnes
 #| content: valuebox
 #| icon: shield-check
 #| color: "secondary"
-list(title = switch(lang, et = "Gripi vastu vaktsineeritud (2025-2026)", en = "Flu vaccinated (2025-2026)", ru = "Привиты от гриппа (2025-2026)"), value = flu_vacc_pct)
+list(title = switch(lang, et = "Gripi vastu vaktsineeritud", en = "Flu vaccinated", ru = "Привиты от гриппа"), value = flu_vacc_pct)
 ```
 
 
@@ -28,11 +28,11 @@ list(title = switch(lang, et = "Gripi vastu vaktsineeritud (2025-2026)", en = "F
 #| content: valuebox
 #| icon: shield-check
 #| color: "secondary"
-list(title = switch(lang, et = "COVID-19 vastu vaktsineeritud", en = "COVID-19 vaccinated", ru = "Привиты от COVID-19"), value = covid_vacc_pct)
+list(title = switch(lang, et = "COVID-19 vastu vaktsineeritud", en = "COVID-19 vaccinated", ru = "COVID-19 привиты"), value = covid_vacc_pct)
 ```
 
 
-## Row {height=37%}
+## Row {height="3fr"}
 
 ```{r}
 symptoms_transl <- symptoms_lang %>%
@@ -66,13 +66,13 @@ symptoms_p + inset_element(nosymptoms_p, 0.6, 0.3, 1, 1)
 
 
 ```{r}
-#| title: !expr 'title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание")'
+#| title: !expr 'switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание")'
 ili_p +
   labs(caption = switch(lang, et = "Hall riba tähistab 95% usaldusintervalli.", en = "Grey ribbon represents 95% CI.", ru = "Серая лента представляет 95% доверительный интервал."))
 ```
 
 
-## Row {height=20%}
+## Row {height="2fr"}
 
 ```{r}
 #| title: !expr 'switch(lang, et = "Aktiivseid kasutajaid (nädalas)", en = "Active users (weekly)", ru = "Aктивные пользователи (в неделю)")'
@@ -81,7 +81,7 @@ active_users_p
 
 
 ```{r}
-#| title: !expr 'title = switch(lang, et = "Valim", en = "Population", ru = "Выборка")'
+#| title: !expr 'switch(lang, et = "Valim", en = "Population", ru = "Выборка")'
 gender_p <- demographics_p +
   scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
   scale_fill_manual(values = colors[3:4],
@@ -102,7 +102,7 @@ gender_p
 ```
 
 
-## Row {height=25%}
+## Row {height="2.5fr"}
 
 ```{r}
 #| title: !expr 'switch(lang, et = "Gripilaadne haigus vanusegrupiti", en = "Influenza like illness by age group", ru = "Гриппоподобное заболевание по возрастным группам")'

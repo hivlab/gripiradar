@@ -1,8 +1,21 @@
 /*-- scss:defaults --*/
 .quarto-dashboard .bslib-value-box .value-box-value {
-    font-size: clamp(1.2em, 5cqh, 5em) !important;
+    font-size: clamp(1.1em, min(7cqi, 5cqh), 3em) !important;
+    line-height: 1.1;
 }
 .quarto-dashboard .bslib-value-box .value-box-title {
-    font-size: clamp(.8em, 2.2cqh, 1.2em) !important;
+    font-size: clamp(.7em, min(3cqi, 2.5cqh), 1.05em) !important;
     line-height: 1.15;
+}
+.quarto-dashboard .bslib-value-box .value-box-area {
+    min-width: 0;
+    overflow: hidden;
+}
+/* Card / plot titles — beef them up so they "pop" */
+.quarto-dashboard .card .card-header,
+.quarto-dashboard .bslib-card .card-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-top: .35rem;
+    padding-bottom: .35rem;
 }
