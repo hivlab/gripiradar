@@ -83,6 +83,7 @@ symptoms_p_fun <- function(data, lang = lang) {
     scale_y_continuous(labels = scales::percent) +
     scale_x_discrete(labels = \(x) str_wrap(x, 20)) +
     theme(
+      legend.position = "bottom",
       axis.title = element_blank(),
       axis.text.x = element_text(
         angle = 90,
