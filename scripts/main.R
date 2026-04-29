@@ -252,35 +252,39 @@ others <- intake_responses_6mo %>%
 mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE) %>%
   st_simplify(dTolerance = 200)
 
-# Per-maakond ILI rate over the last 4 weeks.
-# Suppress estimates from counties with too few participants to avoid 1/1 spikes.
+# Per-maakond ILI rate, pooled over the last 4 weeks.
+# Same case definition + denominator as the headline GAM, just averaged
+# over the 4-week window per county. ili_n / person_weeks gives an
+# average weekly ILI rate that is directly comparable to the headline.
+# Suppress estimates from counties with too few participants to avoid
+# 1/1 spikes.
 mk_min_n <- 5
 
 weekly_responses_4w <- weekly_responses %>%
   filter(submitted_date %within% last_4_weeks)
 
-ili_pids_4w <- weekly_responses_4w %>%
-  filter(symptoms != "No symptoms") %>%
-  group_by(participantID) %>%
+ili_per_pid_4w <- weekly_responses_4w %>%
+  group_by(intvl, participantID) %>%
   summarise(
-    systemic = any(str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia")),
-    resp = any(str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath")),
-    sudden = any(str_detect(suddenly, "Yes")),
+    has_systemic = any(str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia")),
+    has_resp = any(str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath")),
+    has_sudden = any(str_detect(suddenly, "Yes"), na.rm = TRUE),
     .groups = "drop"
   ) %>%
-  filter(systemic, resp, sudden) %>%
-  pull(participantID)
+  mutate(is_ili = has_systemic & has_resp & has_sudden) %>%
+  left_join(intake_responses %>% select(participantID, mk_home) %>% distinct(),
+            by = "participantID") %>%
+  filter(!is.na(mk_home))
 
-mk_ili <- intake_responses %>%
-  filter(participantID %in% unique(weekly_responses_4w$participantID)) %>%
-  drop_na(mk_home) %>%
+mk_ili <- ili_per_pid_4w %>%
   group_by(mk_home) %>%
   summarise(
     n = n_distinct(participantID),
-    ili_n = n_distinct(participantID[participantID %in% ili_pids_4w]),
+    person_weeks = n(),
+    ili_n = sum(is_ili),
     .groups = "drop"
   ) %>%
-  mutate(rate = if_else(n >= mk_min_n, ili_n / n, NA_real_))
+  mutate(rate = if_else(n >= mk_min_n, ili_n / person_weeks, NA_real_))
 
 mk_ili_sf <- mk %>%
   left_join(mk_ili, by = c("MNIMI" = "mk_home"))
