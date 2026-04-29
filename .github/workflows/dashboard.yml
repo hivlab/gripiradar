@@ -58,7 +58,11 @@ jobs:
       with:
         name: 'gripiradar-ut-ee'
         path: 'gripiradar-ut-ee'
-  
+
+    - name: Regenerate survey info CSVs from JSON schemas
+      run: |
+       python3 scripts/import_survey_info.py
+
     - name: Pull image
       run: |
        docker pull taavipall/gripiradar:latest

@@ -1,4 +1,4 @@
-## Row {height=20%}
+## Row {height=18%}
 
 ```{r}
 #| content: valuebox
@@ -16,7 +16,23 @@ list(title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illnes
 ```
 
 
-## Row {height=55%}
+```{r}
+#| content: valuebox
+#| icon: shield-check
+#| color: "secondary"
+list(title = switch(lang, et = "Gripi vastu vaktsineeritud (2025-2026)", en = "Flu vaccinated (2025-2026)", ru = "Привиты от гриппа (2025-2026)"), value = flu_vacc_pct)
+```
+
+
+```{r}
+#| content: valuebox
+#| icon: shield-check
+#| color: "secondary"
+list(title = switch(lang, et = "COVID-19 vastu vaktsineeritud", en = "COVID-19 vaccinated", ru = "Привиты от COVID-19"), value = covid_vacc_pct)
+```
+
+
+## Row {height=37%}
 
 ```{r}
 symptoms_transl <- symptoms_lang %>%
@@ -56,7 +72,7 @@ ili_p +
 ```
 
 
-## Row
+## Row {height=20%}
 
 ```{r}
 #| title: !expr 'switch(lang, et = "Aktiivseid kasutajaid (nädalas)", en = "Active users (weekly)", ru = "Aктивные пользователи (в неделю)")'
@@ -86,9 +102,49 @@ gender_p
 ```
 
 
+## Row {height=25%}
+
 ```{r}
-#| title: !expr 'switch(lang, et = "Kasutajate geograafiline jaotus", en = "Geographic distribution of users", ru = "Географическое распределение пользователей")'
+#| title: !expr 'switch(lang, et = "Gripilaadne haigus vanusegrupiti", en = "Influenza like illness by age group", ru = "Гриппоподобное заболевание по возрастным группам")'
+ili_age_p +
+  scale_fill_distiller(
+    switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
+    palette = "RdYlBu",
+    direction = -1,
+    labels = scales::percent,
+    na.value = "gray90"
+  ) +
+  scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
+  labs(caption = sprintf(
+    switch(
+      lang,
+      et = "Hall: alla %d osaleja vanusegrupis sel nädalal.",
+      en = "Grey: fewer than %d participants in age group that week.",
+      ru = "Серый: менее %d участников в возрастной группе на этой неделе."
+    ),
+    age_min_n
+  ))
+```
+
+
+```{r}
+#| title: !expr 'switch(lang, et = "Gripilaadne haigus maakonniti (4 nädalat)", en = "Influenza like illness by county (4 weeks)", ru = "Гриппоподобное заболевание по уездам (4 недели)")'
 geo_p +
-  scico::scale_fill_scico(switch(lang, et = "Kasutajate #", en = "# of users", ru = "# пользователей"), palette = "vanimo")
+  scale_fill_distiller(
+    switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
+    palette = "RdYlBu",
+    direction = -1,
+    labels = scales::percent,
+    na.value = "gray90"
+  ) +
+  labs(caption = sprintf(
+    switch(
+      lang,
+      et = "Hall: alla %d osaleja maakonnas.",
+      en = "Grey: fewer than %d participants in county.",
+      ru = "Серый: менее %d участников в уезде."
+    ),
+    mk_min_n
+  ))
 ```
 

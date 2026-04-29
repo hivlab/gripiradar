@@ -1,4 +1,8 @@
 /*-- scss:defaults --*/
 .quarto-dashboard .bslib-value-box .value-box-value {
-    font-size: clamp(.1em, 5cqh, 5em) !important;
+    font-size: clamp(1.2em, 5cqh, 5em) !important;
+}
+.quarto-dashboard .bslib-value-box .value-box-title {
+    font-size: clamp(.8em, 2.2cqh, 1.2em) !important;
+    line-height: 1.15;
 }

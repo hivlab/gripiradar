@@ -1,0 +1,95 @@
+question,title,questionType,key,label
+vaccination.Q0,Four weeks ago you received a questionnaire about your vaccination status.  This new questionnaire is to monitor any further changes. Select the option that applies to you.,single_choice,2,In the meantime nothing has changed in terms of vaccination for me.
+vaccination.Q0,Four weeks ago you received a questionnaire about your vaccination status.  This new questionnaire is to monitor any further changes. Select the option that applies to you.,single_choice,1,"In the meantime I received a new vaccine dose, or a new invitation to be vaccinated."
+vaccination.Q0,Four weeks ago you received a questionnaire about your vaccination status.  This new questionnaire is to monitor any further changes. Select the option that applies to you.,single_choice,3,"I'm not sure, and would like to take these questions to make sure my information on vaccination is up to date."
+vaccination.HV.Q9,Did you receive a flu vaccine during the previous flu season (2024-2025),single_choice,0,Yes
+vaccination.HV.Q9,Did you receive a flu vaccine during the previous flu season (2024-2025),single_choice,1,No
+vaccination.HV.Q9,Did you receive a flu vaccine during the previous flu season (2024-2025),single_choice,2,I don't know/can't remember
+vaccination.HV.Q10,Have you received a flu vaccine this autumn/winter season? (2025-2026),single_choice,0,Yes
+vaccination.HV.Q10,Have you received a flu vaccine this autumn/winter season? (2025-2026),single_choice,1,No
+vaccination.HV.Q10,Have you received a flu vaccine this autumn/winter season? (2025-2026),single_choice,2,I don't know/can't remember
+vaccination.HV.Q10b,When were you vaccinated against flu this season (2025-2026)?,single_choice,1,
+vaccination.HV.Q10b,When were you vaccinated against flu this season (2025-2026)?,single_choice,0,I don't know (anymore)
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,0,"I belong to a risk group (e.g, pregnant, over 65, underlying health condition, etc)"
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,1,Vaccination decreases my risk of getting influenza
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,2,Vaccination decreases the risk of spreading influenza to others
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,3,My doctor recommended it
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,4,It was recommended in my workplace/school
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,5,The vaccine was readily available and vaccine administration was convenient
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,6,The vaccine was free (no cost)
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,7,I don't want to miss work/school
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,8,I always get the vaccine
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,12,"I try to protect myself against infections, because of the circulation of the pandemic coronavirus"
+vaccination.HV.Q10c,What were your reasons for getting a seasonal influenza vaccination this year?,multiple_choice,9,Other reason(s)
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,0,"I am planning to be vaccinated, but haven't been yet"
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,1,I haven't been offered the vaccine
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,2,I don't belong to a risk group
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,3,It is better to build your own natural immunity against influenza
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,4,I doubt that the influenza vaccine is effective
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,5,Influenza is a minor illness
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,6,I don't think I am likely to get influenza
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,7,I believe that influenza vaccine can cause influenza
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,8,I am worried that the vaccine is not safe or will cause illness or other adverse events
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,9,I don't like having vaccinations
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,10,The vaccine is not readily available to me
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,11,The vaccine is not free of charge
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,13,"Although my doctor recommend a vaccine, I do not get one"
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,14,Other reason(s)
+vaccination.HV.Q10d,What were your reasons for NOT getting a seasonal influenza vaccination in season 2025/2026?,multiple_choice,12,No particular reason
+vaccination.HV.Q35,Have you received a COVID-19 vaccine?,single_choice,1,"Yes, I received at least one COVID-19 vaccine"
+vaccination.HV.Q35,Have you received a COVID-19 vaccine?,single_choice,0,"No, I did not receive the COVID-19 vaccine"
+vaccination.HV.Q35,Have you received a COVID-19 vaccine?,single_choice,2,I don't know/can't remember.
+vaccination.HV.Q35i,Which COVID-19 vaccine(s) did you receive?,multiple_choice,1,Pfizer/BioNTech
+vaccination.HV.Q35i,Which COVID-19 vaccine(s) did you receive?,multiple_choice,2,Moderna
+vaccination.HV.Q35i,Which COVID-19 vaccine(s) did you receive?,multiple_choice,3,AstraZeneca
+vaccination.HV.Q35i,Which COVID-19 vaccine(s) did you receive?,multiple_choice,4,Janssen Pharmaceutica (Johnson & Johnson)
+vaccination.HV.Q35i,Which COVID-19 vaccine(s) did you receive?,multiple_choice,99,I Don't know/Can't remember
+vaccination.HV.Q35c,How many doses of the vaccine did you receive?,single_choice,1,One
+vaccination.HV.Q35c,How many doses of the vaccine did you receive?,single_choice,2,Two
+vaccination.HV.Q35c,How many doses of the vaccine did you receive?,single_choice,4,Three
+vaccination.HV.Q35c,How many doses of the vaccine did you receive?,single_choice,5,More than three
+vaccination.HV.Q35c,How many doses of the vaccine did you receive?,single_choice,99,I Don't know/Can't remember
+vaccination.HV.Q35j,"When did you receive your last injection of a vaccine against COVID-19? If you do not know the exact date, provide an estimate.",single_choice,1,
+vaccination.HV.Q35j,"When did you receive your last injection of a vaccine against COVID-19? If you do not know the exact date, provide an estimate.",single_choice,0,I don’t know/can’t remember
+vaccination.HV.Q35k,Do you plan to receive a second injection in the upcoming weeks?,single_choice,1,Yes
+vaccination.HV.Q35k,Do you plan to receive a second injection in the upcoming weeks?,single_choice,0,No
+vaccination.HV.Q35k,Do you plan to receive a second injection in the upcoming weeks?,single_choice,99,I don't know
+vaccination.HV.Q35l,Why receiving a single injection?,single_choice,1,I had COVID-19 before my first injection.
+vaccination.HV.Q35l,Why receiving a single injection?,single_choice,2,"I had COVID-19 shortly after my first injection, and have to wait several months to receive the second injection."
+vaccination.HV.Q35l,Why receiving a single injection?,single_choice,3," I received Janssen vaccine, which requires only one injection."
+vaccination.HV.Q35l,Why receiving a single injection?,single_choice,4,"A second injection was contraindicated for me by a doctor (I had a severe allergic reaction, or a severe adverse effect after the first injection, or I have a temporary contraindication due to a treatment or a disease)."
+vaccination.HV.Q35l,Why receiving a single injection?,single_choice,5,I changed my mind and don’t want to be vaccinated anymore.
+vaccination.HV.Q35l,Why receiving a single injection?,single_choice,6,Other
+vaccination.HV.Q35l,Why receiving a single injection?,single_choice,0,I don't know
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,21,The vaccination is recommended by public health authorities.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,0,"I belong to a group who is at risk of complications in case of COVID-19 (over 65 of age, underlying health condition, obesity, etc.)."
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,20,"I work in close contact with people at risk of complications in case of COVID-19 (working in a nursing home, health staff…)."
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,1,Vaccination decreases my risk of getting COVID-19.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,2,Vaccination decreases the risk of spreading COVID-19 to others.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,3,My doctor recommended it.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,4,It was recommended in my workplace/school.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,5,The vaccine was readily available and vaccine administration was convenient.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,6,The vaccine was free (no cost).
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,7,I don’t want to miss work/school.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,8,I always accept vaccination when it is offered to me.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,22,I have to be vaccinated to work.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,23,To obtain a valid vaccination passport.
+vaccination.HV.Q35f,What are your reason(s) for getting a COVID-19 vaccination?,multiple_choice,9,Other
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,0,I am planning to be vaccinated but haven’t been yet
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,1,I haven't been offered the vaccine
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,15,I have been discouraged from being vaccinated because I am pregnant
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,16,I am pregnant and I fear the vaccine could be dangerous for my baby
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,2,I don’t belong to a risk group
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,3,It is better to build your own natural immunity against COVID-19
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,4,I doubt that the COVID-19 vaccine is effective
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,5,COVID-19 is a minor illness
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,17,"Because of COVID-19 pandemic, I avoid seeing doctors or going to the pharmacy"
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,6,I don't think I am likely to get the COVID-19
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,7,I believe that the COVID-19 vaccine can cause COVID-19
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,8,I am worried that the vaccine is not safe or will cause illness or other adverse events
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,9,I don't like having vaccinations
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,10,The vaccine is not readily available to me
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,20,I disagree with the current vaccine policy
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,11,The vaccine is not free of charge
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,14,Other reason(s)
+vaccination.HV.Q35m,What were your reasons for NOT getting a COVID-19 vaccination? Select the options that are most applicable.,multiple_choice,12,I don't know
