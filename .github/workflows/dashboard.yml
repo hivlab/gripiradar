@@ -1,6 +1,8 @@
 name: Download, Build and Deploy
 on:
  push:
+  branches: ["main", "dashboard-experiments"]
+ pull_request:
   branches: ["main"]
  schedule:
   - cron: "0 5 * * 1"
@@ -79,6 +81,7 @@ jobs:
        path: 'public'
   
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
