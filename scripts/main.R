@@ -173,11 +173,13 @@ ili_gam <- mgcv::gam(
   gamma = 0.4
 )
 ili_pred <- predict(ili_gam, newdata = ili, type = "link", se.fit = TRUE)
+ili_fit <- as.numeric(ili_pred$fit)
+ili_se <- as.numeric(ili_pred$se.fit)
 ili <- ili %>%
   mutate(
-    estimate = plogis(ili_pred$fit),
-    conf_int_1 = plogis(ili_pred$fit - 1.96 * ili_pred$se.fit),
-    conf_int_2 = plogis(ili_pred$fit + 1.96 * ili_pred$se.fit)
+    estimate = plogis(ili_fit),
+    conf_int_1 = plogis(ili_fit - 1.96 * ili_se),
+    conf_int_2 = plogis(ili_fit + 1.96 * ili_se)
   )
 
 ili_p <- ili %>%
