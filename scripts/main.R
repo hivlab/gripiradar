@@ -133,39 +133,58 @@ nosymptoms_p_fun <- function(data, lang = lang) {
           axis.text.x = element_text(angle = 20, vjust = 1, hjust = 1))
 }
 
-# ILI plot
-ili <- weekly_responses_6mo %>%
-  filter(symptoms != "No symptoms") %>% 
-  group_by(intvl) %>% 
-  mutate(
-    total = n_distinct(participantID)
-  ) %>% 
-  mutate(
-    systemic_sympt = str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia"),
-    resp_sympt = str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath"),
-    sudden_onset = str_detect(suddenly, "Yes")
-  ) %>% 
-  filter(sudden_onset) %>% 
-  group_by(participantID, total, .add = TRUE) %>% 
+# ILI plot.
+# Numerator: participants meeting the case definition (sudden onset +
+# systemic + respiratory symptoms). Denominator: ALL weekly responders
+# that week, including those reporting "No symptoms" — this is the
+# standard participatory-surveillance denominator.
+ili_per_pid <- weekly_responses_6mo %>%
+  group_by(intvl, participantID) %>%
   summarise(
-    across(c(systemic_sympt, resp_sympt), any)
-  ) %>% 
-  filter(systemic_sympt, resp_sympt) %>% 
-  group_by(intvl, total) %>% 
-  count() %>% 
+    has_systemic = any(str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia")),
+    has_resp = any(str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath")),
+    has_sudden = any(str_detect(suddenly, "Yes"), na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(is_ili = has_systemic & has_resp & has_sudden)
+
+ili <- ili_per_pid %>%
+  group_by(intvl) %>%
+  summarise(
+    total = n_distinct(participantID),
+    ili_n = sum(is_ili),
+    .groups = "drop"
+  ) %>%
   mutate(
-    prop_test = map2(n, total, prop.test),
-    estimate = map_dbl(prop_test, "estimate"),
-    conf_int = map(prop_test, "conf.int")
-  ) %>% 
-  unnest_wider(conf_int, names_sep = "_") %>% 
-  ungroup()
-  
-ili_p <- ili %>% 
+    raw_rate = ili_n / total,
+    intvl_num = as.numeric(intvl)
+  )
+
+# Smooth on the logit scale via a binomial GAM, then back-transform.
+# Gives a temporally coherent rate and 95% CI ribbon that doesn't
+# whip around with single-week noise.
+# k caps basis dimension; gamma<1 lets the fit follow weekly trends
+# instead of over-smoothing into a near-flat line.
+ili_k <- min(nrow(ili) - 2, 15)
+ili_gam <- mgcv::gam(
+  cbind(ili_n, total - ili_n) ~ s(intvl_num, k = ili_k),
+  family = binomial,
+  data = ili,
+  gamma = 0.4
+)
+ili_pred <- predict(ili_gam, newdata = ili, type = "link", se.fit = TRUE)
+ili <- ili %>%
+  mutate(
+    estimate = plogis(ili_pred$fit),
+    conf_int_1 = plogis(ili_pred$fit - 1.96 * ili_pred$se.fit),
+    conf_int_2 = plogis(ili_pred$fit + 1.96 * ili_pred$se.fit)
+  )
+
+ili_p <- ili %>%
   ggplot(aes(intvl, estimate)) +
-  geom_line(aes(group = 1), color = colors[1]) +
-  geom_point(color = colors[1]) +
-  geom_ribbon(aes(ymin = conf_int_1, ymax = conf_int_2), alpha = 0.2) +
+  geom_ribbon(aes(ymin = conf_int_1, ymax = conf_int_2), alpha = 0.2, fill = colors[1]) +
+  geom_line(aes(group = 1), color = colors[1], linewidth = 0.8) +
+  geom_point(aes(y = raw_rate), color = colors[1], alpha = 0.4, size = 1.5) +
   labs(y = "ILI") +
   scale_y_continuous(labels = scales::percent, limits = c(0, NA)) +
   scale_x_yearmonth(date_breaks = "1 month",
