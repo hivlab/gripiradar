@@ -107,10 +107,11 @@ gender_p
 ```{r}
 #| title: !expr 'switch(lang, et = "Gripilaadne haigus vanusegrupiti", en = "Influenza like illness by age group", ru = "Гриппоподобное заболевание по возрастным группам")'
 ili_age_p +
-  scale_fill_distiller(
+  scale_fill_fermenter(
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
     palette = "RdYlBu",
     direction = -1,
+    n.breaks = 6,
     labels = scales::percent,
     na.value = "gray90"
   ) +
@@ -130,10 +131,11 @@ ili_age_p +
 ```{r}
 #| title: !expr 'switch(lang, et = "Gripilaadne haigus maakonniti (4 nädalat)", en = "Influenza like illness by county (4 weeks)", ru = "Гриппоподобное заболевание по уездам (4 недели)")'
 geo_p +
-  scale_fill_distiller(
+  scale_fill_fermenter(
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
     palette = "RdYlBu",
     direction = -1,
+    n.breaks = 6,
     labels = scales::percent,
     na.value = "gray90"
   ) +

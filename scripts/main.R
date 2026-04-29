@@ -228,8 +228,8 @@ others <- intake_responses_6mo %>%
   pull(participantID) %>% 
   n_distinct()
 
-mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE)
-ov <- st_read(here("data/omavalitsus_shp/omavalitsus.shp"), quiet = TRUE)
+mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE) %>%
+  st_simplify(dTolerance = 200)
 
 # Per-maakond ILI rate over the last 4 weeks.
 # Suppress estimates from counties with too few participants to avoid 1/1 spikes.
