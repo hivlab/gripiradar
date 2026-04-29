@@ -1,6 +1,8 @@
 name: Download, Build and Deploy
 on:
  push:
+  branches: ["main", "dashboard-experiments"]
+ pull_request:
   branches: ["main"]
  schedule:
   - cron: "0 5 * * 1"
@@ -16,8 +18,6 @@ concurrency:
 
 jobs: 
   download:
-    environment:
-      name: github-pages
     runs-on: ubuntu-latest
     steps:
     - name: Checkpout repo
@@ -58,7 +58,11 @@ jobs:
       with:
         name: 'gripiradar-ut-ee'
         path: 'gripiradar-ut-ee'
-  
+
+    - name: Regenerate survey info CSVs from JSON schemas
+      run: |
+       python3 scripts/import_survey_info.py
+
     - name: Pull image
       run: |
        docker pull taavipall/gripiradar:latest
@@ -75,6 +79,7 @@ jobs:
        path: 'public'
   
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

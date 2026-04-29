@@ -1,38 +1,40 @@
+import csv
 import json
-import pandas as pd
+from pathlib import Path
 
-def parse_survey_info(type):
-    json_path = f"gripiradar-ut-ee/{type}/survey_info.json"
-    with open(json_path, "r", encoding="utf-8") as f:
+
+def parse_survey_info(survey_type: str) -> None:
+    json_path = Path(f"gripiradar-ut-ee/{survey_type}/survey_info.json")
+    out_path = Path(f"data/{survey_type}_survey_info.csv")
+
+    with json_path.open(encoding="utf-8") as f:
         data = json.load(f)
-    versions = data.get("versions")[0]
-    questions = []
-    for q in versions.get("questions"):
-        options = q.get("responses")[0].get("options", [])
-        keys = []
-        labels = []
-        for o in options:
-            keys.append(o.get("key", ""))
-            labels.append(o.get("label", ""))
-        
-        questions.append(
-            {
-                'question': q['key'],
-                'title': q['title'],
-                'questionType': q['questionType'],
-                'key': keys,
-                'label': labels,
-                }
-        )
 
-    df = pd.DataFrame.from_dict(questions, orient='columns')
-    df = df.explode(['key', 'label']).reset_index(drop=True)
-    df.to_csv(f'data/{type}_survey_info.csv', index=False)
+    versions = data["versions"][0]
+    rows = []
+    for q in versions["questions"]:
+        responses = q.get("responses") or []
+        options = responses[0].get("options", []) if responses else []
+        if not options:
+            rows.append([q["key"], q["title"], q["questionType"], "", ""])
+            continue
+        for o in options:
+            rows.append([
+                q["key"],
+                q["title"],
+                q["questionType"],
+                o.get("key", ""),
+                o.get("label", ""),
+            ])
+
+    with out_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f, lineterminator="\n")
+        writer.writerow(["question", "title", "questionType", "key", "label"])
+        writer.writerows(rows)
+
 
 if __name__ == "__main__":
-    for d in ['intake', 'vaccination', 'weekly']:
-        print(f'\n=== {d} ===\nWorking on {d} survey info..\n')
-        parse_survey_info(d)
-        if d == 'intake':
-            print('Note: # of family members in age groups was not parsed properly\nas we lack age group labels..')
-        print('OMG! Success!\n')
+    for survey_type in ("intake", "vaccination", "weekly"):
+        print(f"=== {survey_type} ===")
+        parse_survey_info(survey_type)
+        print(f"  wrote data/{survey_type}_survey_info.csv")

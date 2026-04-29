@@ -1,4 +1,4 @@
-## Row {height=20%}
+## Row {height="1.5fr"}
 
 ```{r}
 #| content: valuebox
@@ -16,7 +16,23 @@ list(title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illnes
 ```
 
 
-## Row {height=55%}
+```{r}
+#| content: valuebox
+#| icon: shield-check
+#| color: "secondary"
+list(title = switch(lang, et = "Gripi vastu vaktsineeritud", en = "Flu vaccinated", ru = "Привиты от гриппа"), value = flu_vacc_pct)
+```
+
+
+```{r}
+#| content: valuebox
+#| icon: shield-check
+#| color: "secondary"
+list(title = switch(lang, et = "COVID-19 vastu vaktsineeritud", en = "COVID-19 vaccinated", ru = "COVID-19 привиты"), value = covid_vacc_pct)
+```
+
+
+## Row {height="3fr"}
 
 ```{r}
 symptoms_transl <- symptoms_lang %>%
@@ -50,13 +66,13 @@ symptoms_p + inset_element(nosymptoms_p, 0.6, 0.3, 1, 1)
 
 
 ```{r}
-#| title: !expr 'title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание")'
+#| title: !expr 'switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание")'
 ili_p +
   labs(caption = switch(lang, et = "Hall riba tähistab 95% usaldusintervalli.", en = "Grey ribbon represents 95% CI.", ru = "Серая лента представляет 95% доверительный интервал."))
 ```
 
 
-## Row
+## Row {height="2fr"}
 
 ```{r}
 #| title: !expr 'switch(lang, et = "Aktiivseid kasutajaid (nädalas)", en = "Active users (weekly)", ru = "Aктивные пользователи (в неделю)")'
@@ -65,7 +81,7 @@ active_users_p
 
 
 ```{r}
-#| title: !expr 'title = switch(lang, et = "Valim", en = "Population", ru = "Выборка")'
+#| title: !expr 'switch(lang, et = "Valim", en = "Population", ru = "Выборка")'
 gender_p <- demographics_p +
   scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
   scale_fill_manual(values = colors[3:4],
@@ -86,9 +102,51 @@ gender_p
 ```
 
 
+## Row {height="2.5fr"}
+
 ```{r}
-#| title: !expr 'switch(lang, et = "Kasutajate geograafiline jaotus", en = "Geographic distribution of users", ru = "Географическое распределение пользователей")'
+#| title: !expr 'switch(lang, et = "Gripilaadne haigus vanusegrupiti", en = "Influenza like illness by age group", ru = "Гриппоподобное заболевание по возрастным группам")'
+ili_age_p +
+  scale_fill_fermenter(
+    switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
+    palette = "RdYlBu",
+    direction = -1,
+    n.breaks = 6,
+    labels = scales::percent,
+    na.value = "gray90"
+  ) +
+  scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
+  labs(caption = sprintf(
+    switch(
+      lang,
+      et = "Hall: alla %d osaleja vanusegrupis sel nädalal.",
+      en = "Grey: fewer than %d participants in age group that week.",
+      ru = "Серый: менее %d участников в возрастной группе на этой неделе."
+    ),
+    age_min_n
+  ))
+```
+
+
+```{r}
+#| title: !expr 'switch(lang, et = "Gripilaadne haigus maakonniti (4 nädalat)", en = "Influenza like illness by county (4 weeks)", ru = "Гриппоподобное заболевание по уездам (4 недели)")'
 geo_p +
-  scico::scale_fill_scico(switch(lang, et = "Kasutajate #", en = "# of users", ru = "# пользователей"), palette = "vanimo")
+  scale_fill_fermenter(
+    switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
+    palette = "RdYlBu",
+    direction = -1,
+    n.breaks = 6,
+    labels = scales::percent,
+    na.value = "gray90"
+  ) +
+  labs(caption = sprintf(
+    switch(
+      lang,
+      et = "Hall: alla %d osaleja maakonnas.",
+      en = "Grey: fewer than %d participants in county.",
+      ru = "Серый: менее %d участников в уезде."
+    ),
+    mk_min_n
+  ))
 ```
 
