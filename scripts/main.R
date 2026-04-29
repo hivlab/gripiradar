@@ -11,21 +11,6 @@ library(tsibble)
 # Setup helper functions
 source(here("scripts/my_label_date_short.R"))
 source(here("scripts/import_responses.R"))
-fmt_label <- function(intvl) {
-  if (year(int_start(intvl)) == year(int_end(intvl))) {
-    return(paste(
-      format(int_start(intvl), "%d-%b"),
-      "\u2014",
-      format(int_end(intvl), "%d-%b")
-    ))
-  } else {
-    return(paste(
-      format(int_start(intvl), "%d-%b-%Y"),
-      "\u2014",
-      format(int_end(intvl), "%d-%b-%Y")
-    ))
-  }
-}
 
 # Setup parameters
 colors <- c("#2C5696",
@@ -39,16 +24,17 @@ this_monday <- floor_date(today(), "week", week_start = 1)
 last_4_weeks <- lubridate::interval(
   this_monday - weeks(4), 
   this_monday - 1
-  )
+)
 last_6_months <- lubridate::interval(
   ceiling_date(this_monday - months(6), "week", week_start = 1), 
   this_monday - 1
-  )
+)
 
 # Import weekly responses
-weekly_responses <- parse_responses("weekly") %>% 
-  select(1:4) %>% 
-  rename(symptoms = 4) %>% 
+weekly_responses <- parse_responses("weekly") %>%
+  select(intvl, submitted_date, participantID, 
+         symptoms = "Have you had any of the following symptoms since your last questionnaire (or in the past week, if this the first tie you are taking this questionnaire)?", 
+         suddenly = "Did your symptoms develop suddenly over a few hours?") %>% 
   unnest(symptoms)
 
 # Import intake responses
@@ -127,18 +113,26 @@ ili <- weekly_responses_6mo %>%
   mutate(
     total = n_distinct(participantID)
   ) %>% 
-  filter(str_detect(symptoms, "Fever|Cough")) %>% 
-  group_by(intvl, participantID, total) %>% 
+  mutate(
+    systemic_sympt = str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia"),
+    resp_sympt = str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath"),
+    sudden_onset = str_detect(suddenly, "Yes")
+  ) %>% 
+  filter(sudden_onset) %>% 
+  group_by(participantID, total, .add = TRUE) %>% 
+  summarise(
+    across(c(systemic_sympt, resp_sympt), any)
+  ) %>% 
+  filter(systemic_sympt, resp_sympt) %>% 
+  group_by(intvl, total) %>% 
   count() %>% 
-  ungroup() %>% 
-  filter(n > 1) %>% 
-  count(intvl, total) %>% 
   mutate(
     prop_test = map2(n, total, prop.test),
     estimate = map_dbl(prop_test, "estimate"),
     conf_int = map(prop_test, "conf.int")
   ) %>% 
-  unnest_wider(conf_int, names_sep = "_")
+  unnest_wider(conf_int, names_sep = "_") %>% 
+  ungroup()
   
 ili_p <- ili %>% 
   ggplot(aes(intvl, estimate)) +
@@ -178,7 +172,6 @@ ov <- st_read(here("data/omavalitsus_shp/omavalitsus.shp"), quiet = TRUE)
 ov_counts <- ov %>% 
   left_join(
     intake_responses_6mo %>%
-      filter(participantID %in% unique(weekly_responses_6mo$participantID)) %>% 
       rename(ONIMI = ov_home) %>% 
       drop_na() %>% 
       count(ONIMI)
