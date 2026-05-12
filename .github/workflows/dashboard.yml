@@ -38,9 +38,20 @@ jobs:
       run: |
        mc alias set myminio $HOSTNAME $ACCESS_KEY $SECRET_KEY
     
-    - name: Downloaad data from bucket
+    - name: Download data from bucket
       run: |
-       mc cp --recursive myminio/gripiradar-ut-ee ./
+       mkdir -p gripiradar-ut-ee/{weekly,intake,vaccination,assets}
+       # Full copies: intake (needed for older participants still active) and assets
+       mc cp --recursive myminio/gripiradar-ut-ee/assets/ ./gripiradar-ut-ee/assets/
+       mc cp --recursive myminio/gripiradar-ut-ee/intake/ ./gripiradar-ut-ee/intake/
+       # Last ~6 months only: weekly and vaccination data files
+       mc cp --recursive --newer-than "26w" myminio/gripiradar-ut-ee/weekly/ ./gripiradar-ut-ee/weekly/
+       mc cp --recursive --newer-than "26w" myminio/gripiradar-ut-ee/vaccination/ ./gripiradar-ut-ee/vaccination/
+       # Always include catalog/survey_info regardless of age
+       mc cp myminio/gripiradar-ut-ee/weekly/catalog.json ./gripiradar-ut-ee/weekly/
+       mc cp myminio/gripiradar-ut-ee/weekly/survey_info.json ./gripiradar-ut-ee/weekly/
+       mc cp myminio/gripiradar-ut-ee/vaccination/catalog.json ./gripiradar-ut-ee/vaccination/
+       mc cp myminio/gripiradar-ut-ee/vaccination/survey_info.json ./gripiradar-ut-ee/vaccination/
     
     - uses: actions/upload-artifact@v7
       with:
