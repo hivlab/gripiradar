@@ -5,3 +5,25 @@
 /.quarto/
 __pycache__
 /public_preview/
+
+# Quarto/R build outputs
+/public/
+/docs/
+scripts/*.html
+
+# RStudio project
+*.Rproj
+
+# MinIO client binary
+/mc
+
+# Geodata shapefiles
+/data/Estonia_shapefile/
+/data/asustusyksus_shp/
+/data/omavalitsus_valispiirini_shp/
+
+# Downloaded survey dataset
+/gripiradar-ut-ee/
+
+# macOS
+.DS_Store
