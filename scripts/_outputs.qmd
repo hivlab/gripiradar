@@ -12,7 +12,7 @@ list(title = switch(lang, et = "Aktiivseid kasutajaid", en = "Active users", ru 
 #| content: valuebox
 #| icon: file-medical-fill
 #| color: "secondary"
-list(title = switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание"), value = ili_last)
+list(title = switch(lang, et = "Uued gripilaadse haiguse juhud", en = "New ILI cases", ru = "Новые случаи гриппоподобного заболевания"), value = ili_last)
 ```
 
 
@@ -66,7 +66,7 @@ symptoms_p + inset_element(nosymptoms_p, 0.6, 0.3, 1, 1)
 
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Gripilaadne haigus", en = "Influenza like illness", ru = "Гриппоподобное заболевание")'
+#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud", en = "New ILI cases", ru = "Новые случаи гриппоподобного заболевания")'
 ili_p +
   labs(caption = switch(lang, et = "Hall riba tähistab 95% usaldusintervalli.", en = "Grey ribbon represents 95% CI.", ru = "Серая лента представляет 95% доверительный интервал."))
 ```
@@ -105,7 +105,7 @@ gender_p
 ## Row {height="2.5fr"}
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Gripilaadne haigus vanusegrupiti", en = "Influenza like illness by age group", ru = "Гриппоподобное заболевание по возрастным группам")'
+#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud vanusegrupiti", en = "New ILI cases by age group", ru = "Новые случаи гриппоподобного заболевания по возрастным группам")'
 ili_age_p +
   scale_fill_fermenter(
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
@@ -129,7 +129,7 @@ ili_age_p +
 
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Gripilaadne haigus maakonniti (4 nädalat)", en = "Influenza like illness by county (4 weeks)", ru = "Гриппоподобное заболевание по уездам (4 недели)")'
+#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud maakonniti (4 nädalat)", en = "New ILI cases by county (4 weeks)", ru = "Новые случаи гриппоподобного заболевания по уездам (4 недели)")'
 geo_p +
   scale_fill_fermenter(
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),

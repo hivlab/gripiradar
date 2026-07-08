@@ -134,11 +134,14 @@ nosymptoms_p_fun <- function(data, lang = lang) {
 }
 
 # ILI plot.
-# Numerator: participants meeting the case definition (sudden onset +
-# systemic + respiratory symptoms). Denominator: ALL weekly responders
-# that week, including those reporting "No symptoms" — this is the
-# standard participatory-surveillance denominator.
-ili_per_pid <- weekly_responses_6mo %>%
+# Case definition: sudden onset + systemic + respiratory symptoms. We count
+# INCIDENT cases — an observed transition from a non-ILI to an ILI report —
+# rather than prevalence, expressed as a share of at-risk responders. Each
+# participant's first observed week is excluded (no prior report to confirm the
+# onset is new), which removes the enrolment cold-start. The per-participant
+# series is built over the FULL history so the rolling windows below don't
+# misclassify an in-window first appearance as a new onset.
+ili_onsets <- weekly_responses %>%
   group_by(intvl, participantID) %>%
   summarise(
     has_systemic = any(str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia")),
@@ -146,15 +149,26 @@ ili_per_pid <- weekly_responses_6mo %>%
     has_sudden = any(str_detect(suddenly, "Yes"), na.rm = TRUE),
     .groups = "drop"
   ) %>%
-  mutate(is_ili = has_systemic & has_resp & has_sudden)
+  mutate(is_ili = has_systemic & has_resp & has_sudden,
+         intvl_num = as.numeric(intvl)) %>%
+  arrange(participantID, intvl_num) %>%
+  group_by(participantID) %>%
+  mutate(prev_ili = lag(is_ili),
+         at_risk = !is.na(prev_ili),
+         new_ili = is_ili & at_risk & !prev_ili) %>%
+  ungroup()
 
-ili <- ili_per_pid %>%
+weeks_6mo <- unique(weekly_responses_6mo$intvl)
+
+ili <- ili_onsets %>%
+  filter(intvl %in% weeks_6mo) %>%
   group_by(intvl) %>%
   summarise(
-    total = n_distinct(participantID),
-    ili_n = sum(is_ili),
+    total = sum(at_risk),   # at-risk responders (have a prior report)
+    ili_n = sum(new_ili),   # new non-ILI -> ILI onsets
     .groups = "drop"
   ) %>%
+  filter(total > 0) %>%
   mutate(
     raw_rate = ili_n / total,
     intvl_num = as.numeric(intvl)
@@ -200,22 +214,15 @@ ili_last <- ili %>%
 
 # ILI by age group — weekly rate per age group, suppressed where N is too low
 age_min_n <- 5
-ili_age <- weekly_responses_6mo %>%
+ili_age <- ili_onsets %>%
+  filter(intvl %in% weeks_6mo) %>%
   left_join(intake_responses %>% select(participantID, age_group) %>% distinct(),
             by = "participantID") %>%
   filter(!is.na(age_group)) %>%
-  group_by(intvl, age_group, participantID) %>%
-  summarise(
-    has_systemic = any(str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia")),
-    has_resp = any(str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath")),
-    sudden = any(str_detect(suddenly, "Yes"), na.rm = TRUE),
-    .groups = "drop"
-  ) %>%
-  mutate(is_ili = has_systemic & has_resp & sudden) %>%
   group_by(intvl, age_group) %>%
   summarise(
-    n = n_distinct(participantID),
-    ili_n = sum(is_ili),
+    n = sum(at_risk),
+    ili_n = sum(new_ili),
     .groups = "drop"
   ) %>%
   mutate(rate = if_else(n >= age_min_n, ili_n / n, NA_real_))
@@ -252,39 +259,30 @@ others <- intake_responses_6mo %>%
 mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE) %>%
   st_simplify(dTolerance = 200)
 
-# Per-maakond ILI rate, pooled over the last 4 weeks.
-# Same case definition + denominator as the headline GAM, just averaged
-# over the 4-week window per county. ili_n / person_weeks gives an
-# average weekly ILI rate that is directly comparable to the headline.
-# Suppress estimates from counties with too few participants to avoid
-# 1/1 spikes.
+# Per-maakond ILI incidence, pooled over the last 4 weeks.
+# Same onset-based case count as the headline, averaged over the 4-week window
+# per county: ili_n / at-risk person_weeks gives an average weekly ILI
+# incidence directly comparable to the headline. Suppress estimates from
+# counties with too few participants to avoid 1/1 spikes.
 mk_min_n <- 5
 
 weekly_responses_4w <- weekly_responses %>%
   filter(submitted_date %within% last_4_weeks)
+weeks_4w <- unique(weekly_responses_4w$intvl)
 
-ili_per_pid_4w <- weekly_responses_4w %>%
-  group_by(intvl, participantID) %>%
-  summarise(
-    has_systemic = any(str_detect(str_to_lower(symptoms), "fever|malaise|headache|myalgia")),
-    has_resp = any(str_detect(str_to_lower(symptoms), "cough|sore throat|shortness of breath")),
-    has_sudden = any(str_detect(suddenly, "Yes"), na.rm = TRUE),
-    .groups = "drop"
-  ) %>%
-  mutate(is_ili = has_systemic & has_resp & has_sudden) %>%
+mk_ili <- ili_onsets %>%
+  filter(intvl %in% weeks_4w) %>%
   left_join(intake_responses %>% select(participantID, mk_home) %>% distinct(),
             by = "participantID") %>%
-  filter(!is.na(mk_home))
-
-mk_ili <- ili_per_pid_4w %>%
+  filter(!is.na(mk_home)) %>%
   group_by(mk_home) %>%
   summarise(
     n = n_distinct(participantID),
-    person_weeks = n(),
-    ili_n = sum(is_ili),
+    person_weeks = sum(at_risk),
+    ili_n = sum(new_ili),
     .groups = "drop"
   ) %>%
-  mutate(rate = if_else(n >= mk_min_n, ili_n / person_weeks, NA_real_))
+  mutate(rate = if_else(n >= mk_min_n & person_weeks > 0, ili_n / person_weeks, NA_real_))
 
 mk_ili_sf <- mk %>%
   left_join(mk_ili, by = c("MNIMI" = "mk_home"))
