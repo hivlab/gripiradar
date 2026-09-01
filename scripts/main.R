@@ -225,8 +225,20 @@ ili_last <- ili %>%
   pull(estimate) %>%
   scales::percent(accuracy = 0.1)
 
-# ILI by age group — weekly rate per age group, suppressed where N is too low
-age_min_n <- 5
+# ILI by age group — weekly rate per age group, shrunk the same way as the
+# county map. The 0-4 and 5-18 groups hold 5 and 13 participants, so their
+# cells never cleared the old n >= 5 rule and the two rows stayed grey all
+# year; no amount of waiting would have filled them in.
+#
+# Fit one weekly trend shared across age groups plus an age-group random
+# effect, and let sparse groups shrink toward that trend.
+#
+# Deliberately no age x time interaction. With 52 events spread over 130
+# week-by-age cells it is not estimable: a factor-smooth interaction term
+# (s(intvl_num, age_f, bs = "fs")) shrinks to edf 0 with a worse AIC on both
+# the current window and the 2025/26 winter peak. So each age group's series
+# is the common trend shifted by its own offset, and any apparent age-by-week
+# structure in the panel would be an artefact rather than a finding.
 ili_age <- ili_onsets %>%
   filter(intvl %in% weeks_6mo) %>%
   left_join(intake_responses %>% select(participantID, age_group) %>% distinct(),
@@ -238,7 +250,25 @@ ili_age <- ili_onsets %>%
     ili_n = sum(new_ili),
     .groups = "drop"
   ) %>%
-  mutate(rate = if_else(n >= age_min_n, ili_n / n, NA_real_))
+  filter(n > 0) %>%
+  mutate(
+    raw_rate = ili_n / n,
+    age_f = factor(age_group),
+    intvl_num = as.numeric(intvl)
+  )
+
+age_k <- min(n_distinct(ili_age$intvl) - 2, 8)
+if (nrow(ili_age) >= 5 && sum(ili_age$ili_n) > 0 && age_k >= 3) {
+  ili_age_gam <- mgcv::gam(
+    cbind(ili_n, n - ili_n) ~ s(intvl_num, k = age_k) + s(age_f, bs = "re"),
+    family = binomial,
+    data = ili_age,
+    method = "REML"
+  )
+  ili_age$rate <- as.numeric(predict(ili_age_gam, type = "response"))
+} else {
+  ili_age$rate <- NA_real_
+}
 
 ili_age_p <- ili_age %>%
   ggplot(aes(intvl, age_group, fill = rate)) +
