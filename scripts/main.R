@@ -272,19 +272,39 @@ others <- intake_responses_6mo %>%
 mk <- st_read(here("data/maakond_shp/maakond.shp"), quiet = TRUE) %>%
   st_simplify(dTolerance = 200)
 
-# Per-maakond ILI incidence, pooled over the last 4 weeks.
-# Same onset-based case count as the headline, averaged over the 4-week window
-# per county: ili_n / at-risk person_weeks gives an average weekly ILI
-# incidence directly comparable to the headline. Suppress estimates from
-# counties with too few participants to avoid 1/1 spikes.
-mk_min_n <- 5
-
-weekly_responses_4w <- weekly_responses %>%
-  filter(submitted_date %within% last_4_weeks)
-weeks_4w <- unique(weekly_responses_4w$intvl)
+# Per-maakond ILI incidence, pooled over the last mk_window_weeks weeks.
+# Same onset-based case count as the headline: ili_n / at-risk person_weeks
+# gives an average weekly ILI incidence per county, comparable to the headline.
+#
+# Counties outside Tartu and Harju carry 1-19 participants each, so a raw rate
+# is dominated by whether one person happened to fall ill: in the 4 weeks to
+# 2026-08-30, Ida-Viru read 11.1% off a single case in 9 person-weeks against a
+# national 0.9%. Hard-suppressing those counties (the previous n >= 5 rule) hid
+# 10 of 15 counties and still let 1-case spikes through.
+#
+# Instead, shrink each county toward the national rate with a binomial GAM
+# carrying a county random effect — empirical Bayes, and mgcv is already a
+# dependency. Counties with little data are pulled almost entirely to the
+# national rate; counties with enough person-weeks keep their own signal. When
+# between-county variation isn't detectable the fit collapses to a single flat
+# rate, which is the honest answer rather than a failure.
+#
+# The window is 12 weeks, not 4: a 4-week window holds only ~7-11 events
+# nationally, too few for the model to separate any county from the mean, so
+# the map would be flat nearly year-round. 12 weeks carries 18-37 events and
+# resolves real geography, at the cost of some timeliness.
+mk_window_weeks <- 12
+mk_window <- lubridate::interval(
+  this_monday - weeks(mk_window_weeks),
+  this_monday - 1
+)
+weeks_mk <- weekly_responses %>%
+  filter(submitted_date %within% mk_window) %>%
+  pull(intvl) %>%
+  unique()
 
 mk_ili <- ili_onsets %>%
-  filter(intvl %in% weeks_4w) %>%
+  filter(intvl %in% weeks_mk) %>%
   left_join(intake_responses %>% select(participantID, mk_home) %>% distinct(),
             by = "participantID") %>%
   filter(!is.na(mk_home)) %>%
@@ -295,7 +315,23 @@ mk_ili <- ili_onsets %>%
     ili_n = sum(new_ili),
     .groups = "drop"
   ) %>%
-  mutate(rate = if_else(n >= mk_min_n & person_weeks > 0, ili_n / person_weeks, NA_real_))
+  filter(person_weeks > 0) %>%
+  mutate(
+    raw_rate = ili_n / person_weeks,
+    mk_f = factor(mk_home)
+  )
+
+if (nrow(mk_ili) >= 3 && sum(mk_ili$ili_n) > 0) {
+  mk_gam <- mgcv::gam(
+    cbind(ili_n, person_weeks - ili_n) ~ s(mk_f, bs = "re"),
+    family = binomial,
+    data = mk_ili,
+    method = "REML"
+  )
+  mk_ili$rate <- as.numeric(predict(mk_gam, type = "response"))
+} else {
+  mk_ili$rate <- NA_real_
+}
 
 mk_ili_sf <- mk %>%
   left_join(mk_ili, by = c("MNIMI" = "mk_home"))

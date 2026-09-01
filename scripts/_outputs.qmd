@@ -129,7 +129,7 @@ ili_age_p +
 
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud maakonniti (4 nädalat)", en = "New ILI cases by county (4 weeks)", ru = "Новые случаи гриппоподобного заболевания по уездам (4 недели)")'
+#| title: !expr 'sprintf(switch(lang, et = "Uued gripilaadse haiguse juhud maakonniti (%d nädalat)", en = "New ILI cases by county (%d weeks)", ru = "Новые случаи гриппоподобного заболевания по уездам (%d недель)"), mk_window_weeks)'
 geo_p +
   scale_fill_fermenter(
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
@@ -139,14 +139,11 @@ geo_p +
     labels = scales::percent,
     na.value = "gray90"
   ) +
-  labs(caption = sprintf(
-    switch(
-      lang,
-      et = "Hall: alla %d osaleja maakonnas.",
-      en = "Grey: fewer than %d participants in county.",
-      ru = "Серый: менее %d участников в уезде."
-    ),
-    mk_min_n
+  labs(caption = switch(
+    lang,
+    et = "Hinnangud on ühtlustatud Eesti keskmise suunas: vähema osalejate arvuga maakonnad on nihutatud rohkem. Hall: maakonnas pole osalejaid.",
+    en = "Estimates are smoothed toward the national rate: counties with fewer participants are shrunk more. Grey: no participants in county.",
+    ru = "Оценки сглажены в сторону среднего по Эстонии: уезды с меньшим числом участников смещены сильнее. Серый: в уезде нет участников."
   ))
 ```
 
