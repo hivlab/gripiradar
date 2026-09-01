@@ -124,7 +124,14 @@ geo_p +
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
     palette = "RdYlBu",
     direction = -1,
-    n.breaks = 6,
+    # Fixed bins rather than n.breaks, matching the age panel. Auto-scaling
+    # re-normalises the palette on every weekly build, so a county sitting at
+    # 1% could read deep blue one week and pale the next without its rate
+    # having moved. squish keeps an epidemic peak above the top bin coloured
+    # rather than dropping it to the no-data grey.
+    breaks = c(0.005, 0.01, 0.02, 0.03, 0.05),
+    limits = c(0, 0.10),
+    oob = scales::squish,
     labels = scales::percent,
     na.value = "gray90"
   ) +
