@@ -105,27 +105,14 @@ gender_p
 ## Row {height="2.5fr"}
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud vanusegrupiti", en = "New ILI cases by age group", ru = "Новые случаи гриппоподобного заболевания по возрастным группам")'
+#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud vanusegrupiti (6 kuud)", en = "New ILI cases by age group (6 months)", ru = "Новые случаи гриппоподобного заболевания по возрастным группам (6 месяцев)")'
 ili_age_p +
-  scale_fill_fermenter(
-    switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
-    palette = "RdYlBu",
-    direction = -1,
-    # Fixed breaks, not n.breaks: the shrunk estimates span a fraction of a
-    # percentage point off-season, and an auto-scaled ramp would paint that
-    # trivial spread as a full red-to-blue gradient. Fixed bins also keep the
-    # colours meaning the same thing from one week's build to the next.
-    breaks = c(0.005, 0.01, 0.02, 0.03, 0.05),
-    limits = c(0, 0.06),
-    labels = scales::percent,
-    na.value = "gray90"
-  ) +
   scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
   labs(caption = switch(
     lang,
-    et = "Hinnangud on ühtlustatud: väikese osalejate arvuga vanusegrupid järgivad üldist nädalatrendi.",
-    en = "Estimates are smoothed: age groups with few participants follow the shared weekly trend.",
-    ru = "Оценки сглажены: возрастные группы с малым числом участников следуют общему недельному тренду."
+    et = "Punkt: ühtlustatud hinnang, joon: 95% usaldusvahemik, rist: toormäär. Katkendjoon: Eesti keskmine.",
+    en = "Dot: smoothed estimate, line: 95% CI, cross: raw rate. Dashed line: national rate.",
+    ru = "Точка: сглаженная оценка, линия: 95% ДИ, крест: исходный показатель. Пунктир: среднее по Эстонии."
   ))
 ```
 
