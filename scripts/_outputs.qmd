@@ -111,25 +111,27 @@ ili_age_p +
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
     palette = "RdYlBu",
     direction = -1,
-    n.breaks = 6,
+    # Fixed breaks, not n.breaks: the shrunk estimates span a fraction of a
+    # percentage point off-season, and an auto-scaled ramp would paint that
+    # trivial spread as a full red-to-blue gradient. Fixed bins also keep the
+    # colours meaning the same thing from one week's build to the next.
+    breaks = c(0.005, 0.01, 0.02, 0.03, 0.05),
+    limits = c(0, 0.06),
     labels = scales::percent,
     na.value = "gray90"
   ) +
   scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
-  labs(caption = sprintf(
-    switch(
-      lang,
-      et = "Hall: alla %d osaleja vanusegrupis sel nädalal.",
-      en = "Grey: fewer than %d participants in age group that week.",
-      ru = "Серый: менее %d участников в возрастной группе на этой неделе."
-    ),
-    age_min_n
+  labs(caption = switch(
+    lang,
+    et = "Hinnangud on ühtlustatud: väikese osalejate arvuga vanusegrupid järgivad üldist nädalatrendi.",
+    en = "Estimates are smoothed: age groups with few participants follow the shared weekly trend.",
+    ru = "Оценки сглажены: возрастные группы с малым числом участников следуют общему недельному тренду."
   ))
 ```
 
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud maakonniti (4 nädalat)", en = "New ILI cases by county (4 weeks)", ru = "Новые случаи гриппоподобного заболевания по уездам (4 недели)")'
+#| title: !expr 'sprintf(switch(lang, et = "Uued gripilaadse haiguse juhud maakonniti (%d nädalat)", en = "New ILI cases by county (%d weeks)", ru = "Новые случаи гриппоподобного заболевания по уездам (%d недель)"), mk_window_weeks)'
 geo_p +
   scale_fill_fermenter(
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
@@ -139,14 +141,11 @@ geo_p +
     labels = scales::percent,
     na.value = "gray90"
   ) +
-  labs(caption = sprintf(
-    switch(
-      lang,
-      et = "Hall: alla %d osaleja maakonnas.",
-      en = "Grey: fewer than %d participants in county.",
-      ru = "Серый: менее %d участников в уезде."
-    ),
-    mk_min_n
+  labs(caption = switch(
+    lang,
+    et = "Hinnangud on ühtlustatud Eesti keskmise suunas: vähema osalejate arvuga maakonnad on nihutatud rohkem. Hall: maakonnas pole osalejaid.",
+    en = "Estimates are smoothed toward the national rate: counties with fewer participants are shrunk more. Grey: no participants in county.",
+    ru = "Оценки сглажены в сторону среднего по Эстонии: уезды с меньшим числом участников смещены сильнее. Серый: в уезде нет участников."
   ))
 ```
 
