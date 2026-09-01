@@ -31,8 +31,10 @@ last_4_weeks <- lubridate::interval(
   this_monday - weeks(4), 
   this_monday - 1
 )
+# %m-% rolls back to the last valid day instead of returning NA when the
+# target month is short (e.g. 2026-08-31 - 6 months would be "2026-02-31").
 last_6_months <- lubridate::interval(
-  ceiling_date(this_monday - months(6), "week", week_start = 1), 
+  ceiling_date(this_monday %m-% months(6), "week", week_start = 1), 
   this_monday - 1
 )
 
@@ -179,16 +181,23 @@ ili <- ili_onsets %>%
 # whip around with single-week noise.
 # k caps basis dimension; gamma<1 lets the fit follow weekly trends
 # instead of over-smoothing into a near-flat line.
+# With too few weeks to fit a smooth, fall back to the raw weekly rate so a
+# sparse window degrades the plot instead of failing the render.
 ili_k <- min(nrow(ili) - 2, 15)
-ili_gam <- mgcv::gam(
-  cbind(ili_n, total - ili_n) ~ s(intvl_num, k = ili_k),
-  family = binomial,
-  data = ili,
-  gamma = 0.4
-)
-ili_pred <- predict(ili_gam, newdata = ili, type = "link", se.fit = TRUE)
-ili_fit <- as.numeric(ili_pred$fit)
-ili_se <- as.numeric(ili_pred$se.fit)
+if (ili_k >= 3) {
+  ili_gam <- mgcv::gam(
+    cbind(ili_n, total - ili_n) ~ s(intvl_num, k = ili_k),
+    family = binomial,
+    data = ili,
+    gamma = 0.4
+  )
+  ili_pred <- predict(ili_gam, newdata = ili, type = "link", se.fit = TRUE)
+  ili_fit <- as.numeric(ili_pred$fit)
+  ili_se <- as.numeric(ili_pred$se.fit)
+} else {
+  ili_fit <- qlogis(pmin(pmax(ili$raw_rate, 1e-6), 1 - 1e-6))
+  ili_se <- rep(0, nrow(ili))
+}
 ili <- ili %>%
   mutate(
     estimate = plogis(ili_fit),
