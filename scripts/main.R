@@ -267,19 +267,58 @@ if (nrow(ili_age) >= 5 && sum(ili_age$ili_n) > 0 && age_k >= 3) {
   )
   ili_age$rate <- as.numeric(predict(ili_age_gam, type = "response"))
 } else {
+  ili_age_gam <- NULL
   ili_age$rate <- NA_real_
 }
 
-ili_age_p <- ili_age %>%
-  ggplot(aes(intvl, age_group, fill = rate)) +
-  geom_tile(color = "white", linewidth = 0.3) +
-  scale_x_yearmonth(
-    date_breaks = "1 month",
-    labels = my_label_date_short(format = c("%Y", "%b", "%d", "%H:%M"), sep = "-")
-  ) +
+# One row per age group over the whole window, not a week-by-age heatmap.
+# Since the model carries no age x time interaction, every column of such a
+# heatmap was the same curve redrawn and the panel spent its space showing one
+# trend five times. A point range says the useful thing instead: where each age
+# group sits, how uncertain that is, and what the raw data looked like. When
+# the groups genuinely separate in season, the points spread on their own.
+age_national <- sum(ili_age$ili_n) / sum(ili_age$n)
+
+ili_age_summary <- ili_age %>%
+  group_by(age_group, age_f) %>%
+  summarise(
+    person_weeks = sum(n),
+    ili_n = sum(ili_n),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    raw_rate = ili_n / person_weeks,
+    intvl_num = mean(ili_age$intvl_num)
+  )
+
+if (!is.null(ili_age_gam)) {
+  age_pred <- predict(ili_age_gam, newdata = ili_age_summary,
+                      type = "link", se.fit = TRUE)
+  age_fit <- as.numeric(age_pred$fit)
+  age_se <- as.numeric(age_pred$se.fit)
+  ili_age_summary <- ili_age_summary %>%
+    mutate(
+      estimate = plogis(age_fit),
+      conf_int_1 = plogis(age_fit - 1.96 * age_se),
+      conf_int_2 = plogis(age_fit + 1.96 * age_se)
+    )
+} else {
+  ili_age_summary <- ili_age_summary %>%
+    mutate(estimate = raw_rate, conf_int_1 = NA_real_, conf_int_2 = NA_real_)
+}
+
+ili_age_p <- ili_age_summary %>%
+  ggplot(aes(estimate, age_group)) +
+  geom_vline(xintercept = age_national, linetype = 2, color = "gray55") +
+  geom_linerange(aes(xmin = conf_int_1, xmax = conf_int_2),
+                 color = colors[1], linewidth = 1.1) +
+  geom_point(color = colors[1], size = 2.8) +
+  geom_point(aes(x = raw_rate), shape = 4, color = "gray35",
+             size = 2.2, stroke = 1) +
+  scale_x_continuous(labels = scales::percent, limits = c(0, NA)) +
   theme(
     axis.title = element_blank(),
-    panel.grid = element_blank()
+    panel.grid.minor = element_blank()
   )
 
 # Demographics plot
