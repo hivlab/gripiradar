@@ -179,17 +179,21 @@ ili <- ili_onsets %>%
 # Smooth on the logit scale via a binomial GAM, then back-transform.
 # Gives a temporally coherent rate and 95% CI ribbon that doesn't
 # whip around with single-week noise.
-# k caps basis dimension; gamma<1 lets the fit follow weekly trends
-# instead of over-smoothing into a near-flat line.
+# REML rather than the default GCV: with 1-3 cases per ~200 at-risk
+# responders the GCV score is multimodal, and which optimum it lands in
+# varies by mgcv version. The 2026-09-01 build undersmoothed into a
+# right-edge blow-up to 17% against raw weekly rates below 1.5%; the same
+# code and data fit a flat line under mgcv 1.9-4. REML is stable, and k is
+# capped low so worst-case wiggliness stays bounded either way.
 # With too few weeks to fit a smooth, fall back to the raw weekly rate so a
 # sparse window degrades the plot instead of failing the render.
-ili_k <- min(nrow(ili) - 2, 15)
+ili_k <- min(nrow(ili) - 2, 8)
 if (ili_k >= 3) {
   ili_gam <- mgcv::gam(
     cbind(ili_n, total - ili_n) ~ s(intvl_num, k = ili_k),
     family = binomial,
     data = ili,
-    gamma = 0.4
+    method = "REML"
   )
   ili_pred <- predict(ili_gam, newdata = ili, type = "link", se.fit = TRUE)
   ili_fit <- as.numeric(ili_pred$fit)
