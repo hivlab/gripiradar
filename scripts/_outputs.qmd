@@ -12,7 +12,7 @@ list(title = switch(lang, et = "Aktiivseid kasutajaid", en = "Active users", ru 
 #| content: valuebox
 #| icon: file-medical-fill
 #| color: "secondary"
-list(title = switch(lang, et = "Uued gripilaadse haiguse juhud", en = "New ILI cases", ru = "Новые случаи гриппоподобного заболевания"), value = ili_last)
+list(title = switch(lang, et = "Uued gripilaadse haiguse (ILI) juhud", en = "New ILI cases", ru = "Новые случаи гриппоподобного заболевания (ILI)"), value = ili_last)
 ```
 
 
@@ -58,7 +58,7 @@ symptoms_p + inset_element(nosymptoms_p, 0.6, 0.3, 1, 1)
 
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud", en = "New ILI cases", ru = "Новые случаи гриппоподобного заболевания")'
+#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse (ILI) juhud", en = "New ILI cases", ru = "Новые случаи гриппоподобного заболевания (ILI)")'
 ili_p +
   labs(caption = switch(lang, et = "Hall riba tähistab 95% usaldusintervalli.", en = "Grey ribbon represents 95% CI.", ru = "Серая лента представляет 95% доверительный интервал."))
 ```
@@ -97,7 +97,7 @@ gender_p
 ## Row {height="2.5fr"}
 
 ```{r}
-#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud vanusegrupiti (6 kuud)", en = "New ILI cases by age group (6 months)", ru = "Новые случаи гриппоподобного заболевания по возрастным группам (6 месяцев)")'
+#| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse (ILI) juhud vanusegrupiti (6 kuud)", en = "New ILI cases by age group (6 months)", ru = "Новые случаи гриппоподобного заболевания (ILI) по возрастным группам (6 месяцев)")'
 ili_age_p +
   scale_y_discrete(switch(lang, et = "Vanusegrupp", en = "Age group", ru = "Возрастная группа")) +
   labs(caption = str_wrap(width = 80, switch(
@@ -110,7 +110,7 @@ ili_age_p +
 
 
 ```{r}
-#| title: !expr 'sprintf(switch(lang, et = "Uued gripilaadse haiguse juhud maakonniti (%d nädalat)", en = "New ILI cases by county (%d weeks)", ru = "Новые случаи гриппоподобного заболевания по уездам (%d недель)"), mk_window_weeks)'
+#| title: !expr 'sprintf(switch(lang, et = "Uued gripilaadse haiguse (ILI) juhud maakonniti (%d nädalat)", en = "New ILI cases by county (%d weeks)", ru = "Новые случаи гриппоподобного заболевания (ILI) по уездам (%d недель)"), mk_window_weeks)'
 geo_p +
   scale_fill_fermenter(
     switch(lang, et = "ILI", en = "ILI", ru = "ILI"),
