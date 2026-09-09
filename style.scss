@@ -13,13 +13,25 @@
 }
 /* Below 300px bslib stacks the value box (icon on top, text below), which
    doesn't fit the 1.5fr header row on shorter screens — the value ends up
-   clipped by .value-box-area's overflow:hidden. Drop the icon and tighten
-   the padding so the title and number always fit. */
+   clipped by .value-box-area's overflow:hidden. Instead of stacking, keep
+   the icon on the left in a narrow column and shrink it, so the icon stays
+   visible on laptops and phones alike and the title and number always fit. */
 @container bslib-value-box (max-width: 300px) {
-    .quarto-dashboard .bslib-value-box .value-box-showcase {
-        display: none !important;
+    .quarto-dashboard .bslib-value-box:not(.showcase-bottom) .value-box-grid {
+        grid-template-columns: 3.5rem auto !important;
+        grid-template-rows: 1fr !important;
+        grid-template-areas: "left right" !important;
     }
-    .quarto-dashboard .bslib-value-box .value-box-area {
+    .quarto-dashboard .bslib-value-box:not(.showcase-bottom) .value-box-grid .value-box-showcase {
+        grid-area: left !important;
+        padding: .5rem 0 .5rem .5rem;
+    }
+    .quarto-dashboard .bslib-value-box .value-box-showcase .bi {
+        font-size: 2.2rem;
+        min-width: 0;
+    }
+    .quarto-dashboard .bslib-value-box:not(.showcase-bottom) .value-box-grid .value-box-area {
+        grid-area: right !important;
         padding: .5rem .75rem;
         justify-content: center;
     }
