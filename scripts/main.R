@@ -121,7 +121,7 @@ active_users_p <- active_users %>%
   scale_y_continuous(limits = c(0, NA)) +
   scale_x_yearmonth(date_breaks = "1 month",
                labels = my_label_date_short(format = c("%Y", "%b", "%d", "%H:%M"), sep = "-")) +
-  theme(axis.title = element_blank())
+  theme(axis.title.x = element_blank())
 
 # Symptoms plot function
 symptoms_p_fun <- function(data, lang = lang) {
