@@ -23,7 +23,7 @@ old <- theme_set(
   theme_minimal() +
     theme(
       text = element_text(size = 12),
-      plot.caption = element_text(color = "gray40")
+      plot.caption = element_text(color = "gray40", hjust = 0)
     )
 )
 this_monday <- floor_date(today(), "week", week_start = 1)
@@ -49,13 +49,30 @@ weekly_responses <- parse_responses("weekly") %>%
 intake_responses <- parse_responses("intake") %>%
   select(participantID, gender, age_group, ov_home, mk_home)
 
-# Import vaccination responses (latest answer per participant within 6mo window)
+# Flu season runs from 1 July to 30 June. Pick the season that contains today.
+season_start <- if (month(today()) >= 7) {
+  make_date(year(today()), 7, 1)
+} else {
+  make_date(year(today()) - 1, 7, 1)
+}
+season_label <- sprintf("%d/%02d", year(season_start), (year(season_start) + 1) %% 100)
+
+# Vaccination question titles carry the season in them and change every year,
+# so look the column names up by the stable question key instead.
+vaccination_survey_info <- parse_survey_info(here("data/vaccination_survey_info.csv"))
+vacc_question <- function(question_key) {
+  vaccination_survey_info %>%
+    filter(question == question_key) %>%
+    pull(title) %>%
+    unique()
+}
+
+# Import vaccination responses (latest answer per participant within the season)
 vaccination_responses <- parse_responses("vaccination") %>%
-  filter(submitted_date %within% last_6_months) %>%
+  filter(submitted_date >= season_start) %>%
   select(
     participantID, submitted_date,
-    flu_this_season = "Have you received a flu vaccine this autumn/winter season? (2025-2026)",
-    covid_ever = "Have you received a COVID-19 vaccine?"
+    flu_this_season = all_of(vacc_question("vaccination.HV.Q10"))
   ) %>%
   group_by(participantID) %>%
   filter(submitted_date == max(submitted_date)) %>%
@@ -87,14 +104,13 @@ active_users <- weekly_responses_6mo %>%
   ) %>%
   ungroup()
 
-# Vaccination headline numbers (denominator: active weekly users in 6mo)
+# Vaccination headline numbers for the current season
+# (denominator: active weekly users in 6mo who answered the vaccination survey this season)
 vacc_active <- vaccination_responses %>%
   filter(participantID %in% active_pids_6mo)
-flu_vacc_pct <- if (nrow(vacc_active) > 0) {
+vacc_n <- nrow(vacc_active)
+flu_vacc_pct <- if (vacc_n > 0) {
   scales::percent(mean(str_starts(vacc_active$flu_this_season, "Yes"), na.rm = TRUE), accuracy = 0.1)
-} else "—"
-covid_vacc_pct <- if (nrow(vacc_active) > 0) {
-  scales::percent(mean(str_starts(vacc_active$covid_ever, "Yes"), na.rm = TRUE), accuracy = 0.1)
 } else "—"
 
 # Weekly users plot
@@ -313,11 +329,13 @@ ili_age_p <- ili_age_summary %>%
   geom_linerange(aes(xmin = conf_int_1, xmax = conf_int_2),
                  color = colors[1], linewidth = 1.1) +
   geom_point(color = colors[1], size = 2.8) +
-  geom_point(aes(x = raw_rate), shape = 4, color = "gray35",
-             size = 2.2, stroke = 1) +
-  scale_x_continuous(labels = scales::percent, limits = c(0, NA)) +
+  # Observed (raw) rate drawn last and in black so it reads clearly next to
+  # the model estimate; the model stays the primary mark (colour + CI).
+  geom_point(aes(x = raw_rate), shape = 4, color = "black",
+             size = 2.6, stroke = 1.3) +
+  scale_x_continuous("ILI", labels = scales::percent, limits = c(0, NA)) +
   theme(
-    axis.title = element_blank(),
+    axis.title.y = element_blank(),
     panel.grid.minor = element_blank()
   )
 
