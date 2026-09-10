@@ -68,7 +68,8 @@ ili_p +
 
 ```{r}
 #| title: !expr 'switch(lang, et = "Aktiivseid kasutajaid (nädalas)", en = "Active users (weekly)", ru = "Aктивные пользователи (в неделю)")'
-active_users_p
+active_users_p +
+  scale_y_continuous(switch(lang, et = "Kasutajate arv", en = "Number of users", ru = "Число пользователей"), limits = c(0, NA))
 ```
 
 
