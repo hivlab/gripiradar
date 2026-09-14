@@ -24,10 +24,17 @@ jobs:
       uses: actions/checkout@v6
     
     - name: Install Minio client
+      env:
+       # dl.min.io no longer serves mc binaries (HTTP 410); use GitHub Releases
+       MC_RELEASE: RELEASE.2025-08-13T08-35-41Z
       run: |
-       wget https://dl.min.io/client/mc/release/linux-amd64/mc
+       BASE="https://github.com/minio/mc/releases/download/$MC_RELEASE"
+       wget -q -O mc "$BASE/mc.linux-amd64.$MC_RELEASE"
+       wget -q -O mc.sha256sum "$BASE/mc.linux-amd64.$MC_RELEASE.sha256sum"
+       echo "$(cut -d' ' -f1 mc.sha256sum)  mc" | sha256sum -c -
        chmod +x mc
        sudo mv mc /usr/local/bin
+       mc --version
     
     - name: Configure Minio client
       shell: bash
