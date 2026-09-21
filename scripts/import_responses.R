@@ -11,7 +11,13 @@ library(tsibble)
 
 num_to_date <- function(x) as_date(x / (24 * 3600), origin = lubridate::origin)
 rep_safely <- safely(rep, otherwise = NA_character_)
-date_questions_regex <- "(Q10b|Q35j)(\\.1)?"
+# Date answers are stored as epoch seconds in the ".0"/".1" sub-field of these
+# questions; the bare question holds the choice ("I don't know", "I am still ill").
+# Anchored on the full name so e.g. weekly.EX.Q10b (not a date) is not caught.
+date_questions_regex <- paste0(
+  "^(weekly\\.HS\\.Q3|weekly\\.HS\\.Q4|weekly\\.HS\\.Q6|",
+  "vaccination\\.HV\\.Q10b|vaccination\\.HV\\.Q35j)\\.[01]$"
+)
 
 parse_responses_files <- function(responses_files) {
   responses_files %>%
@@ -224,11 +230,13 @@ parse_responses <- function(responses = c("intake", "weekly", "vaccination")) {
   response_date_wide <- response_date %>% 
     left_join(
       survey_info %>% 
-        filter(str_detect(question, date_questions_regex)) %>% 
+        filter(question %in% unique(response_date$name)) %>% 
         select(question, title, questionType) %>% 
         distinct(), 
       by = join_by(name == question)
     ) %>% 
+    # suffix keeps the date apart from the choice answer, which shares the title
+    mutate(title = paste(title, "[date]")) %>%
     select(intvl, submitted_date, participantID, title, label) %>%
     pivot_wider(names_from = title, values_from = label)
   
