@@ -44,8 +44,9 @@ jobs:
        # Full copies: intake (needed for older participants still active) and assets
        mc cp --recursive myminio/gripiradar-ut-ee/assets/ ./gripiradar-ut-ee/assets/
        mc cp --recursive myminio/gripiradar-ut-ee/intake/ ./gripiradar-ut-ee/intake/
-       # Last ~6 months only: weekly and vaccination data files
-       mc cp --recursive --newer-than "26w" myminio/gripiradar-ut-ee/weekly/ ./gripiradar-ut-ee/weekly/
+       # Weekly: full history (~7 MB); the ILI smooth and baseline are fitted on all of it
+       mc cp --recursive myminio/gripiradar-ut-ee/weekly/ ./gripiradar-ut-ee/weekly/
+       # Vaccination: last ~6 months only
        mc cp --recursive --newer-than "26w" myminio/gripiradar-ut-ee/vaccination/ ./gripiradar-ut-ee/vaccination/
        # Always include catalog/survey_info regardless of age
        mc cp myminio/gripiradar-ut-ee/weekly/catalog.json ./gripiradar-ut-ee/weekly/

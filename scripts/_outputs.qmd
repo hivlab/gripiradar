@@ -68,7 +68,12 @@ symptoms_p + inset_element(nosymptoms_p, 0.6, 0.3, 1, 1)
 ```{r}
 #| title: !expr 'switch(lang, et = "Uued gripilaadse haiguse juhud", en = "New ILI cases", ru = "Новые случаи гриппоподобного заболевания")'
 ili_p +
-  labs(caption = switch(lang, et = "Hall riba tähistab 95% usaldusintervalli.", en = "Grey ribbon represents 95% CI.", ru = "Серая лента представляет 95% доверительный интервал."))
+  labs(caption = switch(
+    lang,
+    et = "Riba: 95% usaldusintervall. Katkendjoon: suvine baastase (nädalad 20–35).\nPunane punkt: nädal on usaldusväärselt üle baastaseme.",
+    en = "Ribbon: 95% CI. Dashed line: summer baseline (weeks 20–35).\nRed dot: week credibly above baseline.",
+    ru = "Лента: 95% доверительный интервал. Пунктир: летний базовый уровень (недели 20–35).\nКрасная точка: неделя достоверно выше базового уровня."
+  ))
 ```
 
 
