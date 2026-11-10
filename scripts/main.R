@@ -178,8 +178,16 @@ ili_onsets <- weekly_responses %>%
 
 weeks_6mo <- unique(weekly_responses_6mo$intvl)
 
+# The smooth is fitted on the FULL weekly history, not the 6-month display
+# window. Six summer months hold ~50 events, too few for REML to tell a trend
+# from noise, so the fit collapsed to a flat line. Over the full history
+# (2024-12 onward, 210 events by 2026-09) the same model resolves the season
+# and the end of the curve is steadier. In a real-time backtest over autumn
+# 2025, both fits crossed the baseline in the same week (2025-09-29), but the
+# 6-month fit dropped back below baseline in two December weeks while the
+# full-history fit stayed above it. Only the plotted range is limited to
+# 6 months.
 ili <- ili_onsets %>%
-  filter(intvl %in% weeks_6mo) %>%
   group_by(intvl) %>%
   summarise(
     total = sum(at_risk),   # at-risk responders (have a prior report)
@@ -203,7 +211,9 @@ ili <- ili_onsets %>%
 # capped low so worst-case wiggliness stays bounded either way.
 # With too few weeks to fit a smooth, fall back to the raw weekly rate so a
 # sparse window degrades the plot instead of failing the render.
-ili_k <- min(nrow(ili) - 2, 8)
+# k scales with the series length (about one basis function per 3 weeks, at
+# most 40). REML picks the actual wiggliness; k only sets the upper limit.
+ili_k <- min(nrow(ili) %/% 3, 40)
 if (ili_k >= 3) {
   ili_gam <- mgcv::gam(
     cbind(ili_n, total - ili_n) ~ s(intvl_num, k = ili_k),
@@ -225,11 +235,27 @@ ili <- ili %>%
     conf_int_2 = plogis(ili_fit + 1.96 * ili_se)
   )
 
+# Baseline: the pooled off-season rate over ISO weeks 20-35 (mid-May to
+# August) of all past weeks. September is left out because the back-to-school
+# rise starts there (2025-09: 1.8% vs ~0.8% in summer). A week where the lower
+# 95% limit of the smooth is above the baseline is marked as elevated.
+ili_baseline_weeks <- ili %>%
+  filter(between(isoweek(as.Date(intvl)), 20, 35), intvl < yearweek(this_monday))
+ili_baseline <- if (sum(ili_baseline_weeks$total) > 0) {
+  sum(ili_baseline_weeks$ili_n) / sum(ili_baseline_weeks$total)
+} else NA_real_
+
+ili <- ili %>%
+  mutate(elevated = !is.na(ili_baseline) & conf_int_1 > ili_baseline) %>%
+  filter(intvl %in% weeks_6mo)
+
 ili_p <- ili %>%
   ggplot(aes(intvl, estimate)) +
+  geom_hline(yintercept = ili_baseline, linetype = 2, color = "gray55") +
   geom_ribbon(aes(ymin = conf_int_1, ymax = conf_int_2), alpha = 0.2, fill = colors[1]) +
   geom_line(aes(group = 1), color = colors[1], linewidth = 0.8) +
   geom_point(aes(y = raw_rate), color = colors[1], alpha = 0.4, size = 1.5) +
+  geom_point(data = \(d) filter(d, elevated), color = colors[4], size = 2) +
   labs(y = "ILI") +
   scale_y_continuous(labels = scales::percent, limits = c(0, NA)) +
   scale_x_yearmonth(date_breaks = "1 month",
